@@ -497,13 +497,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115181974}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c40b553d8a993641ad77fb6d811453e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 16
-  height: 9
+  width: 24
+  height: 13
   tileprefab: {fileID: 4440112113054592540, guid: bbb8f74e2eae7d648a2893127ec5ebac, type: 3}
   cam: {fileID: 519420032}
 --- !u!4 &2115181976
