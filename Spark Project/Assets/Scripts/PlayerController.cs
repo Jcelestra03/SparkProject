@@ -11,10 +11,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRB;
     private Vector2 velocity;
     private Vector2 groundDetection;
-    
+    public bool canjump;
 
-
-
+    public float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +30,23 @@ public class PlayerController : MonoBehaviour
         velocity.x += Input.GetAxisRaw("Horizontal") * acceleration;
 
         groundDetection = new Vector2(transform.position.x, transform.position.y - 1.1f);
-
-        if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
+        if(canjump)
         {
-            velocity.y = jumpheight;
+            if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
+            {
+                velocity.y = jumpheight;
+                canjump = false;
+            }
         }
-
+        else if (!canjump)
+        {
+            timer += Time.deltaTime;
+            if ( timer >= 1.5)
+            {
+                canjump = true;
+                timer = 0;
+            }
+        }
         if (velocity.x >= maxSpeed)
             velocity.x = maxSpeed;
 
