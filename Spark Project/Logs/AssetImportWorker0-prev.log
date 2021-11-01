@@ -16,7 +16,11 @@ C:/Users/340055/Documents/GitHub/SparkProject/Spark Project
 Logs/AssetImportWorker0.log
 -srvPort
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 54066
+=======
+53973
+>>>>>>> Stashed changes
 =======
 53973
 >>>>>>> Stashed changes
@@ -52,7 +56,11 @@ C:/Users/340055/Documents/GitHub/SparkProject/Spark Project
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 141.09 ms, found 4 plugins.
+=======
+Refreshing native plugins compatible for Editor in 146.70 ms, found 4 plugins.
+>>>>>>> Stashed changes
 =======
 Refreshing native plugins compatible for Editor in 146.70 ms, found 4 plugins.
 >>>>>>> Stashed changes
@@ -72,7 +80,11 @@ Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/Managed
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/MonoBleedingEdge/etc'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56784
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56072
+>>>>>>> Stashed changes
 =======
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56072
 >>>>>>> Stashed changes
@@ -81,6 +93,7 @@ Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 Registered in 0.014329 seconds.
 Native extension for WindowsStandalone target not found
@@ -94,6 +107,8 @@ Domain Reload Profiling:
 	ReloadAssembly (2055ms)
 		BeginReloadAssembly (186ms)
 =======
+=======
+>>>>>>> Stashed changes
 Registered in 0.013114 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
@@ -105,12 +120,16 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (2007ms)
 		BeginReloadAssembly (172ms)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 		EndReloadAssembly (744ms)
 			LoadAssemblies (181ms)
@@ -127,6 +146,8 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadAttributes (218ms)
 				ProcessInitializeOnLoadMethodAttributes (78ms)
 =======
+=======
+>>>>>>> Stashed changes
 		EndReloadAssembly (757ms)
 			LoadAssemblies (172ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -141,6 +162,9 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (2ms)
 				ProcessInitializeOnLoadAttributes (209ms)
 				ProcessInitializeOnLoadMethodAttributes (65ms)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -149,7 +173,11 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Registered in 0.026008 seconds.
+=======
+Registered in 0.025927 seconds.
+>>>>>>> Stashed changes
 =======
 Registered in 0.025927 seconds.
 >>>>>>> Stashed changes
@@ -160,6 +188,7 @@ Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 143.18 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
@@ -168,6 +197,8 @@ Domain Reload Profiling:
 	ReloadAssembly (2878ms)
 		BeginReloadAssembly (326ms)
 =======
+=======
+>>>>>>> Stashed changes
 Refreshing native plugins compatible for Editor in 155.93 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
@@ -175,11 +206,15 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (2290ms)
 		BeginReloadAssembly (311ms)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 			CreateAndSetChildDomain (32ms)
 		EndReloadAssembly (2386ms)
@@ -197,6 +232,8 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadAttributes (1219ms)
 				ProcessInitializeOnLoadMethodAttributes (51ms)
 =======
+=======
+>>>>>>> Stashed changes
 			CreateAndSetChildDomain (38ms)
 		EndReloadAssembly (1827ms)
 			LoadAssemblies (218ms)
@@ -212,6 +249,9 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (123ms)
 				ProcessInitializeOnLoadAttributes (714ms)
 				ProcessInitializeOnLoadMethodAttributes (52ms)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 				AfterProcessingInitializeOnLoad (13ms)
 				EditorAssembliesLoaded (0ms)
@@ -227,7 +267,11 @@ Unloading 3890 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 38 unused Assets / (55.4 KB). Loaded Objects now: 4348.
 Memory consumption went from 149.5 MB to 149.5 MB.
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Total: 4.786800 ms (FindLiveObjects: 0.431900 ms CreateObjectMapping: 0.126400 ms MarkObjects: 4.130300 ms  DeleteObjects: 0.096500 ms)
+=======
+Total: 4.801600 ms (FindLiveObjects: 0.378000 ms CreateObjectMapping: 0.135900 ms MarkObjects: 4.173700 ms  DeleteObjects: 0.112400 ms)
+>>>>>>> Stashed changes
 =======
 Total: 4.801600 ms (FindLiveObjects: 0.378000 ms CreateObjectMapping: 0.135900 ms MarkObjects: 4.173700 ms  DeleteObjects: 0.112400 ms)
 >>>>>>> Stashed changes
@@ -243,6 +287,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 Received Prepare
 Registering precompiled user dll's ...
@@ -360,6 +405,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 =======
+=======
+>>>>>>> Stashed changes
 Received Import Request.
   Time since last request: 12625.924807 seconds.
   path: Assets/Sprites
@@ -371,4 +418,7 @@ Received Import Request.
   path: Assets/Sprites/abnormal_book.png
   artifactKey: Guid(2303ae94a058e90479c43186e799063b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Sprites/abnormal_book.png using Guid(2303ae94a058e90479c43186e799063b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4759b0c7e2df7d598dfc050f9cbf3776') in 0.154905 seconds 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
