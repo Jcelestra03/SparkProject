@@ -16,9 +16,15 @@ C:/Users/340055/Documents/GitHub/SparkProject/Spark Project
 Logs/AssetImportWorker1.log
 -srvPort
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 65284
 Successfully changed project path to: C:/Users/400324/Documents/GitHub/Spark/Spark Project
 C:/Users/400324/Documents/GitHub/Spark/Spark Project
+=======
+54066
+Successfully changed project path to: C:/Users/340055/Documents/GitHub/SparkProject/Spark Project
+C:/Users/340055/Documents/GitHub/SparkProject/Spark Project
+>>>>>>> Stashed changes
 =======
 54066
 Successfully changed project path to: C:/Users/340055/Documents/GitHub/SparkProject/Spark Project
@@ -54,7 +60,11 @@ C:/Users/340055/Documents/GitHub/SparkProject/Spark Project
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 137.30 ms, found 4 plugins.
+=======
+Refreshing native plugins compatible for Editor in 170.38 ms, found 4 plugins.
+>>>>>>> Stashed changes
 =======
 Refreshing native plugins compatible for Editor in 170.38 ms, found 4 plugins.
 >>>>>>> Stashed changes
@@ -74,7 +84,11 @@ Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/Managed
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/MonoBleedingEdge/etc'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56800
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56208
+>>>>>>> Stashed changes
 =======
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56208
 >>>>>>> Stashed changes
@@ -83,6 +97,7 @@ Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 Registered in 0.016486 seconds.
 Native extension for WindowsStandalone target not found
@@ -96,6 +111,8 @@ Domain Reload Profiling:
 	ReloadAssembly (1960ms)
 		BeginReloadAssembly (167ms)
 =======
+=======
+>>>>>>> Stashed changes
 Registered in 0.014044 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
@@ -114,6 +131,7 @@ Domain Reload Profiling:
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		EndReloadAssembly (633ms)
 			LoadAssemblies (166ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -129,6 +147,8 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadAttributes (190ms)
 				ProcessInitializeOnLoadMethodAttributes (61ms)
 =======
+=======
+>>>>>>> Stashed changes
 		EndReloadAssembly (700ms)
 			LoadAssemblies (165ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -143,6 +163,9 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (2ms)
 				ProcessInitializeOnLoadAttributes (218ms)
 				ProcessInitializeOnLoadMethodAttributes (81ms)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -151,7 +174,11 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Registered in 0.027159 seconds.
+=======
+Registered in 0.035783 seconds.
+>>>>>>> Stashed changes
 =======
 Registered in 0.035783 seconds.
 >>>>>>> Stashed changes
@@ -161,6 +188,7 @@ Symbol file LoadedFromMemory doesn't match image C:\Users\340055\Documents\GitHu
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 121.85 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
@@ -178,10 +206,20 @@ Domain Reload Profiling:
 	ReloadAssembly (2761ms)
 		BeginReloadAssembly (326ms)
 >>>>>>> Stashed changes
+=======
+Refreshing native plugins compatible for Editor in 142.23 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.760 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2761ms)
+		BeginReloadAssembly (326ms)
+>>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (9ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 			CreateAndSetChildDomain (24ms)
 		EndReloadAssembly (2052ms)
@@ -200,6 +238,8 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadMethodAttributes (48ms)
 				AfterProcessingInitializeOnLoad (13ms)
 =======
+=======
+>>>>>>> Stashed changes
 			CreateAndSetChildDomain (35ms)
 		EndReloadAssembly (2274ms)
 			LoadAssemblies (254ms)
@@ -224,6 +264,7 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
 Refreshing native plugins compatible for Editor in 1.56 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
@@ -231,6 +272,15 @@ Unloading 3890 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 38 unused Assets / (55.9 KB). Loaded Objects now: 4349.
 Memory consumption went from 149.5 MB to 149.5 MB.
 Total: 4.992300 ms (FindLiveObjects: 0.392100 ms CreateObjectMapping: 0.127000 ms MarkObjects: 4.371300 ms  DeleteObjects: 0.100000 ms)
+=======
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
+Refreshing native plugins compatible for Editor in 1.53 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3890 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (55.4 KB). Loaded Objects now: 4348.
+Memory consumption went from 149.5 MB to 149.5 MB.
+Total: 4.800300 ms (FindLiveObjects: 0.380700 ms CreateObjectMapping: 0.133200 ms MarkObjects: 4.129500 ms  DeleteObjects: 0.154500 ms)
+>>>>>>> Stashed changes
 =======
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
 Refreshing native plugins compatible for Editor in 1.53 ms, found 4 plugins.
@@ -253,6 +303,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   Time since last request: 14191.913108 seconds.
   path: Assets/Sprites/border_a.png
@@ -326,12 +377,23 @@ AssetImportParameters requested are different than current active one (requested
 Received Prepare
 Registering precompiled user dll's ...
 Registered in 0.025145 seconds.
+=======
+  Time since last request: 12824.303950 seconds.
+  path: Assets/Prefabs/TileSquare.prefab
+  artifactKey: Guid(bbb8f74e2eae7d648a2893127ec5ebac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/TileSquare.prefab using Guid(bbb8f74e2eae7d648a2893127ec5ebac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a747466c055523ed1553113fd11da047') in 0.214822 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.028601 seconds.
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\400324\Documents\GitHub\Spark\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\400324\Documents\GitHub\Spark\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\340055\Documents\GitHub\SparkProject\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\340055\Documents\GitHub\SparkProject\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 1.20 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
@@ -406,6 +468,30 @@ Domain Reload Profiling:
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (33ms)
 				SetLoadedEditorAssemblies (1ms)
+=======
+Refreshing native plugins compatible for Editor in 1.61 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.812 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1813ms)
+		BeginReloadAssembly (268ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (8ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (64ms)
+		EndReloadAssembly (1395ms)
+			LoadAssemblies (233ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (358ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (55ms)
+			SetupLoadedEditorAssemblies (686ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (33ms)
+				SetLoadedEditorAssemblies (1ms)
+>>>>>>> Stashed changes
 				RefreshPlugins (2ms)
 				BeforeProcessingInitializeOnLoad (120ms)
 				ProcessInitializeOnLoadAttributes (479ms)
@@ -421,6 +507,9 @@ Unloading 3879 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 26 unused Assets / (24.5 KB). Loaded Objects now: 4357.
 Memory consumption went from 153.1 MB to 153.1 MB.
 Total: 4.671300 ms (FindLiveObjects: 0.384500 ms CreateObjectMapping: 0.130600 ms MarkObjects: 4.129600 ms  DeleteObjects: 0.025300 ms)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
@@ -437,13 +526,18 @@ AssetImportParameters requested are different than current active one (requested
 Received Prepare
 Registering precompiled user dll's ...
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Registered in 0.024775 seconds.
+=======
+Registered in 0.027145 seconds.
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\400324\Documents\GitHub\Spark\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\400324\Documents\GitHub\Spark\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\340055\Documents\GitHub\SparkProject\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\340055\Documents\GitHub\SparkProject\Spark Project\Library\PackageCache\com.unity.visualscripting@1.7.2\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 1.11 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
@@ -451,10 +545,20 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (1740ms)
 		BeginReloadAssembly (230ms)
+=======
+Refreshing native plugins compatible for Editor in 1.00 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.747 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1748ms)
+		BeginReloadAssembly (240ms)
+>>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (10ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
+<<<<<<< Updated upstream
 			CreateAndSetChildDomain (49ms)
 		EndReloadAssembly (1362ms)
 			LoadAssemblies (229ms)
@@ -506,6 +610,14 @@ Domain Reload Profiling:
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (310ms)
 			ReleaseScriptCaches (2ms)
+=======
+			CreateAndSetChildDomain (50ms)
+		EndReloadAssembly (1364ms)
+			LoadAssemblies (237ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (310ms)
+			ReleaseScriptCaches (2ms)
+>>>>>>> Stashed changes
 			RebuildScriptCaches (61ms)
 			SetupLoadedEditorAssemblies (672ms)
 				LogAssemblyErrors (0ms)
@@ -526,6 +638,9 @@ Unloading 3879 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 26 unused Assets / (24.6 KB). Loaded Objects now: 4360.
 Memory consumption went from 153.2 MB to 153.1 MB.
 Total: 4.936300 ms (FindLiveObjects: 0.390200 ms CreateObjectMapping: 0.142800 ms MarkObjects: 4.365900 ms  DeleteObjects: 0.035700 ms)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
