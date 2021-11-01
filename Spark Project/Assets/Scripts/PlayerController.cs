@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float acceleration;
     public float maxSpeed;
+    public float jumpheight = 6.5f;
+    public float groundDetectDistance = .1f;
     private Rigidbody2D myRB;
     private Vector2 velocity;
     private Vector2 groundDetection;
-
+    
 
 
 
@@ -26,8 +28,14 @@ public class PlayerController : MonoBehaviour
         acceleration = maxSpeed / 2;
 
         velocity = myRB.velocity;
-
         velocity.x += Input.GetAxisRaw("Horizontal") * acceleration;
+
+        groundDetection = new Vector2(transform.position.x, transform.position.y - 1.1f);
+
+        if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
+        {
+            velocity.y = jumpheight;
+        }
 
         if (velocity.x >= maxSpeed)
             velocity.x = maxSpeed;
