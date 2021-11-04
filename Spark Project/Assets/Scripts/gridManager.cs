@@ -2,58 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gridManager : MonoBehaviour
+public class gridmanager : MonoBehaviour
 {
-    public int width;
     public int height;
+    public int width;
 
-    public Tile tileprefab;
+    bool[,] grid;
 
-    public Transform cam;
-
-    public Dictionary<Vector2, Tile> tiles;
-
-
-    void GenerateGrid()
+    public void Init(int width, int height)
     {
-        tiles = new Dictionary<Vector2, Tile>();
+        grid = new bool[width, height];
+        this.width = width;
+        this.height = height;
+    }
 
-        for (int x = 0; x < width; x++)
+
+    public void Set(int x, int y, bool to)
+    {
+        if (CheckPosition(x, y) == false) { return; }
         {
-            for (int y = 0; y < height; y++)
-            {
-                var spawnedTile = Instantiate(tileprefab, new Vector3(x,y), Quaternion.identity);
-                spawnedTile.name = $"Tile {x} {y}";
-
-
-
-                tiles[new Vector2(x, y)] = spawnedTile;
-
-                //var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-                //spawnedTile.Init(isOffset);
-            }
+            
         }
-
-
-        cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
+        grid[x, y] = to;
     }
-    public Tile GetTileAtPosition(Vector2 pos)
+
+    public bool Get(int x, int y)
     {
-        if(tiles.TryGetValue(pos,out var tile))
+        if (CheckPosition(x, y) == false)
         {
-            return tile;
+            return false;
         }
-        return null;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        GenerateGrid();
+        return grid[x, y];
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool CheckPosition(int x, int y)
     {
-        
+        if(x < 0 || x >= width)
+        {
+            return false;
+        }
+        if(y < 0 || y >= height)
+        {
+            return false;
+        }
+        return true;
     }
 }
