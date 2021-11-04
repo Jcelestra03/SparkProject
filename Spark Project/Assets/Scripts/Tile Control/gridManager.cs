@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gridmanager : MonoBehaviour
+public class gridManager : MonoBehaviour
 {
     public int height;
     public int width;

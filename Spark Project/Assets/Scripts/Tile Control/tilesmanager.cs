@@ -7,20 +7,20 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(Grid))]
 [RequireComponent(typeof(Tilemap))]
 
-public class tilemanager : MonoBehaviour
+public class tilesmanager : MonoBehaviour
 {
 
     Tilemap tilemap;
 
-    gridmanager grid;
+    gridManager grid;
 
-    [SerializeField] TileBase tilebase;
-    [SerializeField] TileBase tilebase2;
+    [SerializeField] TileBase Tilebase;
+    [SerializeField] TileBase Tilebase2;
     // Start is called before the first frame update
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
-        grid = GetComponent<gridmanager>();
+        grid = GetComponent<gridManager>();
         grid.Init(25, 12);
         Set(9, 1, true);
         UpdateTileMap();
@@ -28,9 +28,9 @@ public class tilemanager : MonoBehaviour
 
     void UpdateTileMap()
     {
-        for(int x = 0; x < grid.width; x++)
+        for (int x = 0; x < grid.width; x++)
         {
-            for(int y = 0; y < grid.height; y++)
+            for (int y = 0; y < grid.height; y++)
             {
                 UpdateTile(x, y);
             }
@@ -41,18 +41,18 @@ public class tilemanager : MonoBehaviour
     {
         if (grid.Get(x, y) == true)
         {
-            tilemap.SetTile(new Vector3Int(x, y, 0), tilebase);
+            tilemap.SetTile(new Vector3Int(x, y, 0), Tilebase);
         }
         else
         {
-            tilemap.SetTile(new Vector3Int(x, y, 0), tilebase2);
+            tilemap.SetTile(new Vector3Int(x, y, 0), Tilebase2);
         }
     }
 
     public void Set(int x, int y, bool to)
     {
         grid.Set(x, y, to);
-        UpdateTile(x,y);
+        UpdateTile(x, y);
     }
 
 }
