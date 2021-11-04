@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetTilemap: {fileID: 2093333880}
-  tiles: {fileID: 1735782326}
+  tiles: {fileID: 0}
 --- !u!1 &603463446
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,8 +549,8 @@ GameObject:
   - component: {fileID: 1735782330}
   - component: {fileID: 1735782329}
   - component: {fileID: 1735782328}
-  - component: {fileID: 1735782327}
-  - component: {fileID: 1735782326}
+  - component: {fileID: 1735782332}
+  - component: {fileID: 1735782333}
   m_Layer: 0
   m_Name: WorldMapTilemap
   m_TagString: Untagged
@@ -573,34 +573,6 @@ Transform:
   m_Father: {fileID: 1809359937}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1735782326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735782324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac28be8a28b11a04b96c8c576978af75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilebase: {fileID: 11400000, guid: 504b58abfeb8d484db706598e7283bb4, type: 2}
-  tilebase2: {fileID: 11400000, guid: 59200b376cac83c4981f6cd8f2747fb8, type: 2}
---- !u!114 &1735782327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735782324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d20ef2304f8b94488e527887a14eb5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  height: 0
-  width: 0
 --- !u!156049354 &1735782328
 Grid:
   m_ObjectHideFlags: 0
@@ -724,6 +696,34 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1735782332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735782324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d20ef2304f8b94488e527887a14eb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  height: 0
+  width: 0
+--- !u!114 &1735782333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735782324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57167162ec8ff6f4a9851fc66db8134c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilebase: {fileID: 11400000, guid: 504b58abfeb8d484db706598e7283bb4, type: 2}
+  Tilebase2: {fileID: 11400000, guid: 59200b376cac83c4981f6cd8f2747fb8, type: 2}
 --- !u!1 &1809359935
 GameObject:
   m_ObjectHideFlags: 0
