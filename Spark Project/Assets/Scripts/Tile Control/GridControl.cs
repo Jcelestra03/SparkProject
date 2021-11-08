@@ -15,7 +15,6 @@ public class GridControl : MonoBehaviour
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
             tiles.Set(clickPosition.x, clickPosition.y, 2);
-
         }
     }
 }
