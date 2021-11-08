@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Tile Set
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 59200b376cac83c4981f6cd8f2747fb8, type: 2}
-  - {fileID: 11400000, guid: 504b58abfeb8d484db706598e7283bb4, type: 2}
-  - {fileID: 11400000, guid: c277e0e270295fe488c5af70358d306c, type: 2}
-  - {fileID: 11400000, guid: 25bc8ae2b5bbcce419b44f2fce46d3eb, type: 2}
+  - {fileID: 11400000, guid: 5d9dd92ccb9e9e248828f14a95473edc, type: 2}
+  - {fileID: 11400000, guid: d6d37b10a470d6a4fbf21c0f7076e0c4, type: 2}
+  - {fileID: 11400000, guid: 03f6c6aafcc3548499cf035ac832a000, type: 2}
+  - {fileID: 11400000, guid: 2489520f720aa2349b04d16214f0e0d2, type: 2}
