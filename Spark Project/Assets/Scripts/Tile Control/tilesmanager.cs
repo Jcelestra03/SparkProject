@@ -14,15 +14,17 @@ public class tilesmanager : MonoBehaviour
 
     gridManager grid;
 
-    [SerializeField] TileBase Tilebase;
-    [SerializeField] TileBase Tilebase2;
+    
+    [SerializeField] TileSet tileSet;
     // Start is called before the first frame update
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
         grid = GetComponent<gridManager>();
         grid.Init(25, 12);
-        Set(9, 1, true);
+        //Set(1, 1, 2);
+        //Set(1, 2, 2);
+        //Set(2, 1, 2);
         UpdateTileMap();
     }
 
@@ -39,17 +41,15 @@ public class tilesmanager : MonoBehaviour
 
     private void UpdateTile(int x, int y)
     {
-        if (grid.Get(x, y) == true)
+        int tileId = grid.Get(x, y);
+        if(tileId == -1)
         {
-            tilemap.SetTile(new Vector3Int(x, y, 0), Tilebase);
+            return;
         }
-        else
-        {
-            tilemap.SetTile(new Vector3Int(x, y, 0), Tilebase2);
-        }
+        tilemap.SetTile(new Vector3Int(x,y,0), tileSet.tiles[tileId]);
     }
 
-    public void Set(int x, int y, bool to)
+    public void Set(int x, int y, int to)
     {
         grid.Set(x, y, to);
         UpdateTile(x, y);

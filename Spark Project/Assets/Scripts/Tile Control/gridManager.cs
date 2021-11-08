@@ -7,17 +7,17 @@ public class gridManager : MonoBehaviour
     public int height;
     public int width;
 
-    bool[,] grid;
+    int[,] grid;
 
     public void Init(int width, int height)
     {
-        grid = new bool[width, height];
+        grid = new int[width, height];
         this.width = width;
         this.height = height;
     }
 
 
-    public void Set(int x, int y, bool to)
+    public void Set(int x, int y, int to)
     {
         if (CheckPosition(x, y) == false) { return; }
         {
@@ -26,11 +26,11 @@ public class gridManager : MonoBehaviour
         grid[x, y] = to;
     }
 
-    public bool Get(int x, int y)
+    public int Get(int x, int y)
     {
         if (CheckPosition(x, y) == false)
         {
-            return false;
+            return -1;
         }
         return grid[x, y];
     }
