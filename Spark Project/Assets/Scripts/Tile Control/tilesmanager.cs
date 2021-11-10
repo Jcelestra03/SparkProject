@@ -16,7 +16,7 @@ public class tilesmanager : MonoBehaviour
 
     
     [SerializeField] TileSet tileSet;
-    // Start is called before the first frame update
+    
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
