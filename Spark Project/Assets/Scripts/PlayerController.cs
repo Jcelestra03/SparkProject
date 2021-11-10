@@ -55,4 +55,9 @@ public class PlayerController : MonoBehaviour
 
         myRB.velocity = velocity;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // game over if no respawn marker present, else player respawn at nearest respawn marker
+    }
 }
