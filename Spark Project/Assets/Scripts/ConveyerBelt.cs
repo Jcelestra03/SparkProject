@@ -16,9 +16,4 @@ public class ConveyerBelt : MonoBehaviour
     {
         collision.transform.position = Vector2.MoveTowards(collision.transform.position, transform.position * 1.5f, conveyerSpeed * Time.deltaTime);
     }
-
-    void Animate()
-    {
-        
-    }
 }
