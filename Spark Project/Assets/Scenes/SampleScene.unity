@@ -298,7 +298,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
 MonoBehaviour:
@@ -330,6 +330,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetTilemap: {fileID: 2093333880}
   tiles: {fileID: 1840677037}
+  positionx: 
+  positiony: 
+  tile: 
+  next: 0
+  enemy: {fileID: 9165486542879767109, guid: 1f1f845c0f4391c4990684394150b1e0, type: 3}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,11 +480,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1108347504 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 59810384809850446, guid: 8c9a7345dc9752b4e9d7d038c0c81ddf, type: 3}
-  m_PrefabInstance: {fileID: 59810384323832149}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255148224
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1108347504}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -526,7 +526,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.857595, y: 1}
+    m_SensorSize: {x: 1.4911505, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1285,6 +1285,10 @@ PrefabInstance:
     - target: {fileID: 2515609967909426914, guid: 8c9a7345dc9752b4e9d7d038c0c81ddf, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
       value: 0.19916518
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940910476582499289, guid: 8c9a7345dc9752b4e9d7d038c0c81ddf, type: 3}
+      propertyPath: acceleration
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9a7345dc9752b4e9d7d038c0c81ddf, type: 3}

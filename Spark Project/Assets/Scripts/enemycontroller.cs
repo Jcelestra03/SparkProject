@@ -21,12 +21,40 @@ public class enemycontroller : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        
+        playertarget = GameObject.Find("player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Vector3 lookPos = playertarget.transform.position - transform.position;
+
+        lookPos.Normalize();
+        velocity = myRB.velocity;
+        if (!isfollowing)
+            velocity.x = 0;
+        if (isfollowing)
+        {
+            velocity.x = lookPos.x * movementSpeed;
+
+        }
+        myRB.velocity = velocity;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isfollowing && (collision.gameObject.name == "player"))
+            isfollowing = true;
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        if (isfollowing && (collision.gameObject.name == "player"))
+            isfollowing = false;
+
     }
 }
