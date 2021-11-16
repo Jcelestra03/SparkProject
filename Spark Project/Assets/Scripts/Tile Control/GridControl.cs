@@ -15,7 +15,6 @@ public class GridControl : MonoBehaviour
 
     public int next;
 
-
     public GameObject enemy;
 
     private void Start()
@@ -48,10 +47,7 @@ public class GridControl : MonoBehaviour
             tile[next] = blockchange;
             next = next + 1;
 
-        }
-
-      
-            
+        }      
     }
 
     private void TileCheck()
