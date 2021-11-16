@@ -333,6 +333,7 @@ MonoBehaviour:
   positionx: 
   positiony: 
   tile: 
+  Tposition: []
   next: 0
   enemy: {fileID: 9165486542879767109, guid: 1f1f845c0f4391c4990684394150b1e0, type: 3}
 --- !u!114 &519420035
