@@ -51,9 +51,12 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = velocity;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // game over if no respawn marker present, else player respawn at nearest respawn marker
+        if (collision.tag == "Checkpoint")
+        {
+            checkpoint = collision.transform;
+        }
     }
 
     private void Respawn()
