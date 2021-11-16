@@ -12,6 +12,7 @@ public class GridControl : MonoBehaviour
     public int[] positionx;
     public int[] positiony;
     public int[] tile;
+    public Vector3[] Tposition;
 
     public int next;
 
@@ -23,6 +24,7 @@ public class GridControl : MonoBehaviour
         blockchange = 2;
         positionx = new int[10];
         positiony = new int[10];
+        Tposition = new Vector3 [10];
         tile = new int[10];
     }
     private void Update()
@@ -42,23 +44,32 @@ public class GridControl : MonoBehaviour
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
             tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-            positionx[next] = clickPosition.x;
-            positiony[next] = clickPosition.y;
+            Tposition[next] = TargetTilemap.CellToWorld(clickPosition);
             tile[next] = blockchange;
             next = next + 1;
+            
 
+            Debug.Log(Tposition[next-1]);
+            Debug.Log(next);
         }      
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            TileCheck();
+        }
     }
 
     private void TileCheck()
     {
         next = 0;
-        if ( tile[next] == 2 ) 
+        while (next != 11 || next <= 11)
         {
-            
+            if (tile[next] == 2)
+            {
+                GameObject emy = Instantiate(enemy);
+                emy.GetComponent<Transform>().position = Tposition[next];
+            }
+            next++;
         }
     }
-
-
-
+ 
 }
