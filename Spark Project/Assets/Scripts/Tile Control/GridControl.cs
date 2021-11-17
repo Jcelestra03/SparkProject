@@ -9,25 +9,25 @@ public class GridControl : MonoBehaviour
     [SerializeField] tilesmanager tiles;
 
     private int blockchange;
-    public int[] positionx;
-    public int[] positiony;
+    
     public int[] tile;
     public Vector3[] Tposition;
 
     public int next;
 
+    private int count;
+    private int max;
     public GameObject enemy;
 
     private void Start()
     {
         next = 0;
         blockchange = 2;
-        positionx = new int[10];
-        positiony = new int[10];
+
         Tposition = new Vector3 [10];
         tile = new int[10];
     }
-    private void Update()
+    public void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -41,6 +41,7 @@ public class GridControl : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
             tiles.Set(clickPosition.x, clickPosition.y, blockchange);
@@ -49,8 +50,8 @@ public class GridControl : MonoBehaviour
             next = next + 1;
             
 
-            Debug.Log(Tposition[next-1]);
-            Debug.Log(next);
+            //Debug.Log(Tposition[next-1]);
+            //Debug.Log(next);
         }      
         if(Input.GetKeyDown(KeyCode.T))
         {
@@ -60,15 +61,17 @@ public class GridControl : MonoBehaviour
 
     private void TileCheck()
     {
-        next = 0;
-        while (next != 11 || next <= 11)
+        int count = 0;
+        
+        while (count <= next-1)
         {
-            if (tile[next] == 2)
+            if (tile[count] == 2)
             {
                 GameObject emy = Instantiate(enemy);
-                emy.GetComponent<Transform>().position = Tposition[next];
+                emy.GetComponent<Transform>().position = Tposition[count];
+                Debug.Log(tile[next]);
             }
-            next++;
+            count++;
         }
     }
  
