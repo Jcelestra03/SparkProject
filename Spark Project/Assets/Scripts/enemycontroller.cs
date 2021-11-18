@@ -37,7 +37,7 @@ public class enemycontroller : MonoBehaviour
 
         if (!Physics2D.CircleCast(transform.position * new Vector2(-0.8f, -0.7f), 1, -transform.position))
         {
-            gameObject.transform.localScale.Set(new Vector3(-1, 1, 1));
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
