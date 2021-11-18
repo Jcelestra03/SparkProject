@@ -10,8 +10,11 @@ public class GridControl : MonoBehaviour
 
     private int blockchange;
     
-    public int[] tile;
-    public Vector3[] Tposition;
+
+    public Dictionary<Vector3,int> entail;
+
+    //public int[] tile;
+    //public Vector3[] Tposition;
 
     public int next;
 
@@ -23,9 +26,9 @@ public class GridControl : MonoBehaviour
     {
         next = 0;
         blockchange = 2;
-
-        Tposition = new Vector3 [10];
-        tile = new int[10];
+        entail = new Dictionary<Vector3, int>();
+        //Tposition = new Vector3 [10];
+        //tile = new int[10];
     }
     public void Update()
     {
@@ -44,9 +47,22 @@ public class GridControl : MonoBehaviour
             
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
-            tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-            Tposition[next] = TargetTilemap.CellToWorld(clickPosition);
-            tile[next] = blockchange;
+            //tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+            //Tposition[next] = TargetTilemap.CellToWorld(clickPosition);
+            Vector3 here = TargetTilemap.CellToWorld(clickPosition);
+            Debug.Log(here);
+            Debug.Log(blockchange);
+            if (entail.TryAdd(here , blockchange) == true)
+            {
+                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+            }
+            else
+            {
+                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                entail[here] = blockchange;
+            }
+
+            //tile[next] = blockchange;
             next = next + 1;
             
 
@@ -55,7 +71,14 @@ public class GridControl : MonoBehaviour
         }      
         if(Input.GetKeyDown(KeyCode.T))
         {
-            TileCheck();
+            int count = 0;
+            while (count <= entail.Count -1)
+            {
+                
+                count++;
+                Debug.Log(count);
+            }
+            //TileCheck();
         }
     }
 
@@ -63,13 +86,12 @@ public class GridControl : MonoBehaviour
     {
         int count = 0;
         
-        while (count <= next-1)
+        while (count <= entail.Count-1)
         {
-            if (tile[count] == 2)
+            if (entail.ContainsValue(2))
             {
                 GameObject emy = Instantiate(enemy);
-                emy.GetComponent<Transform>().position = Tposition[count];
-                Debug.Log(tile[next]);
+                //emy.GetComponent<Transform>().position = Tposition[count];
             }
             count++;
         }
