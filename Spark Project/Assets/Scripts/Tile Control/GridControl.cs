@@ -14,10 +14,8 @@ public class GridControl : MonoBehaviour
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
 
-    //public int[] tile;
-    //public Vector3[] Tposition;
+    
 
-    public int next;
 
     private int count;
     private int max;
@@ -25,12 +23,11 @@ public class GridControl : MonoBehaviour
 
     private void Start()
     {
-        next = 0;
+        
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
-        //Tposition = new Vector3 [10];
-        //tile = new int[10];
+        
     }
     public void Update()
     {
@@ -49,8 +46,7 @@ public class GridControl : MonoBehaviour
             
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
-            //tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-            //Tposition[next] = TargetTilemap.CellToWorld(clickPosition);
+            
             Vector3 here = TargetTilemap.CellToWorld(clickPosition);
             
             //Debug.Log(here);
@@ -68,7 +64,7 @@ public class GridControl : MonoBehaviour
             }
 
             //tile[next] = blockchange;
-            next = next + 1;
+            
             
 
             //Debug.Log(Tposition[next-1]);
