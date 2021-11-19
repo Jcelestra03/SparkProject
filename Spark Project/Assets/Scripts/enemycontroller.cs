@@ -17,7 +17,7 @@ public class enemycontroller : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        playertarget = GameObject.Find("Player");
+        playertarget = GameObject.Find("player");
         detector = GetComponent<CircleCollider2D>();
     }
 
@@ -43,7 +43,7 @@ public class enemycontroller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isfollowing && (collision.gameObject.tag == "Player"))
+        if (!isfollowing && (collision.gameObject.tag == "player"))
         {
             isfollowing = true;
             detector.radius = 5;
@@ -52,7 +52,7 @@ public class enemycontroller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (isfollowing && (collision.gameObject.tag == "Player"))
+        if (isfollowing && (collision.gameObject.tag == "player"))
         {
             detector.radius = 2.5f;
         } 

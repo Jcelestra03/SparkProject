@@ -12,6 +12,7 @@ public class GridControl : MonoBehaviour
     
 
     public Dictionary<Vector3,int> entail;
+    List<Vector3> NumbersMason = new List<Vector3>();
 
     //public int[] tile;
     //public Vector3[] Tposition;
@@ -27,6 +28,7 @@ public class GridControl : MonoBehaviour
         next = 0;
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
+        NumbersMason = new List<Vector3>();
         //Tposition = new Vector3 [10];
         //tile = new int[10];
     }
@@ -50,16 +52,19 @@ public class GridControl : MonoBehaviour
             //tiles.Set(clickPosition.x, clickPosition.y, blockchange);
             //Tposition[next] = TargetTilemap.CellToWorld(clickPosition);
             Vector3 here = TargetTilemap.CellToWorld(clickPosition);
-            Debug.Log(here);
-            Debug.Log(blockchange);
+            
+            //Debug.Log(here);
+            //Debug.Log(blockchange);
             if (entail.TryAdd(here , blockchange) == true)
             {
                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                NumbersMason.Add(here);
             }
             else
             {
                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                 entail[here] = blockchange;
+                NumbersMason.Add(here);
             }
 
             //tile[next] = blockchange;
@@ -71,14 +76,8 @@ public class GridControl : MonoBehaviour
         }      
         if(Input.GetKeyDown(KeyCode.T))
         {
-            int count = 0;
-            while (count <= entail.Count -1)
-            {
-                
-                count++;
-                Debug.Log(count);
-            }
-            //TileCheck();
+            
+            TileCheck();
         }
     }
 
@@ -86,12 +85,14 @@ public class GridControl : MonoBehaviour
     {
         int count = 0;
         
-        while (count <= entail.Count-1)
+        while (count <= NumbersMason.Count-1)
         {
-            if (entail.ContainsValue(2))
+            entail.TryGetValue(NumbersMason[count], out int block);
+
+            if (block == 2)
             {
                 GameObject emy = Instantiate(enemy);
-                //emy.GetComponent<Transform>().position = Tposition[count];
+                emy.GetComponent<Transform>().position = NumbersMason[count];
             }
             count++;
         }
