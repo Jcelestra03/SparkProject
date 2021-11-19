@@ -53,7 +53,7 @@ public class enemycontroller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isfollowing && (collision.gameObject.tag == "player"))
+        if (!isfollowing && (collision.gameObject.tag == "Player"))
         {
             isfollowing = true;
             detector.radius = 5;
@@ -62,7 +62,7 @@ public class enemycontroller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (isfollowing && (collision.gameObject.tag == "player"))
+        if (isfollowing && (collision.gameObject.tag == "Player"))
             detector.radius = 2.5f;
     }
 

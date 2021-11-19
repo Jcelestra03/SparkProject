@@ -19,11 +19,11 @@ public class GridControl : MonoBehaviour
 
     private int count;
     private int max;
-    public GameObject enemy;
+    
+    public GameObject[] tileprefabs;
 
     private void Start()
     {
-        
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
@@ -48,7 +48,7 @@ public class GridControl : MonoBehaviour
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
             
             Vector3 here = TargetTilemap.CellToWorld(clickPosition);
-            
+            //Debug.Log(here);
             //Debug.Log(here);
             //Debug.Log(blockchange);
             if (entail.TryAdd(here , blockchange) == true)
@@ -56,16 +56,16 @@ public class GridControl : MonoBehaviour
                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                 NumbersMason.Add(here);
             }
-            else
+            else if (entail.ContainsKey(here) == true)
             {
-                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                 entail[here] = blockchange;
+                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                 NumbersMason.Add(here);
             }
-
+            Debug.Log(entail.ContainsValue(1));
             //tile[next] = blockchange;
-            
-            
+
+
 
             //Debug.Log(Tposition[next-1]);
             //Debug.Log(next);
@@ -85,13 +85,16 @@ public class GridControl : MonoBehaviour
         {
             entail.TryGetValue(NumbersMason[count], out int block);
 
-            if (block == 2)
-            {
-                GameObject emy = Instantiate(enemy);
-                emy.GetComponent<Transform>().position = NumbersMason[count];
-            }
+            
+            Debug.Log(NumbersMason[count]);
+            //Debug.Log(entail.ContainsValue(1));
+            GameObject placed = Instantiate(tileprefabs[block]);
+            Vector3 Posit;
+            Posit = new Vector3(.5f, .5f, 0);
+            placed.GetComponent<Transform>().position = NumbersMason[count]+Posit;
+            
             count++;
         }
     }
- 
+
 }
