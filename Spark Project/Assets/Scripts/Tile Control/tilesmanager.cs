@@ -21,7 +21,7 @@ public class tilesmanager : MonoBehaviour
     {
         tilemap = GetComponent<Tilemap>();
         grid = GetComponent<gridManager>();
-        grid.Init(25, 12);
+        grid.Init(100, 100);
         //Set(1, 1, 2);
         //Set(1, 2, 2);
         //Set(2, 1, 2);

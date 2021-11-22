@@ -39,6 +39,7 @@ public class gridManager : MonoBehaviour
     {
         if(x < 0 || x >= width)
         {
+            
             return false;
         }
         if(y < 0 || y >= height)

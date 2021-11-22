@@ -14,9 +14,10 @@ public class GridControl : MonoBehaviour
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
 
-    
 
+    gridManager grid;
 
+    private bool outof;
     private int count;
     private int max;
     
@@ -24,6 +25,7 @@ public class GridControl : MonoBehaviour
 
     private void Start()
     {
+
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
@@ -48,33 +50,38 @@ public class GridControl : MonoBehaviour
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
             
             Vector3 here = TargetTilemap.CellToWorld(clickPosition);
-            //Debug.Log(here);
-            //Debug.Log(here);
-            //Debug.Log(blockchange);
-            if (entail.TryAdd(here , blockchange) == true)
-            {
-                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-                NumbersMason.Add(here);
-            }
-            else if (entail.ContainsKey(here) == true)
-            {
-                entail[here] = blockchange;
-                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-                NumbersMason.Add(here);
-            }
-            Debug.Log(entail.ContainsValue(1));
-            //tile[next] = blockchange;
 
+            Vector3 outbounds;
+            outbounds = new Vector3 (0, 0, 0);
 
-
-            //Debug.Log(Tposition[next-1]);
-            //Debug.Log(next);
-        }      
-        if(Input.GetKeyDown(KeyCode.T))
-        {
             
-            TileCheck();
-        }
+            if(clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
+            {
+                outof = true;
+                Debug.Log(outof);
+            }
+            else
+            {
+                outof = false;
+                Debug.Log(outof);
+            }
+            if(!outof)
+            {
+                if (entail.TryAdd(here, blockchange) == true)
+                {
+                    tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                    NumbersMason.Add(here);
+                }
+                else
+                {
+                    entail[here] = blockchange;
+                    tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+
+                }
+            }
+
+        }      
+        
     }
 
     private void TileCheck()
@@ -97,4 +104,8 @@ public class GridControl : MonoBehaviour
         }
     }
 
+    public void startb()
+    {
+        TileCheck();
+    }
 }
