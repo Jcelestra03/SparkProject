@@ -12,7 +12,8 @@ public class enemycontroller : MonoBehaviour
     private Rigidbody2D myRB;
     private Vector2 velocity;
     private CircleCollider2D detector;
-    private int idleDir = -1;
+    private int idleDir = 1;
+    private bool swop = true;
 
     void Start()
     {
@@ -23,12 +24,8 @@ public class enemycontroller : MonoBehaviour
 
     void Update()
     {
-        //this is the broke boy i think it could also have to do somthing with the dirswop or ideal dir or just somthing in the movement systum with idle
-        if (!Physics2D.CircleCast(transform.position + new Vector3(0, -0.7f, 1), 0.1f, transform.position))
-        {
+        if (!Physics2D.Raycast(transform.position + new Vector3(0, -0.7f, 1), Vector2.right, 0.1f))
             DirSwop();
-            Debug.Log("-+");
-        }
     }
 
     void FixedUpdate()
@@ -48,7 +45,7 @@ public class enemycontroller : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position + new Vector3(0, -0.7f, 1), 0.1f) ;
+        Gizmos.DrawSphere(transform.position + new Vector3(0, -0.7f, 1), 0.05f) ;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -68,12 +65,15 @@ public class enemycontroller : MonoBehaviour
 
     private void DirSwop()
     {
-        bool swop = false;
-        swop = !swop;
-
-        if (swop == true)
+        if (!swop)
+        {
             idleDir = 1;
-        else if (swop == false)
+            swop = true;
+        }
+        else
+        {
             idleDir = -1;
+            swop = false;
+        }
     }
 }
