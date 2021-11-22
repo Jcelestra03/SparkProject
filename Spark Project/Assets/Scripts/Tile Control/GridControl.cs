@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class GridControl : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class GridControl : MonoBehaviour
 
 
     gridManager grid;
-
+    
     private bool outof;
     private int count;
     private int max;
@@ -42,7 +43,7 @@ public class GridControl : MonoBehaviour
                 blockchange = 1;
             }
         }
-
+        
         if (Input.GetMouseButtonDown(0))
         {
             
