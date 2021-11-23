@@ -13,11 +13,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpheight = 6.5f;
 
-    private float groundDetectDistance = .1f;
+    private float groundDetectDistance = 0.01f;
     private Rigidbody2D myRB;
     private Vector2 velocity;
     private Vector2 groundDetection;
-    private bool canjump;
 
     void Start()
     {
@@ -34,13 +33,10 @@ public class PlayerController : MonoBehaviour
         velocity = myRB.velocity;
         velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
 
-        groundDetection = new Vector2(transform.position.x, transform.position.y - 1.1f);
+        groundDetection = new Vector2(transform.position.x, transform.position.y -0.41f);
 
         if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
-        {
             velocity.y = jumpheight;
-            canjump = false;
-        }
         
         if (velocity.x >= maxSpeed)
             velocity.x = maxSpeed;
