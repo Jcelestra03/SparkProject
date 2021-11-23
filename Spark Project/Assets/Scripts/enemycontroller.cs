@@ -24,7 +24,14 @@ public class enemycontroller : MonoBehaviour
 
     void Update()
     {
-        if (!Physics2D.Raycast(transform.position + new Vector3(0, -0.7f, 1), Vector2.right, 0.1f))
+        if (!Physics2D.Raycast(transform.position + new Vector3(0, -0.7f, 1), Vector2.down, 0.1f))
+            DirSwop();
+
+        if (Physics2D.Raycast(transform.position + new Vector3(0.5f, 0, 1), Vector2.right, 0.1f))
+            DirSwop();
+            
+
+        if (Physics2D.Raycast(transform.position + new Vector3(-0.5f, 0, 1), Vector2.left, 0.1f))
             DirSwop();
     }
 
@@ -36,7 +43,7 @@ public class enemycontroller : MonoBehaviour
 
         if (!isfollowing)
             velocity.x = idleDir * idleSpeed * 50 * Time.deltaTime;
-        else
+        else if (isfollowing)
             velocity.x = lookPos.x * attackSpeed * 50 * Time.deltaTime;
 
         myRB.velocity = velocity;
@@ -45,7 +52,9 @@ public class enemycontroller : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position + new Vector3(0, -0.7f, 1), 0.05f) ;
+        Gizmos.DrawSphere(transform.position + new Vector3(0.5f, 0, 1), 0.05f);
+        Gizmos.DrawSphere(transform.position + new Vector3(-0.5f, 0, 1), 0.05f);
+        Gizmos.DrawSphere(transform.position + new Vector3(0, -0.7f, 1), 0.05f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,5 +84,10 @@ public class enemycontroller : MonoBehaviour
             idleDir = -1;
             swop = false;
         }
+    }
+
+    void Jump()
+    {
+
     }
 }
