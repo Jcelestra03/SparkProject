@@ -43,7 +43,7 @@ public class enemycontroller : MonoBehaviour
 
         if (!isfollowing)
             velocity.x = idleDir * idleSpeed * 50 * Time.deltaTime;
-        else
+        else if (isfollowing)
             velocity.x = lookPos.x * attackSpeed * 50 * Time.deltaTime;
 
         myRB.velocity = velocity;
