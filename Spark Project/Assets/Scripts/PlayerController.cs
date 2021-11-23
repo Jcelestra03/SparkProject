@@ -30,14 +30,24 @@ public class PlayerController : MonoBehaviour
         else if (health == 0 && respawns == 0)
             Dead();
 
-        velocity = myRB.velocity;
-        velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
+        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
+            Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.gameObject);
 
-        groundDetection = new Vector2(transform.position.x, transform.position.y -0.41f);
+        velocity = myRB.velocity;
 
         if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
             velocity.y = jumpheight;
-        
+
+        myRB.velocity = velocity;
+    }
+
+    private void FixedUpdate()
+    {
+        velocity = myRB.velocity;
+        velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
+
+        groundDetection = new Vector2(transform.position.x, transform.position.y - 0.41f);
+
         if (velocity.x >= maxSpeed)
             velocity.x = maxSpeed;
 
@@ -50,9 +60,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Checkpoint")
-        {
             checkpoint = collision.transform;
-        }
     }
 
     private void Respawn()
