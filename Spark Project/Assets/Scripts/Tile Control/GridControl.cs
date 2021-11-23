@@ -20,13 +20,13 @@ public class GridControl : MonoBehaviour
     
     private bool outof;
     private int count;
-    private int max;
+    
     
     public GameObject[] tileprefabs;
 
     private void Start()
     {
-
+        
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
@@ -37,8 +37,9 @@ public class GridControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            
             blockchange = blockchange + 1;
-            if (blockchange >= 4)
+            if (blockchange >= tileprefabs.Length)
             {
                 blockchange = 1;
             }
