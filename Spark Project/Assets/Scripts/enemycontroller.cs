@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemycontroller : MonoBehaviour
 {
     public float attackSpeed = 10;
-    public float romeSpeed = 5;
+    public float roamSpeed = 5;
 
     private bool isfollowing = false;
     private GameObject playertarget;
@@ -64,7 +64,7 @@ public class enemycontroller : MonoBehaviour
         velocity = myRB.velocity;
 
         if (!isfollowing)
-            velocity.x = roamDir * romeSpeed * 50 * Time.deltaTime;
+            velocity.x = roamDir * roamSpeed * 50 * Time.deltaTime;
         else if (isfollowing)
             velocity.x = pursuitDir * attackSpeed * 50 * Time.deltaTime;
 
@@ -100,7 +100,6 @@ public class enemycontroller : MonoBehaviour
             isfollowing = false;
             detector.radius = 2.5f;
         }
-            
     }
 
     private void DirSwop()
