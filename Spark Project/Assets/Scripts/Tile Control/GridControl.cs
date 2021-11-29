@@ -20,8 +20,9 @@ public class GridControl : MonoBehaviour
     
     private bool outof;
     private int count;
-    
-    
+
+    public bool editing;
+
     public GameObject[] tileprefabs;
 
     private void Start()
@@ -41,7 +42,7 @@ public class GridControl : MonoBehaviour
             blockchange = blockchange + 1;
             if (blockchange >= tileprefabs.Length)
             {
-                blockchange = 1;
+                blockchange = 0;
             }
         }
         
@@ -83,7 +84,10 @@ public class GridControl : MonoBehaviour
             }
 
         }      
-        
+        if ( Input.GetKeyDown(KeyCode.T))
+        {
+            startb();
+        }
     }
 
     private void TileCheck()
@@ -109,5 +113,14 @@ public class GridControl : MonoBehaviour
     public void startb()
     {
         TileCheck();
+        if (editing == false)
+        {
+            editing = true;
+            //Self Destruction 
+        }
+        else
+        {
+            editing = false;
+        }
     }
 }
