@@ -22,22 +22,30 @@ public class ZoomControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(1))
+        if(this.gameObject.name.Contains("Camera"))
         {
-            cam.transform.position -= transform.right * Input.GetAxis("Mouse X") * scale;
-            cam.transform.position += transform.up * -Input.GetAxis("Mouse Y") * scale;
-        }
+            if (Input.GetMouseButton(1))
+            {
+                cam.transform.position -= transform.right * Input.GetAxis("Mouse X") * scale;
+                cam.transform.position += transform.up * -Input.GetAxis("Mouse Y") * scale;
+            }
 
-        if(Input.mouseScrollDelta.y>0)
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                cam.orthographicSize -= ZoomChange * Time.deltaTime * SmoothChange;
+            }
+
+            if (Input.mouseScrollDelta.y < 0)
+            {
+                cam.orthographicSize += ZoomChange * Time.deltaTime * SmoothChange;
+            }
+            cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, MinSize, MaxSize);
+        }
+        else if (this.gameObject.name.Contains("dropper"))
+
         {
-            cam.orthographicSize -= ZoomChange * Time.deltaTime * SmoothChange;
-        }
-
-        if(Input.mouseScrollDelta.y < 0)
-        {
-            cam.orthographicSize += ZoomChange * Time.deltaTime * SmoothChange;
-        }
-
-        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, MinSize, MaxSize);
+            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector2(cursorPos.x, cursorPos.y);
+        }        
     }
 }

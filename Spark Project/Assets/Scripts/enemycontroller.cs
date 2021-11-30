@@ -21,7 +21,7 @@ public class enemycontroller : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        playertarget = GameObject.Find("Player");
+        playertarget = GameObject.Find("player");
         detector = GetComponent<CircleCollider2D>();
     }
 
@@ -101,7 +101,7 @@ public class enemycontroller : MonoBehaviour
             detector.radius = 2.5f;
         }
     }
-
+    
     private void DirSwop()
     {
         if (coolDown <= 0)
@@ -129,5 +129,5 @@ public class enemycontroller : MonoBehaviour
             velocity.y = jumpheight;
 
         myRB.velocity = velocity;
-    }
+    } 
 }
