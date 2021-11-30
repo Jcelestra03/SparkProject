@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpheight = 6.5f;
 
+    private float savedMaxSpeed;
+    private float savedJumpHeight;
     private float groundDetectDistance = 0.01f;
     private Rigidbody2D myRB;
     private Vector2 velocity;
@@ -21,6 +23,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
+        savedMaxSpeed = maxSpeed;
+        savedJumpHeight = jumpheight;
+
     }
 
     void Update()
@@ -61,6 +66,23 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Checkpoint")
             checkpoint = collision.transform;
+
+        if (collision.tag == "Slow")
+        {
+            maxSpeed = 1;
+            jumpheight = 1;
+            myRB.gravityScale = 0.1f;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Slow")
+        {
+            maxSpeed = savedMaxSpeed;
+            jumpheight = savedJumpHeight;
+            myRB.gravityScale = 1;
+        }
     }
 
     private void Respawn()
