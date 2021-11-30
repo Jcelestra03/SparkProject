@@ -6,8 +6,9 @@ public class Portal : MonoBehaviour
 {
     public GameObject partner;
     public int color;
-    public float wait;
 
+    private bool clear = true;
+    private string[] storage;
     private SpriteRenderer sprite;
 
     // Start is called before the first frame update
@@ -38,10 +39,28 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (wait < 0)
+        for (int i = 0; i < storage.Length; i++)
+        {
+            if (storage[i] == collision.name)
+                clear = false;
+        }
+
+        if (clear == true)
         {
             collision.transform.position = partner.transform.position;
-            partner.GetComponent<Portal>().wait = 0.5f;
+            storage[storage.Length + 1] = collision.name;
+        }  
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        for (int i = 0; i < storage.Length; i++)
+        {
+            if (storage[i] == collision.name)
+            {
+                clear = true;
+                storage[i] = null;
+            }     
         }
     }
 }
