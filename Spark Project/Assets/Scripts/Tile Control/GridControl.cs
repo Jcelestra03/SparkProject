@@ -31,7 +31,7 @@ public class GridControl : MonoBehaviour
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
-        
+        editing = true;
     }
     public void Update()
     {
@@ -44,6 +44,7 @@ public class GridControl : MonoBehaviour
             {
                 blockchange = 0;
             }
+            Debug.Log(tileprefabs[blockchange]);
         }
         
         if (Input.GetMouseButtonDown(0))
@@ -82,8 +83,20 @@ public class GridControl : MonoBehaviour
 
                 }
             }
+            
+        }
+        //dropper(copy)
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
 
-        }      
+            Vector3 here = TargetTilemap.CellToWorld(clickPosition);
+
+            entail.TryGetValue(here, out int block);
+            blockchange = block;
+            Debug.Log(tileprefabs[blockchange]);
+        }
         if ( Input.GetKeyDown(KeyCode.T))
         {
             startb();
@@ -99,7 +112,7 @@ public class GridControl : MonoBehaviour
             entail.TryGetValue(NumbersMason[count], out int block);
 
             
-            Debug.Log(NumbersMason[count]);
+            //Debug.Log(NumbersMason[count]);
             //Debug.Log(entail.ContainsValue(1));
             GameObject placed = Instantiate(tileprefabs[block]);
             Vector3 Posit;

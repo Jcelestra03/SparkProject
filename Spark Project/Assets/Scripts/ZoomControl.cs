@@ -43,9 +43,9 @@ public class ZoomControl : MonoBehaviour
         }
         else if (this.gameObject.name.Contains("dropper"))
 
-        {
-            Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector2(cursorPos.x, cursorPos.y);
-        }        
+            {
+                Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                transform.position = new Vector2(cursorPos.x, cursorPos.y);
+            }        
     }
 }
