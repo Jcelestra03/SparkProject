@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         velocity = myRB.velocity;
         velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
 
-        groundDetection = new Vector2(transform.position.x, transform.position.y - 0.41f);
+        groundDetection = new Vector2(transform.position.x, transform.position.y - 0.5f);
 
         if (velocity.x >= maxSpeed)
             velocity.x = maxSpeed;
