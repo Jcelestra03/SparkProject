@@ -35,8 +35,9 @@ public class PlayerController : MonoBehaviour
         else if (health == 0 && respawns == 0)
             Dead();
 
-        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
-            Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.gameObject);
+        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f))
+            if(Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
+                Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.gameObject);
 
         velocity = myRB.velocity;
 

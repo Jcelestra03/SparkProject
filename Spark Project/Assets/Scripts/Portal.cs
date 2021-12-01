@@ -6,15 +6,17 @@ public class Portal : MonoBehaviour
 {
     public GameObject partner;
     public int color;
+    public List<object> storage;
+    public List<object> localStorage;
 
-    private bool clear = true;
-    private string[] storage;
     private SpriteRenderer sprite;
 
-    // Start is called before the first frame update
     void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
+
+        storage = new List<object>();
+        localStorage = new List<object>();
 
         switch (color)
         {
@@ -31,38 +33,45 @@ public class Portal : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-       
+        if (partner == null)
+        {
+            switch (color)
+            {
+                case 0:
+                    gameObject.name = "Portal(BLUE)";
+                    partner = GameObject.Find("Portal(RED)");
+                    sprite.color = Color.cyan;
+                    break;
+                case 1:
+                    gameObject.name = "Portal(RED)";
+                    partner = GameObject.Find("Portal(BLUE)");
+                    sprite.color = Color.red;
+                    break;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //for (int i = 0; i < storage.Length; i++)
-        //{
-        //    if (storage[i] == collision.name)
-        //        clear = false;
-        //}
-
-        //if (clear == true)
-        //{
-        //    collision.transform.position = partner.transform.position;
-        //    storage[storage.Length + 1] = collision.name;
-        //}  
-
-        collision.transform.position = partner.transform.position;
+        if (!storage.Contains(collision.gameObject))
+        {
+            partner.GetComponent<Portal>().storage.Add(collision.gameObject);
+            storage.Add(collision.gameObject);
+            localStorage.Add(collision.gameObject);
+            collision.gameObject.transform.position = partner.transform.position;
+            Debug.Log("telaport");
+        }
     }
 
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    for (int i = 0; i < storage.Length; i++)
-    //    {
-    //        if (storage[i] == collision.name)
-    //        {
-    //            clear = true;
-    //            storage[i] = null;
-    //        }     
-    //    }
-    //}
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (storage.Contains(collision.gameObject) && !localStorage.Contains(collision.gameObject))
+        {
+            storage.Remove(collision.gameObject);
+            partner.GetComponent<Portal>().storage.Remove(collision.gameObject);
+            partner.GetComponent<Portal>().localStorage.Remove(collision.gameObject);
+        }
+    }
 }

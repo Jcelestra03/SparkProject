@@ -28,7 +28,7 @@ public class enemycontroller : MonoBehaviour
     void Update()
     {
         if (playertarget == null)
-            playertarget = GameObject.Find("player");
+            playertarget = GameObject.FindGameObjectWithTag("Player");
 
         if (coolDown > 0)
             coolDown -= 1 * Time.deltaTime;
