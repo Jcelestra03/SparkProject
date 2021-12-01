@@ -9,7 +9,7 @@ public class destroythis : MonoBehaviour
     {
         if (this.gameObject.name.Contains("killme"))
         {
-            GratifiedDeath();
+            Death();
         }
     }
 
@@ -19,11 +19,11 @@ public class destroythis : MonoBehaviour
         if (GameObject.Find("Main Camera").GetComponent<GridControl>().editing == true)
         {
             Debug.Log("Long Live ");
-            GratifiedDeath();
+            Death();
         }
     }
 
-    public void GratifiedDeath()
+    public void Death()
     {
         Destroy(this.gameObject);
     }

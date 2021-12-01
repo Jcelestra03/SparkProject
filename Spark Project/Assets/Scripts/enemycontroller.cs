@@ -21,12 +21,15 @@ public class enemycontroller : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        playertarget = GameObject.Find("player");
+        
         detector = GetComponent<CircleCollider2D>();
     }
 
     void Update()
     {
+        if (playertarget == null)
+            playertarget = GameObject.Find("player");
+
         if (coolDown > 0)
             coolDown -= 1 * Time.deltaTime;
 
