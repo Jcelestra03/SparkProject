@@ -104,6 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 2.5
   roamSpeed: 5
+  EnemyDeath: {fileID: 8300000, guid: c8037b9bde8b36a4587ee1cc09756a60, type: 3}
+  WallColliding: {fileID: 8300000, guid: f6909bec1de798a4cbc0d2465d8fc0c3, type: 3}
 --- !u!114 &7887587164346938126
 MonoBehaviour:
   m_ObjectHideFlags: 0

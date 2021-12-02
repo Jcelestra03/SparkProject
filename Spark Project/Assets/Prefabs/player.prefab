@@ -107,6 +107,10 @@ MonoBehaviour:
   acceleration: 7
   maxSpeed: 3
   jumpheight: 6.5
+  PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
+  PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
+  StarCollected: {fileID: 8300000, guid: 1c6eebe37d68bbb4c803e2b467ce83bb, type: 3}
+  CoinCollected: {fileID: 8300000, guid: 345b193fb85885241b80e8965706bf46, type: 3}
 --- !u!50 &2940910476582499285
 Rigidbody2D:
   serializedVersion: 4

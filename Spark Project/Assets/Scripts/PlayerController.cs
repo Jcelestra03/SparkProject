@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRB;
     private Vector2 velocity;
     private Vector2 groundDetection;
+    private AudioSource speaker;
+
+    public AudioClip PlayerDeath;
+    public AudioClip PlayerJump;
+    public AudioClip StarCollected;
 
     void Start()
     {

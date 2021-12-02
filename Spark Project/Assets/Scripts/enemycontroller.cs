@@ -17,6 +17,10 @@ public class enemycontroller : MonoBehaviour
     private bool swop = true;
     private float jumpheight = 6.5f;
     private float coolDown;
+    private AudioSource speaker;
+
+    public AudioClip EnemyDeath;
+    public AudioClip WallColliding;
 
     void Start()
     {
