@@ -67,23 +67,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.tag == "Checkpoint")
             checkpoint = collision.transform;
-
-        if (collision.tag == "Slow")
-        {
-            maxSpeed = 1;
-            jumpheight = 1;
-            myRB.gravityScale = 0.1f;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Slow")
-        {
-            maxSpeed = savedMaxSpeed;
-            jumpheight = savedJumpHeight;
-            myRB.gravityScale = 1;
-        }
     }
 
     private void Respawn()
