@@ -25,6 +25,7 @@ public class GridControl : MonoBehaviour
 
     public GameObject[] tileprefabs;
 
+    private bool portal;
     private void Start()
     {
         
@@ -99,9 +100,24 @@ public class GridControl : MonoBehaviour
         }
         if ( Input.GetKeyDown(KeyCode.T))
         {
+            //portalcheck();
             startb();
         }
     }
+
+    //private void portalcheck()
+    //{
+    //    int count = 0;
+    //    while (count <= NumbersMason.Count-1)
+    //    {
+    //        entail.TryGetValue(NumbersMason[count], out int block);
+    //        if(block == 7)
+    //        {
+    //            Debug.Log("true");
+    //        }
+    //        count++;
+    //    }
+    //}
 
     private void TileCheck()
     {
@@ -136,4 +152,5 @@ public class GridControl : MonoBehaviour
             editing = false;
         }
     }
+
 }
