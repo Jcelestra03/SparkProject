@@ -15,6 +15,7 @@ public class GridControl : MonoBehaviour
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
 
+    public Dictionary<Vector3, int> portals;
 
     gridManager grid;
     
@@ -25,13 +26,14 @@ public class GridControl : MonoBehaviour
 
     public GameObject[] tileprefabs;
 
-    private bool portal;
+    
     private void Start()
     {
         
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
+        portals = new Dictionary<Vector3, int>();
         editing = true;
     }
     public void Update()
@@ -127,7 +129,10 @@ public class GridControl : MonoBehaviour
         {
             entail.TryGetValue(NumbersMason[count], out int block);
 
-            
+            //if(block == 7)
+            //{
+            //    portals.TryAdd(NumbersMason[count], )
+            //}
             //Debug.Log(NumbersMason[count]);
             //Debug.Log(entail.ContainsValue(1));
             GameObject placed = Instantiate(tileprefabs[block]);
