@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 408e0055785ef6d41a08c73f7d396073
+guid: aa7a18cccec7eb34f9ed53cf025916c2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_0
+      name: jumping.f_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2660
-        width: 950
-        height: 1330
+        y: 4560
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd2cdb6f4c49e6b4d82e0f2507478c5f
-      internalID: 312231450
+      spriteID: c540d6a8622cad940b0ee844a8ea5c89
+      internalID: 1122139264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_1
+      name: jumping.f_1
       rect:
         serializedVersion: 2
-        x: 950
-        y: 2660
-        width: 950
-        height: 1330
+        x: 1520
+        y: 4560
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de832e38cfa806646b60ebbf269b4c51
-      internalID: -860989959
+      spriteID: 89ffe79c5d842714ab1614adc536a28d
+      internalID: 220455115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_2
+      name: jumping.f_2
       rect:
         serializedVersion: 2
-        x: 1900
-        y: 2660
-        width: 950
-        height: 1330
+        x: 3040
+        y: 4560
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ba681c8e866be542ae941148b30da1e
-      internalID: -574144602
+      spriteID: ea530a0654e080a4aa800aa4d98bff57
+      internalID: -87025756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_3
+      name: jumping.f_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 1330
-        width: 950
-        height: 1330
+        y: 3040
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 942991e0a2a97ca4ebabd09e93f78d7b
-      internalID: -1317250960
+      spriteID: 1e667abd40a94ec48987f29e6cae727c
+      internalID: -1192304593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_4
+      name: jumping.f_4
       rect:
         serializedVersion: 2
-        x: 950
-        y: 1330
-        width: 950
-        height: 1330
+        x: 1520
+        y: 3040
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aae31dd59395c5741a41436e16b4e5aa
-      internalID: 1944257159
+      spriteID: d9e549a51f566c9488f2448cb5b4b868
+      internalID: 1685781179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_5
+      name: jumping.f_5
       rect:
         serializedVersion: 2
-        x: 1900
-        y: 1330
-        width: 950
-        height: 1330
+        x: 3040
+        y: 3040
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +235,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5a72191d358429468adc199598e98bc
-      internalID: -719592310
+      spriteID: 83a5de1c452547748af661aae3f7e2c4
+      internalID: -775056358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_6
+      name: jumping.f_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1520
+        width: 1520
+        height: 1520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efc352fdc317a6c4db295d4339532159
+      internalID: 1156630256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jumping.f_7
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 1520
+        width: 1520
+        height: 1520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4fd48e20ae05084a8b70cf79c5e1b38
+      internalID: -438596064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jumping.f_8
+      rect:
+        serializedVersion: 2
+        x: 3040
+        y: 1520
+        width: 1520
+        height: 1520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27fadb67ad0ae845ad6143f8ea87772
+      internalID: -1903201190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jumping.f_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 950
-        height: 1330
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +319,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b5c890506785345a9c8df231143682
-      internalID: -1653727564
+      spriteID: f2ff3f69d09fdeb41bff6fa1b076f10e
+      internalID: -127745552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_7
+      name: jumping.f_10
       rect:
         serializedVersion: 2
-        x: 950
+        x: 3040
         y: 0
-        width: 950
-        height: 1330
+        width: 1520
+        height: 1520
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,8 +340,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d225eabc905521439c4b5aef7947943
-      internalID: 764133046
+      spriteID: 63f813b98f6331b4aafcfe8b28233a8e
+      internalID: -2021872554
       vertices: []
       indices: 
       edges: []
@@ -294,14 +357,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk_5: -719592310
-      walk_3: -1317250960
-      walk_6: -1653727564
-      walk_7: 764133046
-      walk_1: -860989959
-      walk_0: 312231450
-      walk_2: -574144602
-      walk_4: 1944257159
+      jumping.f_8: -1903201190
+      jumping.f_4: 1685781179
+      jumping.f_9: -127745552
+      jumping.f_0: 1122139264
+      jumping.f_7: -438596064
+      jumping.f_10: -2021872554
+      jumping.f_3: -1192304593
+      jumping.f_6: 1156630256
+      jumping.f_2: -87025756
+      jumping.f_1: 220455115
+      jumping.f_5: -775056358
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
