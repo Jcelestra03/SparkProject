@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: de63f2cf964412343a44a8bc5454d56b
+guid: 5294dcf4f5488ab44b9f35a58e5d667d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: escaping.f_0
+      name: jumping_player_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4560
-        width: 1520
-        height: 1520
+        y: 240
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66863068cd1100e41891b6729b48def7
-      internalID: 775232886
+      spriteID: e7d08f0ec8d5c2e429f844fd3db32854
+      internalID: -309408157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_1
+      name: jumping_player_1
       rect:
         serializedVersion: 2
-        x: 1520
-        y: 4560
-        width: 1520
-        height: 1520
+        x: 80
+        y: 240
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a68ba513f0b06e4408aaf5ec592dbbfd
-      internalID: -1574598432
+      spriteID: dcc3f1e5c694c3846969d81f22adf40b
+      internalID: -296607927
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_2
+      name: jumping_player_2
       rect:
         serializedVersion: 2
-        x: 3040
-        y: 4560
-        width: 1520
-        height: 1520
+        x: 160
+        y: 240
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,41 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efdb1e77d68bc294ea56542c7eabe4f2
-      internalID: -67783222
+      spriteID: cb09d7b05dbb3f54595fe9b874e2892e
+      internalID: 134534167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_3
-      rect:
-        serializedVersion: 2
-        x: 4560
-        y: 4560
-        width: 1520
-        height: 1520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc53f81191cc3824c92226d4b3bf1f69
-      internalID: -271089311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: escaping.f_4
+      name: jumping_player_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 3040
-        width: 1520
-        height: 1520
+        y: 160
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b59a089369af394b9502481a19fd6ec
-      internalID: 463389387
+      spriteID: f4ecfdb97d3733b439225693a328d6ac
+      internalID: 1664900689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_5
+      name: jumping_player_4
       rect:
         serializedVersion: 2
-        x: 1520
-        y: 3040
-        width: 1520
-        height: 1520
+        x: 80
+        y: 160
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84ab40edf9091f54682dec7031c2f18b
-      internalID: 221598202
+      spriteID: dc7610a6b6227fd418f62c038e119db9
+      internalID: 1633442871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_6
+      name: jumping_player_5
       rect:
         serializedVersion: 2
-        x: 3040
-        y: 3040
-        width: 1520
-        height: 1520
+        x: 160
+        y: 160
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,41 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4e636309d00d984bb337e813e0a01a9
-      internalID: -937517438
+      spriteID: d9d653c65142d9a47ad421ae99eafdc6
+      internalID: 478237446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_7
-      rect:
-        serializedVersion: 2
-        x: 4560
-        y: 3040
-        width: 1520
-        height: 1520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 886dd01646e6c754dbd0c68a36b536e5
-      internalID: 280344782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: escaping.f_8
+      name: jumping_player_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 1520
-        width: 1520
-        height: 1520
+        y: 80
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e4c16fbd75173a459f069f07a2397f5
-      internalID: -1210276505
+      spriteID: cd06e3bb2b668cb4fb7d4e86ffb4a7c0
+      internalID: 1421252122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_9
+      name: jumping_player_7
       rect:
         serializedVersion: 2
-        x: 1520
-        y: 1520
-        width: 1520
-        height: 1520
+        x: 80
+        y: 80
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,20 +277,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d949694c7f6b2204f90e8fdfccde473e
-      internalID: -2075765031
+      spriteID: 63b8ed0e1f278f04387b207c10f69091
+      internalID: -523061759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_10
+      name: jumping_player_8
       rect:
         serializedVersion: 2
-        x: 3040
-        y: 1520
-        width: 1520
-        height: 1520
+        x: 160
+        y: 80
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,41 +298,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de7cd7eec16b4fe4f986c174c6064dd7
-      internalID: 1053416282
+      spriteID: f9bd512396ea9334e85799f65b9e09d0
+      internalID: -300416583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: escaping.f_11
-      rect:
-        serializedVersion: 2
-        x: 4560
-        y: 1520
-        width: 1520
-        height: 1520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34cab24dbf0d2c448b6e80fb36e7422e
-      internalID: 92512935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: escaping.f_12
+      name: jumping_player_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1520
-        height: 1520
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,71 +319,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a1e2fc31818bd0478e7a735945d1d0d
-      internalID: -825406101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: escaping.f_13
-      rect:
-        serializedVersion: 2
-        x: 1520
-        y: 0
-        width: 1520
-        height: 1520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a627f46148d8fbd4ba399a513e92eeb1
-      internalID: 460043810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: escaping.f_14
-      rect:
-        serializedVersion: 2
-        x: 3040
-        y: 0
-        width: 1520
-        height: 1520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4bf5e58d192c37a4e945a33fc85356cf
-      internalID: 754948463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: escaping.f_15
-      rect:
-        serializedVersion: 2
-        x: 4560
-        y: 0
-        width: 1520
-        height: 1520
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4da7cce389969af44a563211890e0f2f
-      internalID: -608039696
+      spriteID: a5cb9a7e8a4382c4399eb110b193d669
+      internalID: 1714745974
       vertices: []
       indices: 
       edges: []
@@ -462,22 +336,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      escaping.f_10: 1053416282
-      escaping.f_7: 280344782
-      escaping.f_6: -937517438
-      escaping.f_4: 463389387
-      escaping.f_9: -2075765031
-      escaping.f_3: -271089311
-      escaping.f_0: 775232886
-      escaping.f_1: -1574598432
-      escaping.f_15: -608039696
-      escaping.f_5: 221598202
-      escaping.f_13: 460043810
-      escaping.f_12: -825406101
-      escaping.f_14: 754948463
-      escaping.f_11: 92512935
-      escaping.f_2: -67783222
-      escaping.f_8: -1210276505
+      jumping_player_0: -309408157
+      jumping_player_7: -523061759
+      jumping_player_1: -296607927
+      jumping_player_2: 134534167
+      jumping_player_5: 478237446
+      jumping_player_3: 1664900689
+      jumping_player_6: 1421252122
+      jumping_player_8: -300416583
+      jumping_player_4: 1633442871
+      jumping_player_9: 1714745974
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
