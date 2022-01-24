@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 5958081877611890071, guid: 8c9a7345dc9752b4e9d7d038c0c81ddf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9a7345dc9752b4e9d7d038c0c81ddf, type: 3}
 --- !u!1 &532215047
@@ -212,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbac1c4f439174c4d86dd4c79ed990e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conveyerSpeed: 0.5
+  conveyerSpeed: 0.05
 --- !u!61 &532215049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -601,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbac1c4f439174c4d86dd4c79ed990e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conveyerSpeed: 0.5
+  conveyerSpeed: 0.05
 --- !u!61 &1199085331
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -885,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbac1c4f439174c4d86dd4c79ed990e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conveyerSpeed: 0.5
+  conveyerSpeed: 0.05
 --- !u!61 &1529980222
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1414,6 +1418,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8228940505540078532, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.999398
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228940505540078532, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0000487566
+      objectReference: {fileID: 0}
     - target: {fileID: 8228940505540078554, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1465,6 +1477,10 @@ PrefabInstance:
     - target: {fileID: 8228940505540078554, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228940505540078555, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
+      propertyPath: conveyerSpeed
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8228940505540078558, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
       propertyPath: m_Name
