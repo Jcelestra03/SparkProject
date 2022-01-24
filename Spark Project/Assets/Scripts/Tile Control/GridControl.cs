@@ -76,6 +76,15 @@ public class GridControl : MonoBehaviour
             {
                 if (entail.TryAdd(here, blockchange) == true)
                 {
+                    if(blockchange == 7)
+                    {
+                        //if(2 portals exist) - UI menu(portal) is avalible;
+                        // list or dictoary place key, leave value open/null;
+
+                        //Force camera to spot World to cell 
+                        //UI choose partner 
+                        //dictionary.portal-ADD(here, int"partner")
+                    }
                     tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                     NumbersMason.Add(here);
                 }

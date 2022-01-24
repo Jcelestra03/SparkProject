@@ -7,7 +7,7 @@ public class destroythis : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (this.gameObject.name.Contains("killme"))
+        if (this.gameObject.name.Contains("grid_square"))
         {
             Death();
         }
