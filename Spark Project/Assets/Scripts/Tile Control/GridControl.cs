@@ -39,64 +39,69 @@ public class GridControl : MonoBehaviour
     public void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R))
+        //
+        if (editing == true)
         {
-            
-            blockchange = blockchange + 1;
-            if (blockchange >= tileprefabs.Length)
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                blockchange = 0;
-            }
-            Debug.Log(tileprefabs[blockchange]);
-        }
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
-            
-            Vector3 here = TargetTilemap.CellToWorld(clickPosition);
 
-            Vector3 outbounds;
-            outbounds = new Vector3 (0, 0, 0);
-
-            
-            if(clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
-            {
-                outof = true;
-                Debug.Log(outof);
-            }
-            else
-            {
-                outof = false;
-                Debug.Log(outof);
-            }
-            if(!outof)
-            {
-                if (entail.TryAdd(here, blockchange) == true)
+                blockchange = blockchange + 1;
+                if (blockchange >= tileprefabs.Length)
                 {
-                    if(blockchange == 7)
-                    {
-                        //if(2 portals exist) - UI menu(portal) is avalible;
-                        // list or dictoary place key, leave value open/null;
+                    blockchange = 0;
+                }
+                Debug.Log(tileprefabs[blockchange]);
+            }
 
-                        //Force camera to spot World to cell 
-                        //UI choose partner 
-                        //dictionary.portal-ADD(here, int"partner")
-                    }
-                    tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-                    NumbersMason.Add(here);
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
+
+                Vector3 here = TargetTilemap.CellToWorld(clickPosition);
+
+                Vector3 outbounds;
+                outbounds = new Vector3(0, 0, 0);
+
+
+                if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
+                {
+                    outof = true;
+                    Debug.Log(outof);
                 }
                 else
                 {
-                    entail[here] = blockchange;
-                    tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-
+                    outof = false;
+                    Debug.Log(outof);
                 }
+                if (!outof)
+                {
+                    if (entail.TryAdd(here, blockchange) == true)
+                    {
+                        if (blockchange == 7)
+                        {
+                            //if(2 portals exist) - UI menu(portal) is avalible;
+                            // list or dictoary place key, leave value open/null;
+
+                            //Force camera to spot World to cell 
+                            //UI choose partner 
+                            //dictionary.portal-ADD(here, int"partner")
+                        }
+                        tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                        NumbersMason.Add(here);
+                    }
+                    else
+                    {
+                        entail[here] = blockchange;
+                        tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+
+                    }
+                }
+
             }
-            
         }
+        //
         //dropper(copy)
         if (Input.GetKeyDown(KeyCode.C))
         {
