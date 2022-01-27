@@ -40,8 +40,8 @@ public class GridControl : MonoBehaviour
     {
 
         //
-        if (editing == true)
-        {
+        //if (editing == true)
+        //{
             if (Input.GetKeyDown(KeyCode.R))
             {
 
@@ -73,7 +73,7 @@ public class GridControl : MonoBehaviour
                 else
                 {
                     outof = false;
-                    Debug.Log(outof);
+                    //Debug.Log(outof);
                 }
                 if (!outof)
                 {
@@ -100,7 +100,7 @@ public class GridControl : MonoBehaviour
                 }
 
             }
-        }
+        //}
         //
         //dropper(copy)
         if (Input.GetKeyDown(KeyCode.C))
