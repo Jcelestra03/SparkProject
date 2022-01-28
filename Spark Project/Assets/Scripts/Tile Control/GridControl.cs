@@ -38,10 +38,16 @@ public class GridControl : MonoBehaviour
     }
     public void Update()
     {
-
+        if(Input.GetMouseButtonDown(0))
+        {
+            if (GameObject.Find("UIbox").GetComponent<UI>().nope == false)
+            {
+                editing = true;
+            }
+        }
         //
-        //if (editing == true)
-        //{
+        if (editing == true)
+        {
             if (Input.GetKeyDown(KeyCode.R))
             {
 
@@ -82,6 +88,7 @@ public class GridControl : MonoBehaviour
                         if (blockchange == 7)
                         {
                             //if(2 portals exist) - UI menu(portal) is avalible;
+                            
                             // list or dictoary place key, leave value open/null;
 
                             //Force camera to spot World to cell 
@@ -100,7 +107,7 @@ public class GridControl : MonoBehaviour
                 }
 
             }
-        //}
+        }
         //
         //dropper(copy)
         if (Input.GetKeyDown(KeyCode.C))
@@ -121,19 +128,19 @@ public class GridControl : MonoBehaviour
         }
     }
 
-    //private void portalcheck()
-    //{
-    //    int count = 0;
-    //    while (count <= NumbersMason.Count-1)
-    //    {
-    //        entail.TryGetValue(NumbersMason[count], out int block);
-    //        if(block == 7)
-    //        {
-    //            Debug.Log("true");
-    //        }
-    //        count++;
-    //    }
-    //}
+    private void portalcheck()
+    {
+        int count = 0;
+        while (count <= NumbersMason.Count-1)
+        {
+            entail.TryGetValue(NumbersMason[count], out int block);
+            if(block == 7)
+            {
+                Debug.Log("true");
+            }
+            count++;
+        }
+    }
 
     private void TileCheck()
     {
