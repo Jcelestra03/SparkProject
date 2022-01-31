@@ -60,7 +60,7 @@ public class Portal : MonoBehaviour
             partner.GetComponent<Portal>().storage.Add(collision.gameObject);
             storage.Add(collision.gameObject);
             localStorage.Add(collision.gameObject);
-            
+
             if (collision != collision.isTrigger)
                 collision.gameObject.transform.position = partner.transform.position;
 

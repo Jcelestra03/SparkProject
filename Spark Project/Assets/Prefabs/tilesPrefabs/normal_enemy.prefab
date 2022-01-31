@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3567779904444892156}
   - component: {fileID: 8981067608902176299}
   - component: {fileID: -8392092888352084982}
-  - component: {fileID: 7887587164346938126}
   - component: {fileID: 8118108449456684968}
   - component: {fileID: 1285281884189184245}
   - component: {fileID: 7502051358191358591}
+  - component: {fileID: 6723056606113347167}
   - component: {fileID: 1485681911461744371}
   m_Layer: 0
   m_Name: normal_enemy
@@ -106,20 +106,6 @@ MonoBehaviour:
   roamSpeed: 5
   EnemyDeath: {fileID: 8300000, guid: c8037b9bde8b36a4587ee1cc09756a60, type: 3}
   WallColliding: {fileID: 8300000, guid: f6909bec1de798a4cbc0d2465d8fc0c3, type: 3}
---- !u!114 &7887587164346938126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9165486542879767109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb30eb79e1237414d9c99b5bbfb10b26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nockBack: 0
-  damage: 1
 --- !u!50 &8118108449456684968
 Rigidbody2D:
   serializedVersion: 4
@@ -183,6 +169,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5960891, y: 0.5032991}
   m_EdgeRadius: 0
+--- !u!114 &6723056606113347167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165486542879767109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61126953ff7701445a388d6066ec8b20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  attackRecur: 1
 --- !u!114 &1485681911461744371
 MonoBehaviour:
   m_ObjectHideFlags: 0
