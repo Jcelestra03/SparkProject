@@ -5,27 +5,27 @@ using UnityEngine.UI;
 
 public class PortalUI : MonoBehaviour
 {
-    private bool drawON;
+    const float tileSizewidth = 130;
+    const float tileSizeheight = 90;
 
-    private LineRenderer lr;
-    private Transform[] points;
-
-    private void Awake()
+    RectTransform rectTransform;
+    public void Start()
     {
-        lr = GetComponent<LineRenderer>();
-
-    }
-    public void SetUpLine(Transform[] points)
-    {
-        lr.positionCount = points.Length;
-        this.points = points;
+        rectTransform = GetComponent<RectTransform>();
     }
 
-    private void Update()
+    Vector2 positionOnTheGrid = new Vector2();
+    Vector2Int tileGridPosition = new Vector2Int();
+
+    public Vector2Int GetTileGridPosition(Vector2 mousePosition)
     {
-        for (int i = 0; i < points.Length; i++)
-        {
-            lr.SetPosition(i, points[i].position);
-        }
+        positionOnTheGrid.x = mousePosition.x - rectTransform.position.x;
+        positionOnTheGrid.y = mousePosition.y - rectTransform.position.y;
+
+        tileGridPosition.x = (int)(positionOnTheGrid.x / tileSizewidth);
+        tileGridPosition.y = (int)(positionOnTheGrid.y / tileSizeheight);
+
+        return tileGridPosition;
     }
+
 }
