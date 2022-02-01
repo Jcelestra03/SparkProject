@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public int damage = 1;
-    public float attackRecur = 1;
+    public float attackRate = 1;
 
     private bool insideT;
     private bool insideC;
@@ -16,7 +16,7 @@ public class Damage : MonoBehaviour
     private void Update()
     {
         if (coolDown > 0)
-            coolDown -= attackRecur * Time.deltaTime;
+            coolDown -= attackRate * Time.deltaTime;
 
         if (coolDown <= 0 && insideT)
         {

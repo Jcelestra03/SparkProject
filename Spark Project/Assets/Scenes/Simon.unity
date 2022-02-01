@@ -461,6 +461,8 @@ MonoBehaviour:
   attackRate: 1
   bullet: {fileID: 2544661338738874913, guid: 1456d4200e9e56445a789b3c5d5c58c1, type: 3}
   shootPos: {fileID: 806558963}
+  mag: 0
+  coolDown: 0
 --- !u!212 &173659960
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2096,7 +2098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  attackRecur: 1
+  attackRate: 1
 --- !u!1001 &910990652
 PrefabInstance:
   m_ObjectHideFlags: 0
