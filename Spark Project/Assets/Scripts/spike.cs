@@ -19,8 +19,6 @@ public class spike : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && coolDown <= 0)
         {
-            //collision.transform.GetComponent<Rigidbody2D>().AddRelativeForce(-collision.relativeVelocity * nockBack);
-
             Vector2 temp = collision.transform.GetComponent<Rigidbody2D>().velocity;
 
             temp = (-collision.relativeVelocity * nockBack * 1);
