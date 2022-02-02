@@ -6,11 +6,13 @@ public class Turret : MonoBehaviour
 {
     public int burstDensity = 2;
     public float attackRate = 1;
+    public float burstSpeed = 1;
     public GameObject bullet;
     public Transform shootPos;
 
-    public int mag;
-    public float coolDown;
+    private int mag;
+    private float coolDown;
+    private float miniCoolDown;
 
     private void Start()
     {
@@ -19,6 +21,9 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
+        if (miniCoolDown > 0)
+            miniCoolDown -= burstSpeed * Time.deltaTime;
+
         if (coolDown > 0)
             coolDown -= attackRate * Time.deltaTime;
 
@@ -26,14 +31,23 @@ public class Turret : MonoBehaviour
         {
             if (mag > 0)
             {
-                Instantiate(bullet, shootPos);
-                mag--;
+                Shoot();
             }
             else if (mag <= 0)
             {
                 coolDown = 1;
-                int mag = burstDensity;
+                mag = burstDensity;
             }
+        }
+    }
+
+    void Shoot()
+    {
+        if (miniCoolDown <= 0)
+        {
+            Instantiate(bullet, shootPos);
+            mag--;
+            miniCoolDown = 0.1f;
         }
     }
 }
