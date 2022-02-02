@@ -8,14 +8,17 @@ public class GridControl : MonoBehaviour
 {
     [SerializeField] Tilemap TargetTilemap;
     [SerializeField] tilesmanager tiles;
+    
 
+    PortalUI portalui;
     private int blockchange;
+
     
 
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
 
-    public Dictionary<Vector3, int> portals;
+    
 
     gridManager grid;
     
@@ -26,6 +29,7 @@ public class GridControl : MonoBehaviour
 
     public GameObject[] tileprefabs;
 
+    private bool Portalready;
     
     private void Start()
     {
@@ -33,7 +37,7 @@ public class GridControl : MonoBehaviour
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
-        portals = new Dictionary<Vector3, int>();
+        
         editing = true;
     }
     public void Update()
@@ -50,7 +54,7 @@ public class GridControl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-
+                
                 blockchange = blockchange + 1;
                 if (blockchange >= tileprefabs.Length)
                 {
@@ -72,12 +76,12 @@ public class GridControl : MonoBehaviour
                 if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
                 {
                     outof = true;
-                    Debug.Log(outof);
+                    
                 }
                 else
                 {
                     outof = false;
-                    //Debug.Log(outof);
+                    
                 }
                 if (!outof)
                 {
@@ -102,6 +106,7 @@ public class GridControl : MonoBehaviour
                         tiles.Set(clickPosition.x, clickPosition.y, blockchange);
 
                     }
+                    //portalcheck();
                 }
 
             }
@@ -126,15 +131,19 @@ public class GridControl : MonoBehaviour
         }
     }
 
-    private void portalcheck()
+    public void portalcheck()
     {
         int count = 0;
+
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
+
+
             if(block == 7)
             {
-                Debug.Log("true");
+                
+                //vector3 count
             }
             count++;
         }
@@ -148,12 +157,7 @@ public class GridControl : MonoBehaviour
         {
             entail.TryGetValue(NumbersMason[count], out int block);
 
-            //if(block == 7)
-            //{
-            //    portals.TryAdd(NumbersMason[count], )
-            //}
-            //Debug.Log(NumbersMason[count]);
-            //Debug.Log(entail.ContainsValue(1));
+            
             GameObject placed = Instantiate(tileprefabs[block]);
             Vector3 Posit;
             Posit = new Vector3(.5f, .5f, 0);
@@ -161,6 +165,7 @@ public class GridControl : MonoBehaviour
             
             count++;
         }
+
     }
 
     public void startb()

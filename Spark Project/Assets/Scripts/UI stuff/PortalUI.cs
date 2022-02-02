@@ -22,8 +22,8 @@ public class PortalUI : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         Init(gridSizeWidth, gridSizeHeight);
 
-        InventoryItem inventoryitem = Instantiate(inventoryItemPrefab).GetComponent<InventoryItem>();
-        PlaceItem(inventoryitem, 1, 1);
+        
+        //PlaceItem(inventoryitem, 1, 1);
     }
 
     private void Init(int width, int height)
@@ -45,6 +45,12 @@ public class PortalUI : MonoBehaviour
         tileGridPosition.y = (int)(positionOnTheGrid.y / tileSizeheight);
 
         return tileGridPosition;
+    }
+
+    public void ItemStats(int PosX, int PosY)
+    {
+        InventoryItem inventoryitem = Instantiate(inventoryItemPrefab).GetComponent<InventoryItem>();
+        PlaceItem(inventoryitem, PosX, PosY);
     }
 
     public void PlaceItem(InventoryItem inventoryitem, int posX, int posY)

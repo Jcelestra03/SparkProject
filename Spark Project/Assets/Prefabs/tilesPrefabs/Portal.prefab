@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4487164738524488662}
   - component: {fileID: 4487164738524488681}
   - component: {fileID: 4487164738524488660}
+  - component: {fileID: -1898993479297917956}
   m_Layer: 2
   m_Name: Portal
   m_TagString: Untagged
@@ -126,3 +127,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.379265, y: 0.4781287}
   m_EdgeRadius: 0
+--- !u!114 &-1898993479297917956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487164738524488680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044d9e10d9d70744bab45634953e0caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
