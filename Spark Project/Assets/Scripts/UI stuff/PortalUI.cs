@@ -12,8 +12,8 @@ public class PortalUI : MonoBehaviour
 
     RectTransform rectTransform;
 
-    [SerializeField] int gridSizeWidth = 3;
-    [SerializeField] int gridSizeHeight = 2;
+    public int gridSizeWidth = 3;
+    public int gridSizeHeight = 2;
 
     [SerializeField] GameObject inventoryItemPrefab;
 

@@ -11,32 +11,46 @@ public class GridControl : MonoBehaviour
     
 
     PortalUI portalui;
-    private int blockchange;
 
+    private int blockchange;
+    private int count;
     
 
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
-
-    
-
-    gridManager grid;
-    
+    public GameObject[] tileprefabs;
+    // Partners // Vectors // Placement
+    public Dictionary<Vector3, Vector3> partners;
+    public Dictionary<Vector3,int> pushP;
+    //public Dictionary<int, int> gridUI; // later turn into 2 Lists;?
+    List<int> UIx = new List<int>();
+    List<int> UIy = new List<int>();
+////          ,^,           ,^,
+/////         / \___________/ \
+/////        ||               ||
+//          //   *         *   \\
+//         //         V         \\
+//        //    ^ ^ ^ ^ ^ ^ ^    \\
+//       //  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \\
+    gridManager grid;   
     private bool outof;
-    private int count;
-
     public bool editing;
 
-    public GameObject[] tileprefabs;
-
+    private bool xfine;
+    private bool yfine;
+    private int xpos;
+    private int ypos;
+    private int indexfinder;
     private bool Portalready;
-    
+
     private void Start()
     {
         
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
+        partners = new Dictionary<Vector3, Vector3>();
+        pushP = new Dictionary<Vector3, int>();
         
         editing = true;
     }
@@ -54,7 +68,6 @@ public class GridControl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                
                 blockchange = blockchange + 1;
                 if (blockchange >= tileprefabs.Length)
                 {
@@ -65,23 +78,19 @@ public class GridControl : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-
                 Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
                 Vector3 here = TargetTilemap.CellToWorld(clickPosition);
                 Vector3 outbounds;
                 outbounds = new Vector3(0, 0, 0);
 
-
                 if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
                 {
-                    outof = true;
-                    
+                    outof = true;                   
                 }
                 else
                 {
-                    outof = false;
-                    
+                    outof = false;                   
                 }
                 if (!outof)
                 {
@@ -131,9 +140,12 @@ public class GridControl : MonoBehaviour
         }
     }
 
-    public void portalcheck()
+    public void PortalAdd()
     {
         int count = 0;
+        
+
+
 
         while (count <= NumbersMason.Count-1)
         {
@@ -142,11 +154,48 @@ public class GridControl : MonoBehaviour
 
             if(block == 7)
             {
-                
-                //vector3 count
+                //placement on UI//
+                if (xpos <= portalui.gridSizeWidth-1 && ypos <= portalui.gridSizeHeight - 1)
+                {
+                    xfine = true;
+                    yfine = false;
+                }
+                else if (xpos >= portalui.gridSizeWidth - 1 && ypos >= portalui.gridSizeHeight - 1)
+                {
+                    Portalready = true;
+                }
+                else
+                {
+                    xfine = false;
+                    yfine = true;
+                }
+                if(xfine == true)
+                {
+                    if(yfine == false)
+                    {
+                        if (ypos <= portalui.gridSizeHeight - 1)
+                        {
+                            pushP.TryAdd(NumbersMason[count], indexfinder);
+                            UIx.Add(xpos);
+                            UIy.Add(ypos);
+                            ypos++;
+                        }
+                    }
+                }
+                else
+                {
+                    ypos = 0;
+                    xpos++;
+                    pushP.TryAdd(NumbersMason[count], indexfinder);
+                    UIx.Add(xpos);
+                    UIy.Add(ypos);
+                }
+                indexfinder++;
+                portalui.ItemStats(xpos, ypos);
             }
             count++;
         }
+        indexfinder = 0;
     }
 
     private void TileCheck()
@@ -157,15 +206,15 @@ public class GridControl : MonoBehaviour
         {
             entail.TryGetValue(NumbersMason[count], out int block);
 
-            
-            GameObject placed = Instantiate(tileprefabs[block]);
-            Vector3 Posit;
-            Posit = new Vector3(.5f, .5f, 0);
-            placed.GetComponent<Transform>().position = NumbersMason[count]+Posit;
-            
+            if(block != 7)
+            {
+                GameObject placed = Instantiate(tileprefabs[block]);
+                Vector3 Posit;
+                Posit = new Vector3(.5f, .5f, 0);
+                placed.GetComponent<Transform>().position = NumbersMason[count] + Posit;
+            }
             count++;
         }
-
     }
 
     public void startb()
