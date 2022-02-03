@@ -462,7 +462,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      escaping_player_12: -1441397471
       escaping_player_6: 1165489831
       escaping_player_11: 32530301
       escaping_player_10: -494786639
@@ -474,6 +473,7 @@ TextureImporter:
       escaping_player_7: 1532296432
       escaping_player_3: -162696857
       escaping_player_2: 1150113707
+      escaping_player_12: -1441397471
       escaping_player_4: -1892809080
       escaping_player_9: 1482292810
       escaping_player_0: 284630367
