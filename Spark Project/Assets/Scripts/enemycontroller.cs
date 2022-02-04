@@ -6,7 +6,14 @@ public class enemycontroller : MonoBehaviour
 {
     public float attackSpeed = 10;
     public float roamSpeed = 5;
+    public float jumpCoolDown = 0.5f;
+    public LayerMask layerObjAvoid;
+    public LayerMask layerPlayer;
 
+    public AudioClip EnemyDeath;
+    public AudioClip WallColliding;
+
+    private float jumpCoolDownMule;
     private bool isfollowing = false;
     private GameObject playertarget;
     private Rigidbody2D myRB;
@@ -19,9 +26,6 @@ public class enemycontroller : MonoBehaviour
     private float coolDown;
     private AudioSource speaker;
 
-    public AudioClip EnemyDeath;
-    public AudioClip WallColliding;
-
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
@@ -31,6 +35,9 @@ public class enemycontroller : MonoBehaviour
 
     void Update()
     {
+        if (jumpCoolDownMule > 0)
+            jumpCoolDownMule -= 1 * Time.deltaTime;
+
         if (playertarget == null)
             playertarget = GameObject.FindGameObjectWithTag("Player");
 
@@ -51,10 +58,13 @@ public class enemycontroller : MonoBehaviour
 
         if (isfollowing)
         {
-            if (Physics2D.Raycast(transform.position + new Vector3(1f, 0, 1), Vector2.right, 0.1f))
+            if (Physics2D.Raycast(transform.position + new Vector3(1f, 0, 1), Vector2.right, 0.1f, layerObjAvoid))
                 Jump();
 
-            if (Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 1), Vector2.left, 0.1f))
+            if (Physics2D.Raycast(transform.position + new Vector3(-1f, 0, 1), Vector2.left, 0.1f, layerObjAvoid))
+                Jump();
+
+            if (Physics2D.Raycast(transform.position + new Vector3(0, -0.7f, 1), Vector2.down, 0.1f, layerPlayer))
                 Jump();
         }
     }
@@ -63,7 +73,9 @@ public class enemycontroller : MonoBehaviour
     {
         Vector3 lookPos = playertarget.transform.position - transform.position;
         lookPos.Normalize();
-        if ( lookPos.x == Mathf.Abs(lookPos.x))
+        if (transform.position.x < playertarget.transform.position.x + 0.1f && transform.position.x > playertarget.transform.position.x - 0.1f)
+            pursuitDir = 0;
+        else if (lookPos.x == Mathf.Abs(lookPos.x))
             pursuitDir = 1;
         else
             pursuitDir = -1;
@@ -91,6 +103,7 @@ public class enemycontroller : MonoBehaviour
         Gizmos.DrawSphere(transform.position + new Vector3(0, -0.41f, 1), 0.05f);
     }
 
+    //when following the player circle tirgger collider radius set to 5
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isfollowing && (collision.gameObject.tag == "Player"))
@@ -100,6 +113,7 @@ public class enemycontroller : MonoBehaviour
         }   
     }
 
+    //when now following the player circle tirgger collider radius set to 2.5
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (isfollowing && (collision.gameObject.tag == "Player"))
@@ -132,9 +146,12 @@ public class enemycontroller : MonoBehaviour
     {
         velocity = myRB.velocity;
 
-        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f))
+        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f) && jumpCoolDownMule <= 0)
+        {
             velocity.y = jumpheight;
-
+            jumpCoolDownMule = jumpCoolDown;
+        }
+            
         myRB.velocity = velocity;
     } 
 }

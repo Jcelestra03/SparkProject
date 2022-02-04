@@ -5,11 +5,11 @@ using UnityEngine;
 public class HiddenBlocks : MonoBehaviour
 {
     public float fadeSpeed = 1;
+    public float minFade = 0.3f;
 
-    public float fadeSpeedMule = 1;
-
+    private float fadeSpeedMule = 1;
     private Color SRcolor;
-    public bool visible;
+    private bool visible;
 
     void Start()
     {
@@ -20,10 +20,8 @@ public class HiddenBlocks : MonoBehaviour
     void Update()
     {
         if (visible)
-            if (fadeSpeedMule > 0.3f)
+            if (fadeSpeedMule > minFade)
                 fadeSpeedMule -= fadeSpeed * Time.deltaTime;
-            
-            SRcolor.a = Mathf.Clamp(fadeSpeedMule, 30, 100);
 
         if (!visible)
             if (fadeSpeedMule <= 1)

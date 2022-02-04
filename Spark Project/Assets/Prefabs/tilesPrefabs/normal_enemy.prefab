@@ -104,6 +104,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 2.5
   roamSpeed: 5
+  jumpCoolDown: 0.5
+  layerObjAvoid:
+    serializedVersion: 2
+    m_Bits: 81
+  layerPlayer:
+    serializedVersion: 2
+    m_Bits: 208
   EnemyDeath: {fileID: 8300000, guid: c8037b9bde8b36a4587ee1cc09756a60, type: 3}
   WallColliding: {fileID: 8300000, guid: f6909bec1de798a4cbc0d2465d8fc0c3, type: 3}
 --- !u!50 &8118108449456684968
@@ -156,7 +163,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.044890642, y: -0.22096863}
+  m_Offset: {x: -0.010490179, y: -0.20874813}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -167,7 +174,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6749542, y: 0.5794428}
+  m_Size: {x: 0.64016485, y: 0.5550018}
   m_EdgeRadius: 0
 --- !u!114 &6723056606113347167
 MonoBehaviour:
