@@ -25,12 +25,17 @@ public class PlayerController : MonoBehaviour
     public AudioClip PlayerJump;
     public AudioClip StarCollected;
 
+    private Animator myAnimator;
+    private SpriteRenderer myRenderer;
+
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
         savedMaxSpeed = maxSpeed;
         savedJumpHeight = jumpheight;
 
+        myAnimator = GetComponent<Animator>();
+        myRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -61,9 +66,11 @@ public class PlayerController : MonoBehaviour
 
         if (velocity.x >= maxSpeed)
             velocity.x = maxSpeed;
+            myRenderer.flipX = true;
 
         if (velocity.x <= -maxSpeed)
             velocity.x = -maxSpeed;
+            myRenderer.flipX = false;
 
         myRB.velocity = velocity;
     }
