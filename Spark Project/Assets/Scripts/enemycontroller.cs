@@ -22,6 +22,7 @@ public class enemycontroller : MonoBehaviour
     public AudioClip EnemyDeath;
     public AudioClip WallColliding;
 
+
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
