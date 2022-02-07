@@ -10,7 +10,7 @@ public class GridControl : MonoBehaviour
     [SerializeField] tilesmanager tiles;
     
 
-    PortalUI portalui;
+    public PortalUI portalui;
 
     private int blockchange;
     private int count;
@@ -25,6 +25,7 @@ public class GridControl : MonoBehaviour
     //public Dictionary<int, int> gridUI; // later turn into 2 Lists;?
     List<int> UIx = new List<int>();
     List<int> UIy = new List<int>();
+    List<int> IndexSave = new List<int>();
 ////          ,^,           ,^,
 /////         / \___________/ \
 /////        ||               ||
@@ -45,7 +46,8 @@ public class GridControl : MonoBehaviour
 
     private void Start()
     {
-        
+        xpos = 0;
+        ypos = 0;
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
@@ -56,13 +58,13 @@ public class GridControl : MonoBehaviour
     }
     public void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            if (GameObject.Find("UIbox").GetComponent<UI>().nope == false)
-            {
-                editing = true;
-            }
-        }
+        //if(Input.GetMouseButtonDown(0))
+        //{
+        //    if (GameObject.Find("UIbox").GetComponent<UI>().nope == false)
+        //    {
+        //        editing = true;
+        //    }
+        //}
         //
         if (editing == true)
         {
@@ -142,20 +144,15 @@ public class GridControl : MonoBehaviour
 
     public void PortalAdd()
     {
+
         int count = 0;
-        
-
-
-
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
-
-
             if(block == 7)
             {
                 //placement on UI//
-                if (xpos <= portalui.gridSizeWidth-1 && ypos <= portalui.gridSizeHeight - 1)
+                if (xpos <= portalui.gridSizeWidth-1 && ypos <= portalui.gridSizeHeight-1)
                 {
                     xfine = true;
                     yfine = false;
@@ -176,6 +173,7 @@ public class GridControl : MonoBehaviour
                         if (ypos <= portalui.gridSizeHeight - 1)
                         {
                             pushP.TryAdd(NumbersMason[count], indexfinder);
+                            IndexSave.Add(count);
                             UIx.Add(xpos);
                             UIy.Add(ypos);
                             ypos++;
@@ -196,6 +194,12 @@ public class GridControl : MonoBehaviour
             count++;
         }
         indexfinder = 0;
+    }
+
+
+    private void Portalreset()
+    {
+
     }
 
     private void TileCheck()

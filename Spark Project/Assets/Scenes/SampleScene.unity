@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 109697609}
   - component: {fileID: 109697608}
   - component: {fileID: 109697607}
-  - component: {fileID: 109697606}
+  - component: {fileID: 109697610}
   m_Layer: 5
   m_Name: Pfront
   m_TagString: Untagged
@@ -209,105 +209,6 @@ RectTransform:
   m_AnchoredPosition: {x: -448, y: 198}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!120 &109697606
-LineRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109697604}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 1, z: 0}
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 6
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0.03910446
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
 --- !u!114 &109697607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,10 +253,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420028}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 6
+      - m_Target: {fileID: 519420034}
+        m_TargetAssemblyTypeName: GridControl, Assembly-CSharp
+        m_MethodName: PortalAdd
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -402,6 +303,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109697604}
   m_CullTransparentMesh: 1
+--- !u!114 &109697610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109697604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74abbc20dbbc8e43afd0682720c8370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &262213614
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetTilemap: {fileID: 2093333880}
   tiles: {fileID: 1840677037}
-  editing: 1
+  portalui: {fileID: 908808725}
   tileprefabs:
   - {fileID: 585115398270043598, guid: 29129f88eeb89d842be4414ac76e423a, type: 3}
   - {fileID: 8228940505540078558, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
@@ -686,6 +599,7 @@ MonoBehaviour:
   - {fileID: 7728507475802724587, guid: 8ea4242fd8154894aa050bbfb2081f2a, type: 3}
   - {fileID: 2598322061314235939, guid: 952637c84e0e9564683b29b13204c87c, type: 3}
   - {fileID: 5013409332120796402, guid: 9f31fdff5bc85b044ae9f4885dbcf71f, type: 3}
+  editing: 1
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,6 +896,7 @@ GameObject:
   - component: {fileID: 908808726}
   - component: {fileID: 908808725}
   - component: {fileID: 908808728}
+  - component: {fileID: 908808729}
   m_Layer: 5
   m_Name: PortalGrid
   m_TagString: Untagged
@@ -1074,6 +989,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ba21e1b8e98b446b4c1ed306479a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &908808729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908808723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74abbc20dbbc8e43afd0682720c8370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &990302159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,8 +1012,8 @@ GameObject:
   - component: {fileID: 990302160}
   - component: {fileID: 990302162}
   - component: {fileID: 990302161}
-  - component: {fileID: 990302163}
   - component: {fileID: 990302164}
+  - component: {fileID: 990302165}
   m_Layer: 5
   m_Name: UIbox
   m_TagString: Untagged
@@ -1152,48 +1079,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990302159}
   m_CullTransparentMesh: 1
---- !u!114 &990302163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990302159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e74abbc20dbbc8e43afd0682720c8370, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.754717, g: 0.58739763, b: 0.58739763, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 990302161}
-  nope: 0
 --- !u!61 &990302164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1220,6 +1105,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &990302165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990302159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74abbc20dbbc8e43afd0682720c8370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1099850474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1581,7 +1478,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Portal menu
+  m_Text: 'Portal check
 
 '
 --- !u!222 &1452866385
@@ -1798,6 +1695,7 @@ GameObject:
   - component: {fileID: 1804282298}
   - component: {fileID: 1804282297}
   - component: {fileID: 1804282296}
+  - component: {fileID: 1804282299}
   m_Layer: 5
   m_Name: startbutton
   m_TagString: Untagged
@@ -1920,6 +1818,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804282294}
   m_CullTransparentMesh: 1
+--- !u!114 &1804282299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804282294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74abbc20dbbc8e43afd0682720c8370, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1809359935
 GameObject:
   m_ObjectHideFlags: 0
