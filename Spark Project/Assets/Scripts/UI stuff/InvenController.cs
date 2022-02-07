@@ -5,8 +5,8 @@ using UnityEngine;
 public class InvenController : MonoBehaviour
 {
     public PortalUI selectedItemGrid;
-
-    private void Update()
+    public bool nope; 
+    public void Update()
     {
         if(selectedItemGrid == null) { return; }
         
@@ -14,5 +14,6 @@ public class InvenController : MonoBehaviour
         {
             Debug.Log(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
         }
+
     }
 }

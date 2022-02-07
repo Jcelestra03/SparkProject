@@ -5,17 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class UI : MonoBehaviour
+public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
-    private void Start()
+    public void OnPointerEnter(PointerEventData evenData)
     {
-        
+        GameObject.Find("Main Camera").GetComponent<GridControl>().editing = false;
+        GameObject.Find("Main Camera").GetComponent<InvenController>().nope = true;
+    }
+    public void OnPointerExit(PointerEventData evenData)
+    {
+        GameObject.Find("Main Camera").GetComponent<InvenController>().nope = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

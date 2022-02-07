@@ -13,7 +13,7 @@ public class GridControl : MonoBehaviour
     public PortalUI portalui;
 
     private int blockchange;
-    private int count;
+    private int count; 
     
 
     public Dictionary<Vector3,int> entail;
@@ -21,11 +21,11 @@ public class GridControl : MonoBehaviour
     public GameObject[] tileprefabs;
     // Partners // Vectors // Placement
     public Dictionary<Vector3, Vector3> partners;
-    public Dictionary<Vector3,int> pushP;
+    public Dictionary<Vector3,int> pushP; //clear
     //public Dictionary<int, int> gridUI; // later turn into 2 Lists;?
-    List<int> UIx = new List<int>();
-    List<int> UIy = new List<int>();
-    List<int> IndexSave = new List<int>();
+    List<int> UIx = new List<int>(); //clear
+    List<int> UIy = new List<int>(); //clear
+    List<int> IndexSave = new List<int>(); //clear
 ////          ,^,           ,^,
 /////         / \___________/ \
 /////        ||               ||
@@ -43,6 +43,7 @@ public class GridControl : MonoBehaviour
     private int ypos;
     private int indexfinder;
     private bool Portalready;
+ 
 
     private void Start()
     {
@@ -58,13 +59,13 @@ public class GridControl : MonoBehaviour
     }
     public void Update()
     {
-        //if(Input.GetMouseButtonDown(0))
-        //{
-        //    if (GameObject.Find("UIbox").GetComponent<UI>().nope == false)
-        //    {
-        //        editing = true;
-        //    }
-        //}
+        if(Input.GetMouseButtonDown(0))
+        {
+            if (GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false)
+            {
+                editing = true;
+            }
+        }
         //
         if (editing == true)
         {
@@ -142,64 +143,74 @@ public class GridControl : MonoBehaviour
         }
     }
 
-    public void PortalAdd()
+    public void PortalCheck()
     {
-
-        int count = 0;
+        Portalreset();
+        count = 0;
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
             if(block == 7)
             {
                 //placement on UI//
-                if (xpos <= portalui.gridSizeWidth-1 && ypos <= portalui.gridSizeHeight-1)
-                {
-                    xfine = true;
-                    yfine = false;
-                }
-                else if (xpos >= portalui.gridSizeWidth - 1 && ypos >= portalui.gridSizeHeight - 1)
-                {
-                    Portalready = true;
-                }
-                else
-                {
-                    xfine = false;
-                    yfine = true;
-                }
-                if(xfine == true)
-                {
-                    if(yfine == false)
-                    {
-                        if (ypos <= portalui.gridSizeHeight - 1)
-                        {
-                            pushP.TryAdd(NumbersMason[count], indexfinder);
-                            IndexSave.Add(count);
-                            UIx.Add(xpos);
-                            UIy.Add(ypos);
-                            ypos++;
-                        }
-                    }
-                }
-                else
-                {
-                    ypos = 0;
-                    xpos++;
-                    pushP.TryAdd(NumbersMason[count], indexfinder);
-                    UIx.Add(xpos);
-                    UIy.Add(ypos);
-                }
-                indexfinder++;
-                portalui.ItemStats(xpos, ypos);
+                portalAdd();
+                
             }
             count++;
         }
         indexfinder = 0;
     }
-
+    public void portalAdd()
+    {
+        if (xpos <= portalui.gridSizeWidth - 1 && ypos <= portalui.gridSizeHeight - 1)
+        {
+            xfine = true;
+            yfine = false;
+        }
+        else if (xpos >= portalui.gridSizeWidth - 1 && ypos >= portalui.gridSizeHeight - 1)
+        {
+            Portalready = true;
+            return;
+        }
+        else
+        {
+            xfine = false;
+            yfine = true;
+        }
+        if (xfine == true)
+        {
+            if (yfine == false)
+            {
+                if (ypos <= portalui.gridSizeHeight - 1)
+                {
+                    pushP.TryAdd(NumbersMason[count], indexfinder);
+                    IndexSave.Add(count);
+                    UIx.Add(xpos);
+                    UIy.Add(ypos);
+                    portalui.ItemStats(xpos, ypos);
+                    Debug.Log(xpos);
+                    Debug.Log(ypos);
+                    ypos++;
+                }
+            }
+        }
+        else
+        {
+            ypos = 0;
+            xpos++;
+            portalAdd();
+        }
+        indexfinder++;
+    }
 
     private void Portalreset()
     {
-
+        xpos = 0;
+        ypos = 0;
+        pushP.Clear();
+        UIx.Clear();
+        UIy.Clear();
+        IndexSave.Clear();
     }
 
     private void TileCheck()
