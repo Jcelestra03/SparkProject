@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public Text starText;
     public bool win;
+    public bool lose;
+    public int stars = 0;
 
-    int stars = 0;
 
     private void Awake()
     {

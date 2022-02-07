@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7502051358191358591}
   - component: {fileID: 6723056606113347167}
   - component: {fileID: 1485681911461744371}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: normal_enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 2.5
   roamSpeed: 5
-  jumpCoolDown: 0.5
+  jumpCoolDown: 2
   layerObjAvoid:
     serializedVersion: 2
     m_Bits: 81
@@ -163,7 +163,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010490179, y: -0.20874813}
+  m_Offset: {x: -0.023438424, y: -0.21479718}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -174,7 +174,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64016485, y: 0.5550018}
+  m_Size: {x: 0.63204974, y: 0.5670999}
   m_EdgeRadius: 0
 --- !u!114 &6723056606113347167
 MonoBehaviour:
@@ -190,6 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   attackRate: 1
+  trigger: 0
+  solidCollider: 1
 --- !u!114 &1485681911461744371
 MonoBehaviour:
   m_ObjectHideFlags: 0

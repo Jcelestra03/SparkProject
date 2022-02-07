@@ -63,8 +63,6 @@ public class Portal : MonoBehaviour
 
             if (collision != collision.isTrigger)
                 collision.gameObject.transform.position = partner.transform.position;
-
-            Debug.Log("teleport");
         }
     }
 

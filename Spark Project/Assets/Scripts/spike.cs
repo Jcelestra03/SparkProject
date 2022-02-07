@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class spike : MonoBehaviour
 {
+    // Object's velocity set to on impact.
     public float nockBack = 5;
+    // Damage on impact.
     public int damage = 1;
 
     private float coolDown;
 
     private void Update()
     {
+        // coolDown tiker.
         if (coolDown > 0)
             coolDown -= 1 * Time.deltaTime;
     }
 
+    // If and object enters the spikes collider it is pushed in the direction it came from and damage it applied.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && coolDown <= 0)
@@ -31,6 +35,7 @@ public class spike : MonoBehaviour
         }
     }
 
+    // If and object stays in the spikes collider it is pushed in the direction it came from and damage it applied.
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && coolDown <= 0)

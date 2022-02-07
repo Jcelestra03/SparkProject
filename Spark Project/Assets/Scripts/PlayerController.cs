@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
     public int health = 10;
     public Transform checkpoint;
 
+    // Amount of times you can respawn if set to -1 you can respawn infit times.
     [SerializeField] private int respawns = 0;
+    // Health you respawn with after you died.
     [SerializeField] private int respawnHealth = 1;
     [SerializeField] private float acceleration;
     [SerializeField] private float maxSpeed;
@@ -40,15 +42,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Respawn int: Every time the player dies the respawns int decreases if it reaches 0 and the player dies again the game gos in to the lose stat but if the respawns int is set to -1 the player has infit respawns.
         if (health <= 0 && respawns > 0 || health <= 0 && respawns == -1)
             Respawn();
         else if (health == 0 && respawns == 0)
             Dead();
 
-        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f))
-            if(Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
-                Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -0.41f, 1), Vector2.down, 0.01f).transform.gameObject);
+        // Raycast checks if a enemy is below the player and destroys it.
+        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 1), Vector2.down, 0.01f))
+            if(Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
+                Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 1), Vector2.down, 0.01f).transform.gameObject);
 
+        // Jump check.
         velocity = myRB.velocity;
 
         if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
@@ -57,8 +62,16 @@ public class PlayerController : MonoBehaviour
         myRB.velocity = velocity;
     }
 
+    // Indicates where the raycast for destroying enemies.
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position + new Vector3(0, -0.5f, 1), 0.05f);
+    }
+
     private void FixedUpdate()
     {
+        // Movement and controls
         velocity = myRB.velocity;
         velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
 
@@ -77,10 +90,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Keeps track of the last checkpoint.
         if (collision.tag == "Checkpoint")
             checkpoint = collision.transform;
     }
 
+    // If health reaches 0 player response at last checkpoint if there is no checkpoint player respons at 0.
     private void Respawn()
     {
         health = respawnHealth;
@@ -95,7 +110,6 @@ public class PlayerController : MonoBehaviour
 
     private void Dead()
     {
-        Debug.Log("dead");
-        //let the game manager know where dead
+        GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
     }
 }

@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class enemycontroller : MonoBehaviour
 {
+    // Enemy speed when aggroed.
     public float attackSpeed = 10;
+    // Enemy speed when docile.
     public float roamSpeed = 5;
+    // Amount of time between jumps.
     public float jumpCoolDown = 0.5f;
+    // When aggroed layer mask for side raycasts.
     public LayerMask layerObjAvoid;
+    // When aggroed layer mask for bottom raycasts.
     public LayerMask layerPlayer;
 
     public AudioClip EnemyDeath;
@@ -35,15 +40,19 @@ public class enemycontroller : MonoBehaviour
 
     void Update()
     {
+        // Jump cool down ticker.
         if (jumpCoolDownMule > 0)
             jumpCoolDownMule -= 1 * Time.deltaTime;
 
+        //Searches for the player in the scene if failed to find player on start.
         if (playertarget == null)
             playertarget = GameObject.FindGameObjectWithTag("Player");
 
+        // Direction swop cool down ticker.
         if (coolDown > 0)
             coolDown -= 1 * Time.deltaTime;
 
+        // When the enemy is docile raycasts are used to change direction when walking in to a wall or change direction on a cliff.
         if (!isfollowing)
         {
             if (!Physics2D.Raycast(transform.position + new Vector3(0, -0.7f, 1), Vector2.down, 0.1f))
@@ -54,8 +63,9 @@ public class enemycontroller : MonoBehaviour
 
             if (Physics2D.Raycast(transform.position + new Vector3(-0.5f, 0, 1), Vector2.left, 0.1f))
                 DirSwop();
-        }   
+        }
 
+        // When the enemy is aggroed raycasts are used to jump over obstacles to get to the player as well as jump on the players head you are able to change the layer Mask to change enemy behavior.
         if (isfollowing)
         {
             if (Physics2D.Raycast(transform.position + new Vector3(1f, 0, 1), Vector2.right, 0.1f, layerObjAvoid))
@@ -71,6 +81,7 @@ public class enemycontroller : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Locates the player and changes the enemy's direction to go tords the player if the enemy is within 0.1 of the player it will stop pursuing.
         Vector3 lookPos = playertarget.transform.position - transform.position;
         lookPos.Normalize();
         if (transform.position.x < playertarget.transform.position.x + 0.1f && transform.position.x > playertarget.transform.position.x - 0.1f)
@@ -80,6 +91,7 @@ public class enemycontroller : MonoBehaviour
         else
             pursuitDir = -1;
 
+        // Changes the enemy's speed from roaming speed to its pursuing speed.
         velocity = myRB.velocity;
 
         if (!isfollowing)
@@ -90,20 +102,24 @@ public class enemycontroller : MonoBehaviour
         myRB.velocity = velocity;
     }
 
+    // Indicates where the raycasts are.
     private void OnDrawGizmosSelected()
     {
+        // Roaming raycasts indicators.
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(transform.position + new Vector3(0.5f, 0, 1), 0.05f);
         Gizmos.DrawSphere(transform.position + new Vector3(-0.5f, 0, 1), 0.05f);
         Gizmos.DrawSphere(transform.position + new Vector3(0, -0.7f, 1), 0.05f);
 
+        // Aggro raycast indicators.
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position + new Vector3(1, 0, 1), 0.05f);
         Gizmos.DrawSphere(transform.position + new Vector3(-1, 0, 1), 0.05f);
         Gizmos.DrawSphere(transform.position + new Vector3(0, -0.41f, 1), 0.05f);
     }
 
-    //when following the player circle tirgger collider radius set to 5
+    // If trigger collides with player enemy set to aggro.
+    // When aggroed the player tirgger collider radius is set to 5.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isfollowing && (collision.gameObject.tag == "Player"))
@@ -113,7 +129,8 @@ public class enemycontroller : MonoBehaviour
         }   
     }
 
-    //when now following the player circle tirgger collider radius set to 2.5
+    // If the player leaves the trigger colliger enemy set to docile stat.
+    // When docile the player tirgger collider radius is set to 2.5.
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (isfollowing && (collision.gameObject.tag == "Player"))
@@ -122,7 +139,8 @@ public class enemycontroller : MonoBehaviour
             detector.radius = 2.5f;
         }
     }
-    
+
+    // Changes movement direction when called on and coolDown is 0.
     private void DirSwop()
     {
         if (coolDown <= 0)
@@ -142,6 +160,7 @@ public class enemycontroller : MonoBehaviour
         }
     }
 
+    // Aplies jump velocity to enemy when called on and jumpCoolDownMule is 0.
     void Jump()
     {
         velocity = myRB.velocity;

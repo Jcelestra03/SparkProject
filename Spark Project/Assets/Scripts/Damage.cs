@@ -6,6 +6,8 @@ public class Damage : MonoBehaviour
 {
     public int damage = 1;
     public float attackRate = 1;
+    public bool trigger = true;
+    public bool solidCollider = true;
 
     private bool insideT;
     private bool insideC;
@@ -33,7 +35,7 @@ public class Damage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && solidCollider)
         {
             insideC = true;
             mem = collision;
@@ -50,7 +52,7 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && trigger)
         {
             insideT = true;
             mem2 = collision;
