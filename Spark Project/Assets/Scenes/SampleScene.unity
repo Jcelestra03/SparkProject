@@ -255,7 +255,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GridControl, Assembly-CSharp
-        m_MethodName: PortalAdd
+        m_MethodName: PortalCheck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -613,6 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedItemGrid: {fileID: 0}
+  nope: 0
 --- !u!1001 &717667227
 PrefabInstance:
   m_ObjectHideFlags: 0

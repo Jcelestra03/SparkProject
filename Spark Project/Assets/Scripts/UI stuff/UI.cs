@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+
+
+
     public void OnPointerEnter(PointerEventData evenData)
     {
         GameObject.Find("Main Camera").GetComponent<GridControl>().editing = false;
@@ -16,5 +19,12 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         GameObject.Find("Main Camera").GetComponent<InvenController>().nope = false;
     }
-
+    public void SetOff()
+    {
+        this.gameObject.SetActive(true);
+    }
+    public void SetON()
+    {
+        this.gameObject.SetActive(false);
+    }
 }
