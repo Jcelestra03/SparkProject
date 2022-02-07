@@ -7,7 +7,22 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1905850903855195114}
   m_Solo: 0
@@ -65,6 +80,15 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Player_Is_Jumping
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8025520874621462682}
   m_Solo: 0
@@ -118,6 +142,15 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8308941728387196615}
@@ -185,6 +218,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Player_Is_Jumping
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1905850903855195114}
   m_Solo: 0
@@ -207,8 +246,20 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Jumping
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8308941728387196615}
@@ -219,7 +270,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -236,7 +287,16 @@ AnimatorStateTransition:
     m_ConditionEvent: Player_is_Dying
     m_EventTreshold: 0
   - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
     m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8308941728387196615}
@@ -267,12 +327,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Player_Is_Walking
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: Player_is_Dying
     m_Type: 4
     m_DefaultFloat: 0
@@ -286,6 +340,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Player_Is_Idle
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Player_Is_Walking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -311,7 +371,22 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8672655361534928461}
   m_Solo: 0
@@ -339,6 +414,15 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3866405480129042059}
@@ -391,7 +475,22 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8025520874621462682}
   m_Solo: 0
@@ -416,6 +515,18 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8672655361534928461}
@@ -477,6 +588,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Player_Is_Jumping
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 3866405480129042059}
   m_Solo: 0
@@ -505,6 +622,15 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Player_is_Dying
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8308941728387196615}
   m_Solo: 0
@@ -514,7 +640,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -526,7 +652,22 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Player_Is_Walking
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8025520874621462682}
   m_Solo: 0
@@ -595,6 +736,18 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: Player_Is_Jumping
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_is_Dying
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Building
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Player_Is_Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Player_Is_Walking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1905850903855195114}
