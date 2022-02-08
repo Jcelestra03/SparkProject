@@ -7,6 +7,7 @@ public class ExtraPlayerScript : MonoBehaviour
     public int health = 10;
     public Transform checkpoint;
     public bool canMove = true;
+    public LayerMask playerLayer;
 
     // Amount of times you can respawn if set to -1 you can respawn infit times.
     [SerializeField] private int respawns = 0;
@@ -16,8 +17,8 @@ public class ExtraPlayerScript : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpheight = 6.5f;
 
-    private bool inAir;
-    private bool faceDir;
+    public bool inAir;
+    public bool faceDir;
     private Animator anim;
     private float savedMaxSpeed;
     private float savedJumpHeight;
@@ -57,30 +58,33 @@ public class ExtraPlayerScript : MonoBehaviour
             Dead();
 
         // Raycast checks if a enemy is below the player and destroys it.
-        if (Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 1), Vector2.down, 0.01f))
-            if(Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
-                Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -0.5f, 1), Vector2.down, 0.01f).transform.gameObject);
+        if (Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f))
+            if(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
+                Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.gameObject);
 
         // Jump check.
         velocity = myRB.velocity;
 
-        if (Input.GetKeyDown(KeyCode.Space) && canMove && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
+        Debug.DrawRay(groundDetection, Vector2.down);
+
+        if (Input.GetKeyDown(KeyCode.Space) && !inAir)
         {
-            velocity.y = jumpheight;
             inAir = true;
+            velocity.y = jumpheight;
         }
 
-        if (!Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
+        else if (Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, playerLayer))
             inAir = false;
 
         myRB.velocity = velocity;
 
-        if (inAir && canMove)
+        if (inAir == true && canMove == true)
         {
             anim.SetBool("Player_Is_Jumping", true);
             anim.SetBool("Player_Is_Idle", false);
+            anim.SetBool("Player_Is_Walking", false);
         }
-        else if (inAir == false && canMove)
+        else if (inAir == false && canMove == true)
         {
             anim.SetBool("Player_Is_Jumping", false);
         }
@@ -90,7 +94,7 @@ public class ExtraPlayerScript : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position + new Vector3(0, -0.5f, 1), 0.05f);
+        Gizmos.DrawSphere(transform.position + new Vector3(0, -1.05f, 1), 0.05f);
     }
 
     private void FixedUpdate()
@@ -101,15 +105,13 @@ public class ExtraPlayerScript : MonoBehaviour
             velocity = myRB.velocity;
             velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
 
-            groundDetection = new Vector2(transform.position.x, transform.position.y - 0.5f);
+            groundDetection = new Vector2(transform.position.x, transform.position.y - 1.05f);
 
             if (velocity.x >= maxSpeed)
                 velocity.x = maxSpeed;
-            myRenderer.flipX = true;
 
             if (velocity.x <= -maxSpeed)
                 velocity.x = -maxSpeed;
-            myRenderer.flipX = false;
 
             myRB.velocity = velocity;
 
@@ -122,7 +124,7 @@ public class ExtraPlayerScript : MonoBehaviour
                     anim.SetBool("Player_Is_Walking", true);
                 }
 
-                if (faceDir)
+                if (faceDir == true)
                 {
                     myRenderer.flipX = false;
                     faceDir = false;
