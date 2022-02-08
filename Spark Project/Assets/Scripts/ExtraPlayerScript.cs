@@ -16,6 +16,7 @@ public class ExtraPlayerScript : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpheight = 6.5f;
 
+    private bool inAir;
     private bool faceDir;
     private Animator anim;
     private float savedMaxSpeed;
@@ -66,16 +67,23 @@ public class ExtraPlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && canMove && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
         {
             velocity.y = jumpheight;
-            anim.SetBool("Player_Is_Jumping", true);
+            inAir = true;
         }
 
         if (!Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
+            inAir = false;
+
+        myRB.velocity = velocity;
+
+        if (inAir && canMove)
+        {
+            anim.SetBool("Player_Is_Jumping", true);
+            anim.SetBool("Player_Is_Idle", false);
+        }
+        else if (inAir == false && canMove)
         {
             anim.SetBool("Player_Is_Jumping", false);
         }
-
-
-        myRB.velocity = velocity;
     }
 
     // Indicates where the raycast for destroying enemies.
@@ -108,7 +116,11 @@ public class ExtraPlayerScript : MonoBehaviour
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
                 // Moveing right.
-                anim.SetBool("Player_Is_Walking", true);
+                if (inAir == false)
+                {
+                    anim.SetBool("Player_Is_Idle", false);
+                    anim.SetBool("Player_Is_Walking", true);
+                }
 
                 if (faceDir)
                 {
@@ -119,8 +131,11 @@ public class ExtraPlayerScript : MonoBehaviour
             else if (Input.GetAxisRaw("Horizontal") < 0)
             {
                 // Moveing left.
-                faceDir = true;
-                anim.SetBool("Player_Is_Walking", true);
+                if (inAir == false)
+                {
+                    anim.SetBool("Player_Is_Idle", false);
+                    anim.SetBool("Player_Is_Walking", true);
+                }
 
                 if (faceDir == false)
                 {
@@ -131,8 +146,11 @@ public class ExtraPlayerScript : MonoBehaviour
             else
             {
                 // Ideal
-                anim.SetBool("Player_Is_Idle", true);
-                anim.SetBool("Player_Is_Walking", false);
+                if (inAir == false)
+                {
+                    anim.SetBool("Player_Is_Idle", true);
+                    anim.SetBool("Player_Is_Walking", false);
+                }
             }
         }
     }
@@ -160,7 +178,14 @@ public class ExtraPlayerScript : MonoBehaviour
     private void Dead()
     {
         canMove = false;
-        if (deadTime < 0)
+        anim.SetBool("Player_Is_Walking", false);
+        anim.SetBool("Player_Is_Idle", false);
+        anim.SetBool("Player_Is_Building", false);
+        anim.SetBool("Player_Is_Jumping", false);
+        anim.SetBool("Player_Is_Jumping", false);
+        anim.SetBool("Player_Is_Dying", true);
+
+        if (deadTime <= 0)
         {
             GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
         }
