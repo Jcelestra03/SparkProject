@@ -173,11 +173,16 @@ MonoBehaviour:
   health: 10
   checkpoint: {fileID: 0}
   canMove: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   respawns: 0
   respawnHealth: 1
   acceleration: 3
   maxSpeed: 6
   jumpheight: 6.5
-  PlayerDeath: {fileID: 0}
-  PlayerJump: {fileID: 0}
-  StarCollected: {fileID: 0}
+  inAir: 0
+  faceDir: 0
+  PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
+  PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
+  StarCollected: {fileID: 8300000, guid: 1c6eebe37d68bbb4c803e2b467ce83bb, type: 3}

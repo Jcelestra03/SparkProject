@@ -9,10 +9,13 @@ public class Turret : MonoBehaviour
     public float burstSpeed = 1;
     public GameObject bullet;
     public Transform shootPos;
+    public AudioClip TurretFiring;
+    public AudioClip Death;
 
     private int mag;
     private float coolDown;
     private float miniCoolDown;
+    private AudioSource speaker;
 
     private void Start()
     {

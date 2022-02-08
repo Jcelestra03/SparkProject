@@ -8,8 +8,10 @@ public class Portal : MonoBehaviour
     public int color;
     public List<object> storage;
     public List<object> localStorage;
+    public AudioClip teleportation;
 
     private SpriteRenderer sprite;
+    private AudioSource speaker;
 
     void Start()
     {

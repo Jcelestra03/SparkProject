@@ -3,7 +3,9 @@ guid: c7ddb2804d3c0e746be83f548727118c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - EnemyDeath: {fileID: 8300000, guid: c8037b9bde8b36a4587ee1cc09756a60, type: 3}
+  - WallColliding: {fileID: 8300000, guid: f6909bec1de798a4cbc0d2465d8fc0c3, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

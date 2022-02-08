@@ -3,7 +3,10 @@ guid: 69068d79dcdde4c43ac2a77ea287650d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bullet: {instanceID: 0}
+  - shootPos: {instanceID: 0}
+  - TurretFiring: {fileID: 8300000, guid: c671c9f67162085468ef0359a10ba605, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
