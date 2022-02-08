@@ -159,6 +159,7 @@ public class ExtraPlayerScript : MonoBehaviour
 
     private void Dead()
     {
+        canMove = false;
         if (deadTime < 0)
         {
             GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
