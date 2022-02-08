@@ -6,6 +6,7 @@ public class ExtraPlayerScript : MonoBehaviour
 {
     public int health = 10;
     public Transform checkpoint;
+    public bool canMove = true;
 
     // Amount of times you can respawn if set to -1 you can respawn infit times.
     [SerializeField] private int respawns = 0;
@@ -15,6 +16,8 @@ public class ExtraPlayerScript : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpheight = 6.5f;
 
+    private bool faceDir;
+    private Animator anim;
     private float savedMaxSpeed;
     private float savedJumpHeight;
     private float groundDetectDistance = 0.01f;
@@ -29,9 +32,11 @@ public class ExtraPlayerScript : MonoBehaviour
 
     private Animator myAnimator;
     private SpriteRenderer myRenderer;
+    private float deadTime = 2.24f;
 
     void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
         myRB = GetComponent<Rigidbody2D>();
         savedMaxSpeed = maxSpeed;
         savedJumpHeight = jumpheight;
@@ -42,6 +47,8 @@ public class ExtraPlayerScript : MonoBehaviour
 
     void Update()
     {
+        deadTime -= 1 * Time.deltaTime;
+
         // Respawn int: Every time the player dies the respawns int decreases if it reaches 0 and the player dies again the game gos in to the lose stat but if the respawns int is set to -1 the player has infit respawns.
         if (health <= 0 && respawns > 0 || health <= 0 && respawns == -1)
             Respawn();
@@ -56,14 +63,15 @@ public class ExtraPlayerScript : MonoBehaviour
         // Jump check.
         velocity = myRB.velocity;
 
-        if (Input.GetKeyDown(KeyCode.Space) && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
+        if (Input.GetKeyDown(KeyCode.Space) && canMove && Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
         {
             velocity.y = jumpheight;
+            anim.SetBool("Player_Is_Jumping", true);
         }
 
         if (!Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance))
         {
-
+            anim.SetBool("Player_Is_Jumping", false);
         }
 
 
@@ -80,20 +88,53 @@ public class ExtraPlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         // Movement and controls
-        velocity = myRB.velocity;
-        velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
+        if (canMove)
+        {
+            velocity = myRB.velocity;
+            velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
 
-        groundDetection = new Vector2(transform.position.x, transform.position.y - 0.5f);
+            groundDetection = new Vector2(transform.position.x, transform.position.y - 0.5f);
 
-        if (velocity.x >= maxSpeed)
-            velocity.x = maxSpeed;
+            if (velocity.x >= maxSpeed)
+                velocity.x = maxSpeed;
             myRenderer.flipX = true;
 
-        if (velocity.x <= -maxSpeed)
-            velocity.x = -maxSpeed;
+            if (velocity.x <= -maxSpeed)
+                velocity.x = -maxSpeed;
             myRenderer.flipX = false;
 
-        myRB.velocity = velocity;
+            myRB.velocity = velocity;
+
+            if (Input.GetAxisRaw("Horizontal") > 0)
+            {
+                // Moveing right.
+                anim.SetBool("Player_Is_Walking", true);
+
+                if (faceDir)
+                {
+                    myRenderer.flipX = false;
+                    faceDir = false;
+                }
+            }
+            else if (Input.GetAxisRaw("Horizontal") < 0)
+            {
+                // Moveing left.
+                faceDir = true;
+                anim.SetBool("Player_Is_Walking", true);
+
+                if (faceDir == false)
+                {
+                    myRenderer.flipX = true;
+                    faceDir = true;
+                }
+            }
+            else
+            {
+                // Ideal
+                anim.SetBool("Player_Is_Idle", true);
+                anim.SetBool("Player_Is_Walking", false);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -118,6 +159,9 @@ public class ExtraPlayerScript : MonoBehaviour
 
     private void Dead()
     {
-        GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
+        if (deadTime < 0)
+        {
+            GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
+        }
     }
 }
