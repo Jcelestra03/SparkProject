@@ -20,12 +20,12 @@ public class GridControl : MonoBehaviour
     List<Vector3> NumbersMason = new List<Vector3>();
     public GameObject[] tileprefabs;
     // Partners // Vectors // Placement
-    public Dictionary<Vector3, Vector3> partners;
-    public Dictionary<Vector3,int> pushP; //clear
-    //public Dictionary<int, int> gridUI; // later turn into 2 Lists;?
-    List<int> UIx = new List<int>(); //clear
-    List<int> UIy = new List<int>(); //clear
-    List<int> IndexSave = new List<int>(); //clear
+    //public Dictionary<Vector3, Vector3> partners;// TURNED INTO 2 LISTS
+    public Dictionary<int,Vector3> pushP; //reset
+    public Dictionary<Vector2Int, int> gridUI;
+    List<int> IndexSave = new List<int>(); //reset
+    List<Vector3> Partner1 = new List<Vector3>(); //reset
+    List<Vector3> Partner2 = new List<Vector3>(); //reset
 ////          ,^,           ,^,
 /////         / \___________/ \
 /////        ||               ||
@@ -33,7 +33,10 @@ public class GridControl : MonoBehaviour
 //         //         V         \\
 //        //    ^ ^ ^ ^ ^ ^ ^    \\
 //       //  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \\
-    gridManager grid;   
+    gridManager grid;
+    private bool partnering;
+    private bool p1;
+    private bool p2;
     private bool outof;
     public bool editing;
 
@@ -52,8 +55,8 @@ public class GridControl : MonoBehaviour
         blockchange = 2;
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
-        partners = new Dictionary<Vector3, Vector3>();
-        pushP = new Dictionary<Vector3, int>();
+        pushP = new Dictionary<int, Vector3>();
+        gridUI = new Dictionary<Vector2Int,int >();
         
         editing = true;
     }
@@ -66,64 +69,62 @@ public class GridControl : MonoBehaviour
                 editing = true;
             }
         }
-        //
-        if (editing == true)
+        if (Portalready == false)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                blockchange = blockchange + 1;
-                if (blockchange >= tileprefabs.Length)
-                {
-                    blockchange = 0;
-                }
-                Debug.Log(tileprefabs[blockchange]);
-            }
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
-                Vector3 here = TargetTilemap.CellToWorld(clickPosition);
-                Vector3 outbounds;
-                outbounds = new Vector3(0, 0, 0);
 
-                if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
+            //
+            if (editing == true)
+            {
+                if (Input.GetKeyDown(KeyCode.R))
                 {
-                    outof = true;                   
-                }
-                else
-                {
-                    outof = false;                   
-                }
-                if (!outof)
-                {
-                    if (entail.TryAdd(here, blockchange) == true)
+                    blockchange = blockchange + 1;
+                    if (blockchange >= tileprefabs.Length)
                     {
-                        if (blockchange == 7)
-                        {
-                            //if(2 portals exist) - UI menu(portal) is avalible;
-                            
-                            // list or dictoary place key, leave value open/null;
+                        blockchange = 0;
+                    }
+                    Debug.Log(tileprefabs[blockchange]);
+                }
 
-                            //Force camera to spot World to cell 
-                            //UI choose partner 
-                            //dictionary.portal-ADD(here, int"partner")
-                        }
-                        tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-                        NumbersMason.Add(here);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
+                    Vector3 here = TargetTilemap.CellToWorld(clickPosition);
+                    Vector3 outbounds;
+                    outbounds = new Vector3(0, 0, 0);
+
+                    if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
+                    {
+                        outof = true;
                     }
                     else
                     {
-                        entail[here] = blockchange;
-                        tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-
+                        outof = false;
                     }
-                    //portalcheck();
-                }
+                    if (!outof)
+                    {
+                        if (entail.TryAdd(here, blockchange) == true)
+                        {
+                            if (blockchange == 7)
+                            {
 
+                            }
+                            tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                            NumbersMason.Add(here);
+                        }
+                        else
+                        {
+                            entail[here] = blockchange;
+                            tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+
+                        }
+                    }
+
+                }
             }
+            //
         }
-        //
         //dropper(copy)
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -138,7 +139,6 @@ public class GridControl : MonoBehaviour
         }
         if ( Input.GetKeyDown(KeyCode.T))
         {
-            //portalcheck();
             startb();
         }
     }
@@ -147,6 +147,7 @@ public class GridControl : MonoBehaviour
     {
         Portalreset();
         count = 0;
+        indexfinder = 0;
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
@@ -158,10 +159,12 @@ public class GridControl : MonoBehaviour
             }
             count++;
         }
-        indexfinder = 0;
+        
     }
     public void portalAdd()
     {
+        Vector2 positionOnGrid = new Vector2();
+        Vector2Int tileGet = new Vector2Int();
         if (xpos <= portalui.gridSizeWidth - 1 && ypos <= portalui.gridSizeHeight - 1)
         {
             xfine = true;
@@ -177,23 +180,27 @@ public class GridControl : MonoBehaviour
             xfine = false;
             yfine = true;
         }
+        //
         if (xfine == true)
         {
             if (yfine == false)
             {
                 if (ypos <= portalui.gridSizeHeight - 1)
                 {
-                    pushP.TryAdd(NumbersMason[count], indexfinder);
+                    pushP.TryAdd(indexfinder, NumbersMason[count]);
                     IndexSave.Add(count);
-                    UIx.Add(xpos);
-                    UIy.Add(ypos);
+                    //UI
                     portalui.ItemStats(xpos, ypos);
-                    Debug.Log(xpos);
-                    Debug.Log(ypos);
+                    positionOnGrid.x = xpos;
+                    positionOnGrid.y = ypos;
+                    tileGet.x = xpos;
+                    tileGet.y = ypos;
+                    gridUI.TryAdd(tileGet, indexfinder);
                     ypos++;
                 }
             }
         }
+        //
         else
         {
             ypos = 0;
@@ -202,16 +209,45 @@ public class GridControl : MonoBehaviour
         }
         indexfinder++;
     }
-
+    public void PP(Vector2Int position) // portal partner
+    {
+        //partners are determined by index in lists
+        gridUI.TryGetValue(position, out int portal);
+        pushP.TryGetValue(portal, out Vector3 highlight);
+        partnering = true;
+        if(p1 == false && p2 == false)
+        {
+            Partner1.Add(highlight);
+            p1 = true;
+        }
+        if(p1 == true && p2 == false)
+        {
+            Partner2.Add(highlight);
+                p2 = true;
+        }
+        if(p1 == true && p2 == true)
+        {
+            partnering = false;
+        }
+        Portalready = true;
+    }
     private void Portalreset()
     {
         xpos = 0;
         ypos = 0;
+        indexfinder = 0;
         pushP.Clear();
-        UIx.Clear();
-        UIy.Clear();
         IndexSave.Clear();
+        Partner1.Clear();
+        Partner2.Clear();
+        p1 = false;
+        p2 = false;
+        foreach (Transform child in GameObject.Find("PortalGrid").transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
+
 
     private void TileCheck()
     {
@@ -227,6 +263,12 @@ public class GridControl : MonoBehaviour
                 Vector3 Posit;
                 Posit = new Vector3(.5f, .5f, 0);
                 placed.GetComponent<Transform>().position = NumbersMason[count] + Posit;
+            }
+            else
+            {
+                //instanciate gameobejct 
+                //when instanciated set partners
+                //change color
             }
             count++;
         }
