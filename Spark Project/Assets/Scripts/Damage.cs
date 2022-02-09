@@ -22,13 +22,15 @@ public class Damage : MonoBehaviour
 
         if (coolDown <= 0 && insideT)
         {
-            mem2.transform.GetComponent<PlayerController>().health -= damage;
+            mem2.transform.GetComponent<ExtraPlayerScript>().health -= damage;
+            mem.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 1f;
         }
 
         if (coolDown <= 0 && insideC)
         {
-            mem.transform.GetComponent<PlayerController>().health -= damage;
+            mem.transform.GetComponent<ExtraPlayerScript>().health -= damage;
+            mem.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 1f;
         }
     }

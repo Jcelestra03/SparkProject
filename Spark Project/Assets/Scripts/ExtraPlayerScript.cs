@@ -8,6 +8,7 @@ public class ExtraPlayerScript : MonoBehaviour
     public Transform checkpoint;
     public bool canMove = true;
     public LayerMask groundLayer;
+    public bool damageDone;
 
     // Amount of times you can respawn if set to -1 you can respawn infit times.
     [SerializeField] private int respawns = 0;
@@ -17,8 +18,8 @@ public class ExtraPlayerScript : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float jumpheight = 6.5f;
 
-    public bool inAir;
-    public bool faceDir;
+    private bool inAir;
+    private bool faceDir;
     private Animator anim;
     private float savedMaxSpeed;
     private float savedJumpHeight;
@@ -35,6 +36,7 @@ public class ExtraPlayerScript : MonoBehaviour
     private Animator myAnimator;
     private SpriteRenderer myRenderer;
     private float deadTime = 2.24f;
+    public float damageTicker;
 
     void Start()
     {
@@ -49,6 +51,20 @@ public class ExtraPlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (damageDone)
+        {
+            damageTicker = 0.1f;
+            myRenderer.color = Color.red;
+            damageDone = false;
+        }
+
+        if (damageTicker > 0)
+        {
+            damageTicker -= 1f * Time.deltaTime;
+        }
+        else
+            myRenderer.color = Color.white;
+
         deadTime -= 1 * Time.deltaTime;
 
         // Respawn int: Every time the player dies the respawns int decreases if it reaches 0 and the player dies again the game gos in to the lose stat but if the respawns int is set to -1 the player has infit respawns.
@@ -62,33 +78,21 @@ public class ExtraPlayerScript : MonoBehaviour
             if(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
                 Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.gameObject);
 
-       
-    }
-
-    // Indicates where the raycast for destroying enemies.
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position + new Vector3(0, -1.0f, 1), 0.05f);
-    }
-
-    private void FixedUpdate()
-    {
         // Jump check.
         velocity = myRB.velocity;
-
-        Debug.DrawRay(groundDetection, Vector2.down);
 
         if (Input.GetKeyDown(KeyCode.Space) && !inAir)
         {
             inAir = true;
             velocity.y = jumpheight;
         }
-        else if (Physics2D.Raycast(groundDetection, Vector2.down, 0.01f, groundLayer))
+        else if (Physics2D.Raycast(groundDetection, Vector2.down, 0.001f, groundLayer))
         {
             inAir = false;
             Debug.Log(Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, groundLayer).transform.gameObject);
         }
+        else
+            inAir = true;
 
         myRB.velocity = velocity;
 
@@ -102,7 +106,17 @@ public class ExtraPlayerScript : MonoBehaviour
         {
             anim.SetBool("Player_Is_Jumping", false);
         }
+    }
 
+    // Indicates where the raycast for destroying enemies.
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position + new Vector3(0, -1.0f, 1), 0.05f);
+    }
+
+    private void FixedUpdate()
+    {
         // Movement and controls
         if (canMove)
         {
@@ -183,13 +197,10 @@ public class ExtraPlayerScript : MonoBehaviour
 
     private void Dead()
     {
+        Debug.Log("dead");
+
         canMove = false;
-        anim.SetBool("Player_Is_Walking", false);
-        anim.SetBool("Player_Is_Idle", false);
-        anim.SetBool("Player_Is_Building", false);
-        anim.SetBool("Player_Is_Jumping", false);
-        anim.SetBool("Player_Is_Jumping", false);
-        anim.SetBool("Player_Is_Dying", true);
+        anim.SetBool("Player_is_Dying", true);
 
         if (deadTime <= 0)
         {

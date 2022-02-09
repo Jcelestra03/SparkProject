@@ -30,7 +30,8 @@ public class spike : MonoBehaviour
             collision.transform.GetComponent<Rigidbody2D>().velocity = temp;
 
 
-            collision.transform.GetComponent<PlayerController>().health -= damage;
+            collision.transform.GetComponent<ExtraPlayerScript>().health -= damage;
+            collision.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 0.1f;
         }
     }
@@ -46,7 +47,8 @@ public class spike : MonoBehaviour
 
             collision.transform.GetComponent<Rigidbody2D>().velocity = temp;
 
-            collision.transform.GetComponent<PlayerController>().health -= damage;
+            collision.transform.GetComponent<ExtraPlayerScript>().health -= damage;
+            collision.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 0.1f;
         }
     }

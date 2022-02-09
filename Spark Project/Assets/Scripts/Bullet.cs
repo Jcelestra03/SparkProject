@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     public Rigidbody2D RB;
     public int dir;
+    public float bounds = 400;
 
     private void FixedUpdate()
     {
@@ -21,7 +22,12 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Player")
-            collision.gameObject.GetComponent<PlayerController>().health -= damage;
+        {
+            collision.gameObject.GetComponent<ExtraPlayerScript>().health -= damage;
+            collision.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
+        }
+            
+
 
         if (collision.transform.tag != "Bullet")
             Destroy(gameObject);
@@ -29,7 +35,7 @@ public class Bullet : MonoBehaviour
 
     void Bounds()
     {
-        if (transform.position.x > 400 || transform.position.y > 400 || transform.position.z > 400 || transform.position.x < -400 || transform.position.y < -400|| transform.position.z < -400)
+        if (transform.position.x > bounds || transform.position.y > bounds || transform.position.z > bounds || transform.position.x < -bounds || transform.position.y < -bounds || transform.position.z < -bounds)
             Destroy(gameObject);
     }
 }
