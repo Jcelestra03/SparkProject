@@ -16,7 +16,7 @@ public class PortalUI : MonoBehaviour
     public int gridSizeHeight = 2;
 
     [SerializeField] GameObject inventoryItemPrefab;
-
+    //
     public void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -25,17 +25,14 @@ public class PortalUI : MonoBehaviour
         
         //PlaceItem(inventoryitem, 1, 1);
     }
-
     private void Init(int width, int height)
     {
         inventoryItemSlot = new InventoryItem[width, height];
         Vector2 size = new Vector2(width * tileSizewidth, height * tileSizeheight);
         rectTransform.sizeDelta = size;
     }
-
     Vector2 positionOnTheGrid = new Vector2();
     Vector2Int tileGridPosition = new Vector2Int();
-
     public Vector2Int GetTileGridPosition(Vector2 mousePosition)
     {
         positionOnTheGrid.x = mousePosition.x - rectTransform.position.x;
@@ -46,6 +43,7 @@ public class PortalUI : MonoBehaviour
 
         return tileGridPosition;
     }
+    //
 
     public void ItemStats(int PosX, int PosY)
     {

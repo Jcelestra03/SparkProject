@@ -8,14 +8,9 @@ public class GridControl : MonoBehaviour
 {
     [SerializeField] Tilemap TargetTilemap;
     [SerializeField] tilesmanager tiles;
-    
-
     public PortalUI portalui;
-
     private int blockchange;
     private int count; 
-    
-
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
     public GameObject[] tileprefabs;
@@ -38,19 +33,14 @@ public class GridControl : MonoBehaviour
     private bool p1;
     private bool p2;
     private bool outof;
-
-
     public bool editing;
     private bool gamestart;
-
     private bool xfine;
     private bool yfine;
     private int xpos;
     private int ypos;
     private int indexfinder;
     private bool Portalready;
- 
-
     private void Start()
     {
         xpos = 0;
@@ -60,9 +50,7 @@ public class GridControl : MonoBehaviour
         NumbersMason = new List<Vector3>();
         pushP = new Dictionary<int, Vector3>();
         gridUI = new Dictionary<Vector2Int,int >();
-        
         editing = true;
-
     }
     public void Update()
     {
@@ -79,8 +67,6 @@ public class GridControl : MonoBehaviour
         else if(gamestart == false) { editing = true; }
         if (Portalready == false)
         {
-
-
             //
             if (editing == true)
             {
@@ -93,7 +79,6 @@ public class GridControl : MonoBehaviour
                     }
                     Debug.Log(tileprefabs[blockchange]);
                 }
-
                 if (Input.GetMouseButtonDown(0))
                 {
                     Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -101,7 +86,6 @@ public class GridControl : MonoBehaviour
                     Vector3 here = TargetTilemap.CellToWorld(clickPosition);
                     Vector3 outbounds;
                     outbounds = new Vector3(0, 0, 0);
-
                     if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
                     {
                         outof = true;
@@ -138,14 +122,12 @@ public class GridControl : MonoBehaviour
         {
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
-
             Vector3 here = TargetTilemap.CellToWorld(clickPosition);
-
             entail.TryGetValue(here, out int block);
             blockchange = block;
             Debug.Log(tileprefabs[blockchange]);
         }
-    }
+    } // checks for when tiles are placed and updates lists and dictionaries 
 
 
     public void PortalCheck()
@@ -160,12 +142,11 @@ public class GridControl : MonoBehaviour
             {
                 //placement on UI//
                 portalAdd();
-                
             }
             count++;
         }
         
-    }
+    }//checks for amount of portals, >>>portalAdd
     public void portalAdd()
     {
         Vector2 positionOnGrid = new Vector2();
@@ -213,7 +194,7 @@ public class GridControl : MonoBehaviour
             portalAdd();
         }
         indexfinder++;
-    }
+    }//Adds portals to UIgrid and Lists and Dictionaries
     public void PP(Vector2Int position) // portal partner part 1
     {
         int count = 0;
@@ -248,6 +229,22 @@ public class GridControl : MonoBehaviour
         }
         
     }
+    public void PP2() //portal partnering part 2
+    {
+        int count = 0;
+        if(Partner1 == null) { return; }
+        if(Partner1.Count == Partner2.Count)
+        {
+            while(count <= Partner1.Count-1)
+            {
+                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
+                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
+                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
+                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().color = 2;
+                count++;
+            }
+        }
+    }
     private void Portalreset()
     {
         xpos = 0;
@@ -263,9 +260,7 @@ public class GridControl : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
-    }
-
-
+    } // on portal check button hard reset everything
     private void TileCheck()
     {
         int count = 0;
@@ -291,23 +286,8 @@ public class GridControl : MonoBehaviour
             }
             count++;
         }
-    }
-    public void PP2() //portal partnering part 2
-    {
-        int count = 0;
-        if(Partner1 == null) { return; }
-        if(Partner1.Count == Partner2.Count)
-        {
-            while(count <= Partner1.Count-1)
-            {
-                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
-                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
-                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
-                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().color = 2;
-                count++;
-            }
-        }
-    }
+    } // spawns all known tiles
+    
     public void editMode()
     {
         gamestart = false;
@@ -323,5 +303,4 @@ public class GridControl : MonoBehaviour
         //portal partner function 
         PP2();
     }
-
 }

@@ -7,15 +7,12 @@ public class InvenController : MonoBehaviour
     public PortalUI selectedItemGrid;
     public GridControl grid;
     public bool nope; 
-
-
     public void Update()
     {
         if(selectedItemGrid == null) { return; }
         if(Input.GetMouseButtonDown(0))
         {
-            grid.PP(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
-            
+            grid.PP(selectedItemGrid.GetTileGridPosition(Input.mousePosition));  
         }
     }
 }
