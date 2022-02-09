@@ -16,6 +16,7 @@ public class PortalUI : MonoBehaviour
     public int gridSizeHeight = 2;
 
     [SerializeField] GameObject inventoryItemPrefab;
+    private GameObject button;
     //
     public void Start()
     {
@@ -63,5 +64,11 @@ public class PortalUI : MonoBehaviour
         position.y = -(posY * 90 + 90 / 2);
 
         rectTransform.localPosition = position;
+    }
+    public void ButtonRestart()
+    {
+        button = GameObject.Find("Pfront");
+        button.GetComponent<Button>().interactable = false;
+        button.GetComponent<Button>().interactable = true;
     }
 }

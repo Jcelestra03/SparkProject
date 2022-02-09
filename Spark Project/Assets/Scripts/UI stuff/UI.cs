@@ -38,6 +38,7 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnPointerExit(PointerEventData evenData)
     {
+        GameObject.Find("Main Camera").GetComponent<GridControl>().editing = true;
         GameObject.Find("Main Camera").GetComponent<InvenController>().nope = false;
     }
     public void SetOff()

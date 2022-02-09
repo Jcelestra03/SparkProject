@@ -16,7 +16,7 @@ public class destroythis : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Main Camera").GetComponent<GridControl>().editing == true)
+        if (GameObject.Find("Main Camera").GetComponent<GridControl>().gamestart == false)
         {
             Debug.Log("Long Live ");
             Death();

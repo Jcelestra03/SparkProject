@@ -34,7 +34,7 @@ public class GridControl : MonoBehaviour
     private bool p2;
     private bool outof;
     public bool editing;
-    private bool gamestart;
+    public bool gamestart;
     private bool xfine;
     private bool yfine;
     private int xpos;
@@ -64,7 +64,7 @@ public class GridControl : MonoBehaviour
                 }
             }
         }
-        else if(gamestart == false) { editing = true; }
+        else if(gamestart == false && GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false) { editing = true; }
         if (Portalready == false)
         {
             //

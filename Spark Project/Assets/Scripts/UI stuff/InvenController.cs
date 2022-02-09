@@ -6,7 +6,12 @@ public class InvenController : MonoBehaviour
 {
     public PortalUI selectedItemGrid;
     public GridControl grid;
-    public bool nope; 
+    public bool nope;
+
+    private void Awake()
+    {
+        grid = GameObject.Find("Main Camera").GetComponent<GridControl>();
+    }
     public void Update()
     {
         if(selectedItemGrid == null) { return; }
