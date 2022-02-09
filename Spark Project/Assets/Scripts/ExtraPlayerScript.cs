@@ -7,7 +7,7 @@ public class ExtraPlayerScript : MonoBehaviour
     public int health = 10;
     public Transform checkpoint;
     public bool canMove = true;
-    public LayerMask playerLayer;
+    public LayerMask groundLayer;
 
     // Amount of times you can respawn if set to -1 you can respawn infit times.
     [SerializeField] private int respawns = 0;
@@ -62,6 +62,18 @@ public class ExtraPlayerScript : MonoBehaviour
             if(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
                 Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.gameObject);
 
+       
+    }
+
+    // Indicates where the raycast for destroying enemies.
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position + new Vector3(0, -1.0f, 1), 0.05f);
+    }
+
+    private void FixedUpdate()
+    {
         // Jump check.
         velocity = myRB.velocity;
 
@@ -72,9 +84,11 @@ public class ExtraPlayerScript : MonoBehaviour
             inAir = true;
             velocity.y = jumpheight;
         }
-
-        else if (Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, playerLayer))
+        else if (Physics2D.Raycast(groundDetection, Vector2.down, 0.01f, groundLayer))
+        {
             inAir = false;
+            Debug.Log(Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, groundLayer).transform.gameObject);
+        }
 
         myRB.velocity = velocity;
 
@@ -88,24 +102,14 @@ public class ExtraPlayerScript : MonoBehaviour
         {
             anim.SetBool("Player_Is_Jumping", false);
         }
-    }
 
-    // Indicates where the raycast for destroying enemies.
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position + new Vector3(0, -1.05f, 1), 0.05f);
-    }
-
-    private void FixedUpdate()
-    {
         // Movement and controls
         if (canMove)
         {
             velocity = myRB.velocity;
             velocity.x += Input.GetAxisRaw("Horizontal") * acceleration * Time.deltaTime;
 
-            groundDetection = new Vector2(transform.position.x, transform.position.y - 1.05f);
+            groundDetection = new Vector2(transform.position.x, transform.position.y - 1.0f);
 
             if (velocity.x >= maxSpeed)
                 velocity.x = maxSpeed;

@@ -242,6 +242,8 @@ MonoBehaviour:
   burstSpeed: 0.5
   bullet: {fileID: 2544661338738874913, guid: 1456d4200e9e56445a789b3c5d5c58c1, type: 3}
   shootPos: {fileID: 806558963}
+  TurretFiring: {fileID: 0}
+  Death: {fileID: 0}
 --- !u!212 &173659960
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -778,6 +780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partner: {fileID: 0}
   color: 1
+  teleportation: {fileID: 0}
 --- !u!212 &747043591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -978,8 +981,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3417032853124160093, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417032853124160093, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
       propertyPath: playerLayer.m_Bits
-      value: 183
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9062621925598449455, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
