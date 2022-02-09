@@ -13,8 +13,7 @@ public class tilesmanager : MonoBehaviour
     Tilemap tilemap;
 
     gridManager grid;
-    public int Xgrid;
-    public int Ygrid;
+
     
     [SerializeField] TileSet tileSet;
     
@@ -22,7 +21,7 @@ public class tilesmanager : MonoBehaviour
     {
         tilemap = GetComponent<Tilemap>();
         grid = GetComponent<gridManager>();
-        grid.Init(Xgrid, Ygrid);
+        grid.Init(100, 100);
         //Set(1, 1, 2);
         //Set(1, 2, 2);
         //Set(2, 1, 2);
