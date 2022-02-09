@@ -82,15 +82,18 @@ public class enemycontroller : MonoBehaviour
     void FixedUpdate()
     {
         // Locates the player and changes the enemy's direction to go tords the player if the enemy is within 0.1 of the player it will stop pursuing.
-        Vector3 lookPos = playertarget.transform.position - transform.position;
-        lookPos.Normalize();
-        if (transform.position.x < playertarget.transform.position.x + 0.1f && transform.position.x > playertarget.transform.position.x - 0.1f)
-            pursuitDir = 0;
-        else if (lookPos.x == Mathf.Abs(lookPos.x))
-            pursuitDir = 1;
+        if (playertarget == null) { return; }
         else
-            pursuitDir = -1;
-
+        {
+            Vector3 lookPos = playertarget.transform.position - transform.position;
+            lookPos.Normalize();
+            if (transform.position.x < playertarget.transform.position.x + 0.1f && transform.position.x > playertarget.transform.position.x - 0.1f)
+                pursuitDir = 0;
+            else if (lookPos.x == Mathf.Abs(lookPos.x))
+                pursuitDir = 1;
+            else
+                pursuitDir = -1;
+        }
         // Changes the enemy's speed from roaming speed to its pursuing speed.
         velocity = myRB.velocity;
 

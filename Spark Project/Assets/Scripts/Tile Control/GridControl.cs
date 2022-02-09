@@ -76,6 +76,7 @@ public class GridControl : MonoBehaviour
                 }
             }
         }
+        else if(gamestart == false) { editing = true; }
         if (Portalready == false)
         {
 
