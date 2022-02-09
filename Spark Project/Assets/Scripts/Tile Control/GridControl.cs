@@ -38,6 +38,8 @@ public class GridControl : MonoBehaviour
     private bool p1;
     private bool p2;
     private bool outof;
+
+
     public bool editing;
 
     private bool xfine;
@@ -290,6 +292,7 @@ public class GridControl : MonoBehaviour
     public void PP2() //portal partnering part 2
     {
         int count = 0;
+        if(Partner1 == null) { return; }
         if(Partner1.Count == Partner2.Count)
         {
             while(count <= Partner1.Count-1)
@@ -302,21 +305,18 @@ public class GridControl : MonoBehaviour
             }
         }
     }
+    public void editMode()
+    {
+        editing = true;
+        //self Destruction
+    }
     public void startb()
     {
+        editing = false;
         //if Portalready == true
         TileCheck();
         //portal partner function 
         PP2();
-        if (editing == false)
-        {
-            editing = true;
-            //Self Destruction 
-        }
-        else
-        {
-            editing = false;
-        }
     }
 
 }

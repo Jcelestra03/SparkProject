@@ -7,9 +7,28 @@ using UnityEngine.EventSystems;
 
 public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private Vector2 OGpos;
+    private Vector3 Newpos;
+    private RectTransform rectTransform;
+    GameManager gamemanager;
 
+    private void Start()
+    {
+        gamemanager = GameObject.Find("moveUI").GetComponent<GameManager>();
+        Newpos = GameObject.Find("moveUI").GetComponent<Transform>().position;
+        rectTransform = this.GetComponent<RectTransform>();
+        OGpos = rectTransform.position;
+        gamemanager.UIlist(this.gameObject);
+    }
+    public void UIOFF()
+    {
+        rectTransform.position = Newpos;
+    }
 
-
+    public void UION()
+    {
+        rectTransform.position = OGpos;
+    }
     public void OnPointerEnter(PointerEventData evenData)
     {
         GameObject.Find("Main Camera").GetComponent<GridControl>().editing = false;
