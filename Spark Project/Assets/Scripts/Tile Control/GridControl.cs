@@ -41,6 +41,7 @@ public class GridControl : MonoBehaviour
 
 
     public bool editing;
+    private bool gamestart;
 
     private bool xfine;
     private bool yfine;
@@ -61,14 +62,18 @@ public class GridControl : MonoBehaviour
         gridUI = new Dictionary<Vector2Int,int >();
         
         editing = true;
+
     }
     public void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (gamestart == true)
         {
-            if (GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false)
+            if (Input.GetMouseButtonDown(0))
             {
-                editing = true;
+                if (GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false)
+                {
+                    editing = true;
+                }
             }
         }
         if (Portalready == false)
@@ -304,11 +309,13 @@ public class GridControl : MonoBehaviour
     }
     public void editMode()
     {
+        gamestart = false;
         editing = true;
         //self Destruction
     }
     public void startb()
     {
+        gamestart = true;
         editing = false;
         //if Portalready == true
         TileCheck();
