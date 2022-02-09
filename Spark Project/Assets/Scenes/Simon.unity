@@ -1250,20 +1250,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 557192058283309410, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 557192058283309410, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 557192058283309410, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.189667
+      value: 61.67
       objectReference: {fileID: 0}
     - target: {fileID: 557192058283309410, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.202
+      value: 13.36
       objectReference: {fileID: 0}
     - target: {fileID: 557192058283309410, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1297,26 +1289,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 557192058283309411, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 557192058283309411, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 557192058283309411, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 557192058283309411, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 557192058283309411, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 557192058283309414, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
       propertyPath: m_Name
       value: player
@@ -1324,18 +1296,6 @@ PrefabInstance:
     - target: {fileID: 557192058283309414, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
       propertyPath: m_Layer
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417032853124160093, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: health
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417032853124160093, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3417032853124160093, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 183
       objectReference: {fileID: 0}
     - target: {fileID: 3417032853124160093, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
       propertyPath: playerLayer.m_Bits
@@ -2453,10 +2413,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: spike (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4546723632276186460, guid: 1ccbe1187c1df1c4aae72276a505e775, type: 3}
-      propertyPath: nockBack
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4546723632276186461, guid: 1ccbe1187c1df1c4aae72276a505e775, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2500,10 +2456,6 @@ PrefabInstance:
     - target: {fileID: 4546723632276186461, guid: 1ccbe1187c1df1c4aae72276a505e775, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4546723632276186463, guid: 1ccbe1187c1df1c4aae72276a505e775, type: 3}
-      propertyPath: m_Material
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ccbe1187c1df1c4aae72276a505e775, type: 3}
@@ -3154,6 +3106,7 @@ MonoBehaviour:
   portalui: {fileID: 0}
   tileprefabs: []
   editing: 0
+  gamestart: 0
 --- !u!1 &1749661459
 GameObject:
   m_ObjectHideFlags: 0

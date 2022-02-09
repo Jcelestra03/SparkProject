@@ -51,7 +51,7 @@ public class ExtraPlayerScript : MonoBehaviour
 
     void Update()
     {
-        if (damageDone)
+        if (damageDone && !canMove)
         {
             damageTicker = 0.1f;
             myRenderer.color = Color.red;

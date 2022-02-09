@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 557192058283309414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.61, y: -6.4, z: 0}
-  m_LocalScale: {x: 1.2452751, y: 1.1618327, z: 0.7}
+  m_LocalScale: {x: 2, y: 2, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1839285672, guid: fa712521a6176bd4eb26e2f07a9d72cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -173,16 +173,16 @@ MonoBehaviour:
   health: 10
   checkpoint: {fileID: 0}
   canMove: 1
-  playerLayer:
+  groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 183
+  damageDone: 0
   respawns: 0
   respawnHealth: 1
-  acceleration: 3
+  acceleration: 10
   maxSpeed: 6
   jumpheight: 6.5
-  inAir: 0
-  faceDir: 0
   PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
   PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
   StarCollected: {fileID: 8300000, guid: 1c6eebe37d68bbb4c803e2b467ce83bb, type: 3}
+  damageTicker: 0
