@@ -139,11 +139,8 @@ public class GridControl : MonoBehaviour
             blockchange = block;
             Debug.Log(tileprefabs[blockchange]);
         }
-        if ( Input.GetKeyDown(KeyCode.T))
-        {
-            startb();
-        }
     }
+
 
     public void PortalCheck()
     {
