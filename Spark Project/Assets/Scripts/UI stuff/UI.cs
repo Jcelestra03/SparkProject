@@ -22,11 +22,13 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
     public void UIOFF()
     {
+        if (this.gameObject.name.Contains("Edit")) { return; }
         rectTransform.position = Newpos;
     }
 
     public void UION()
     {
+        if (this.gameObject.name.Contains("Edit")) { return; }
         rectTransform.position = OGpos;
     }
     public void OnPointerEnter(PointerEventData evenData)

@@ -24,16 +24,10 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-
-    public void AddPoint()
-    {
-        stars += 1;
-        starText.text = stars.ToString() + " Stars:";
-    }
     //UI script sends their gameobject name 
     //then gets added to a list 
     // upon moveUI find all instances of list.getcomponent.UI.uiOFF or uiON
-    public void UIlist(GameObject ui){ uIs.Add(ui); Debug.Log(ui); }
+    public void UIlist(GameObject ui){ uIs.Add(ui); }
 
     public void moveUI()
     {
@@ -41,8 +35,7 @@ public class GameManager : MonoBehaviour
         GameObject local;
         while (count <= uIs.Count - 1)
         {
-            local = GameObject.Find(uIs[count].ToString());
-            Debug.Log(local);
+            local = uIs[count];
             local.GetComponent<UI>().UIOFF();
             count++;
         }
@@ -55,7 +48,7 @@ public class GameManager : MonoBehaviour
         GameObject local;
         while (count <= uIs.Count - 1)
         {
-            local = GameObject.Find(uIs[count].ToString());
+            local = uIs[count];
             local.GetComponent<UI>().UION();
             count++;
         }
