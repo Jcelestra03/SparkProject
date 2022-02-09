@@ -5,7 +5,7 @@ using UnityEngine;
 public class InvenController : MonoBehaviour
 {
     public PortalUI selectedItemGrid;
-    public GridControl Hub;
+    public GridControl grid;
     public bool nope; 
 
 
@@ -14,7 +14,7 @@ public class InvenController : MonoBehaviour
         if(selectedItemGrid == null) { return; }
         if(Input.GetMouseButtonDown(0))
         {
-            Hub.PP(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
+            grid.PP(selectedItemGrid.GetTileGridPosition(Input.mousePosition));
             
         }
     }

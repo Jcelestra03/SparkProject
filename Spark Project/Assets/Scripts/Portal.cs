@@ -9,6 +9,8 @@ public class Portal : MonoBehaviour
     public List<object> storage;
     public List<object> localStorage;
     public AudioClip teleportation;
+    public Vector3 partnerName;
+    public bool partnerbool;
 
     private SpriteRenderer sprite;
     private AudioSource speaker;
@@ -16,45 +18,70 @@ public class Portal : MonoBehaviour
     void Start()
     {
         sprite = gameObject.GetComponent<SpriteRenderer>();
-
+        partnerbool = false;
         storage = new List<object>();
         localStorage = new List<object>();
 
-        switch (color)
-        {
-            case 0:
-                gameObject.name = "Portal(BLUE)";
-                partner = GameObject.Find("Portal(RED)");
-                sprite.color = Color.cyan;
-                break;
-            case 1:
-                gameObject.name = "Portal(RED)";
-                partner = GameObject.Find("Portal(BLUE)");
-                sprite.color = Color.red;
-                break;
-        }
+        //switch (color)
+        //{
+        //    case 0:
+        //        gameObject.name = "Portal(BLUE)";
+        //        partner = GameObject.Find("Portal(RED)");
+        //        sprite.color = Color.cyan;
+        //        break;
+        //    case 1:
+        //        gameObject.name = "Portal(RED)";
+        //        partner = GameObject.Find("Portal(BLUE)");
+        //        sprite.color = Color.red;
+        //        break;
+        //}
     }
 
     void Update()
     {
-        if (partner == null)
+        //if (partner == null)
+        //{
+        //    switch (color)
+        //    {
+        //        case 0:
+        //            gameObject.name = "Portal(BLUE)";
+        //            partner = GameObject.Find("Portal(RED)");
+        //            sprite.color = Color.cyan;
+        //            break;
+        //        case 1:
+        //            gameObject.name = "Portal(RED)";
+        //            partner = GameObject.Find("Portal(BLUE)");
+        //            sprite.color = Color.red;
+        //            break;
+        //    }
+        //}
+        if (partnerbool == false)
         {
-            switch (color)
-            {
-                case 0:
-                    gameObject.name = "Portal(BLUE)";
-                    partner = GameObject.Find("Portal(RED)");
-                    sprite.color = Color.cyan;
-                    break;
-                case 1:
-                    gameObject.name = "Portal(RED)";
-                    partner = GameObject.Find("Portal(BLUE)");
-                    sprite.color = Color.red;
-                    break;
-            }
+            if (partnerName == null) { return; }
+            else { partner = GameObject.Find(partnerName.ToString()); partnerbool = true; }
         }
+        else 
+        {
+            if (color == 0) { return; }
+            else
+            {
+                if (partner != null)
+                {
+                    switch (color)
+                    {
+                        case 1:
+                            gameObject.name = "Portal(BLUE)";
+                            sprite.color = Color.cyan;
+                            break;
+                        case 2:
+                            gameObject.name = "Portal(RED)";
+                            sprite.color = Color.red;
+                            break;
+                    }
+                }
+            }
+        }   
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!storage.Contains(collision.gameObject))

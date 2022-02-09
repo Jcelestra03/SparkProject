@@ -209,27 +209,39 @@ public class GridControl : MonoBehaviour
         }
         indexfinder++;
     }
-    public void PP(Vector2Int position) // portal partner
+    public void PP(Vector2Int position) // portal partner part 1
     {
+        int count = 0;
+        if(partnering == true) { count = 1; }
+        else { count = 0; }
         //partners are determined by index in lists
-        gridUI.TryGetValue(position, out int portal);
-        pushP.TryGetValue(portal, out Vector3 highlight);
-        partnering = true;
-        if(p1 == false && p2 == false)
+        if(gridUI.ContainsKey(position))
         {
-            Partner1.Add(highlight);
-            p1 = true;
-        }
-        if(p1 == true && p2 == false)
-        {
-            Partner2.Add(highlight);
+            gridUI.TryGetValue(position, out int portal);
+            pushP.TryGetValue(portal, out Vector3 highlight);
+            partnering = true;
+            if (p1 == false && p2 == false)
+            {
+                Debug.Log(portal);
+                Partner1.Add(highlight);
+                p1 = true;
+            }
+            else if (p1 == true && p2 == false)
+            {
+                Partner2.Add(highlight);
                 p2 = true;
+            }
+            if (p1 == true && p2 == true)
+            {
+                
+                Debug.Log("Partner has been made");
+                partnering = false;
+                p1 = false;
+                p2 = false;
+            }
+            count++;
         }
-        if(p1 == true && p2 == true)
-        {
-            partnering = false;
-        }
-        Portalready = true;
+        
     }
     private void Portalreset()
     {
@@ -252,7 +264,6 @@ public class GridControl : MonoBehaviour
     private void TileCheck()
     {
         int count = 0;
-        
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
@@ -266,17 +277,37 @@ public class GridControl : MonoBehaviour
             }
             else
             {
-                //instanciate gameobejct 
-                //when instanciated set partners
-                //change color
+                GameObject placed = Instantiate(tileprefabs[block]);
+                Vector3 Posit;
+                Posit = new Vector3(.5f, .5f, 0);
+                placed.GetComponent<Transform>().position = NumbersMason[count] + Posit;
+                //name change
+                placed.name = (NumbersMason[count].ToString());
             }
             count++;
         }
     }
-
+    public void PP2() //portal partnering part 2
+    {
+        int count = 0;
+        if(Partner1.Count == Partner2.Count)
+        {
+            while(count <= Partner1.Count-1)
+            {
+                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
+                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
+                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
+                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().color = 2;
+                count++;
+            }
+        }
+    }
     public void startb()
     {
+        //if Portalready == true
         TileCheck();
+        //portal partner function 
+        PP2();
         if (editing == false)
         {
             editing = true;
