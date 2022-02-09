@@ -89,7 +89,7 @@ public class ExtraPlayerScript : MonoBehaviour
         else if (Physics2D.Raycast(groundDetection, Vector2.down, 0.001f, groundLayer))
         {
             inAir = false;
-            Debug.Log(Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, groundLayer).transform.gameObject);
+            //Debug.Log(Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, groundLayer).transform.gameObject);
         }
         else
             inAir = true;
