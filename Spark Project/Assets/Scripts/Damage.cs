@@ -23,7 +23,7 @@ public class Damage : MonoBehaviour
         if (coolDown <= 0 && insideT)
         {
             mem2.transform.GetComponent<ExtraPlayerScript>().health -= damage;
-            mem.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
+            mem2.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 1f;
         }
 
