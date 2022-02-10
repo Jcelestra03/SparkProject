@@ -10,7 +10,7 @@ public class HP_item : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            collision.GetComponent<PlayerController>().health += healAmount;
+            collision.GetComponent<ExtraPlayerScript>().health += healAmount;
             Destroy(gameObject);
         }
     }

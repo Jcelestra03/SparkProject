@@ -51,7 +51,7 @@ public class ExtraPlayerScript : MonoBehaviour
 
     void Update()
     {
-        if (damageDone && !canMove)
+        if (damageDone && canMove)
         {
             damageTicker = 0.1f;
             myRenderer.color = Color.red;
@@ -81,15 +81,15 @@ public class ExtraPlayerScript : MonoBehaviour
         // Jump check.
         velocity = myRB.velocity;
 
-        if (Input.GetKeyDown(KeyCode.Space) && !inAir)
+        if (Input.GetKeyDown(KeyCode.Space) && !inAir && canMove)
         {
-            inAir = true;
             velocity.y = jumpheight;
+            inAir = true;
         }
         else if (Physics2D.Raycast(groundDetection, Vector2.down, 0.001f, groundLayer))
         {
             inAir = false;
-            //Debug.Log(Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, groundLayer).transform.gameObject);
+            Debug.Log(Physics2D.Raycast(groundDetection, Vector2.down, groundDetectDistance, groundLayer).transform.gameObject);
         }
         else
             inAir = true;
