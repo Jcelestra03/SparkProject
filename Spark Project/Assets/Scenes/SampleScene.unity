@@ -2229,6 +2229,7 @@ MonoBehaviour:
   win: 0
   lose: 0
   stars: 0
+  pause: 0
 --- !u!212 &1368459448
 SpriteRenderer:
   m_ObjectHideFlags: 0
