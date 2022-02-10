@@ -364,11 +364,11 @@ RectTransform:
   - {fileID: 1835361039}
   - {fileID: 1534148826}
   m_Father: {fileID: 262213618}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 226.51205, y: 229.83087}
+  m_AnchoredPosition: {x: 331, y: 229.83087}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &165823910
@@ -459,8 +459,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 165823914}
         m_TargetAssemblyTypeName: dropblock, Assembly-CSharp
-        m_MethodName: HandleInputData
-        m_Mode: 0
+        m_MethodName: blockchange
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -532,7 +532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e09c804665ba334d8b67ec4bfcad3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 519420034}
+  Block: 0
+  myD: {fileID: 165823910}
 --- !u!1 &238486179
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +800,7 @@ RectTransform:
   - {fileID: 908808724}
   - {fileID: 1195419409}
   - {fileID: 1854628564}
+  - {fileID: 1446762152}
   - {fileID: 165823909}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -2591,18 +2593,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446762151}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.90278417, y: 6.5061526, z: 1.1171955}
+  m_LocalScale: {x: 90.05652, y: 84.459076, z: 1.1076001}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 511696589}
-  m_Father: {fileID: 1854628564}
-  m_RootOrder: 4
+  m_Father: {fileID: 262213618}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.625, y: -2.94}
+  m_AnchoredPosition: {x: 331.91, y: 153.6}
   m_SizeDelta: {x: 2.667659, y: 3.20543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1446762153
@@ -3270,7 +3272,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1689521094}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.81333333
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3960,7 +3962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1854628564
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3977,7 +3979,6 @@ RectTransform:
   - {fileID: 1348581190}
   - {fileID: 814257703}
   - {fileID: 1307535010}
-  - {fileID: 1446762152}
   m_Father: {fileID: 262213618}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}

@@ -9,7 +9,7 @@ public class GridControl : MonoBehaviour
     [SerializeField] Tilemap TargetTilemap;
     [SerializeField] tilesmanager tiles;
     public PortalUI portalui;
-    public int blockchange = 0;
+    private int blockchange = 0;
     private int count; 
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
