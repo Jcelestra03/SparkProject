@@ -84,6 +84,7 @@ public class Portal : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(partner == null) { return; }
         if (!storage.Contains(collision.gameObject))
         {
             partner.GetComponent<Portal>().storage.Add(collision.gameObject);
@@ -97,6 +98,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (partner == null) { return; }
         if (storage.Contains(collision.gameObject) && !localStorage.Contains(collision.gameObject))
         {
             storage.Remove(collision.gameObject);

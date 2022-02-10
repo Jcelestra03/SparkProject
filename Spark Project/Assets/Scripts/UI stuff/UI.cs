@@ -14,8 +14,8 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void Start()
     {
-        gamemanager = GameObject.Find("moveUI").GetComponent<GameManager>();
-        Newpos = GameObject.Find("moveUI").GetComponent<Transform>().position;
+        gamemanager = GameObject.Find("gameManager").GetComponent<GameManager>();
+        Newpos = GameObject.Find("gameManager").GetComponent<Transform>().position;
         rectTransform = this.GetComponent<RectTransform>();
         OGpos = rectTransform.position;
         gamemanager.UIlist(this.gameObject);
