@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using TMPro;
 
 public class GridControl : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GridControl : MonoBehaviour
     List<int> IndexSave = new List<int>(); //reset
     List<Vector3> Partner1 = new List<Vector3>(); //reset
     List<Vector3> Partner2 = new List<Vector3>(); //reset
+    List<Vector3> PortalNumber = new List<Vector3>();
 ////          ,^,           ,^,
 /////         / \___________/ \
 /////        ||               ||
@@ -72,41 +74,50 @@ public class GridControl : MonoBehaviour
             //
             if (editing == true)
             {
-                blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
-                if (Input.GetMouseButton(0))
+                if (gamestart == false)
                 {
-                    Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
-                    Vector3 here = TargetTilemap.CellToWorld(clickPosition);
-                    Vector3 outbounds;
-                    outbounds = new Vector3(0, 0, 0);
-                    if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
+                    blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
+                    if (Input.GetMouseButton(0))
                     {
-                        outof = true;
-                    }
-                    else
-                    {
-                        outof = false;
-                    }
-                    if (!outof)
-                    {
-                        if (entail.TryAdd(here, blockchange) == true)
+                        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
+                        Vector3 here = TargetTilemap.CellToWorld(clickPosition);
+                        Vector3 outbounds;
+                        outbounds = new Vector3(0, 0, 0);
+                        if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
                         {
-                            if (blockchange == 7)
-                            {
-
-                            }
-                            tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-                            NumbersMason.Add(here);
+                            outof = true;
                         }
                         else
                         {
-                            entail[here] = blockchange;
-                            tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-
+                            outof = false;
                         }
-                    }
+                        if (!outof)
+                        {
+                            if (entail.TryAdd(here, blockchange) == true)
+                            {
+                                if (blockchange == 7)
+                                {
+                                    //spawn prefab on here / force name and text value; 
+                                    //or put in function reference discord
+                                }
+                                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                                NumbersMason.Add(here);
+                            }
+                            else
+                            {
+                                entail.TryGetValue(here, out int block);
+                                if(block == 7)
+                                {
+                                    //delete prefab by name
+                                }
+                                entail[here] = blockchange;
+                                tiles.Set(clickPosition.x, clickPosition.y, blockchange);
 
+                            }
+                        }
+
+                    }
                 }
             }
             //
@@ -170,7 +181,8 @@ public class GridControl : MonoBehaviour
                     pushP.TryAdd(indexfinder, NumbersMason[count]);
                     IndexSave.Add(count);
                     //UI
-                    portalui.ItemStats(xpos, ypos);
+
+                    portalui.ItemStats(xpos, ypos, indexfinder);
                     positionOnGrid.x = xpos;
                     positionOnGrid.y = ypos;
                     tileGet.x = xpos;
@@ -249,6 +261,10 @@ public class GridControl : MonoBehaviour
         }
         
     }
+    public void NumbersPortal(Vector3 here)
+    {
+
+    }
     private void Portalreset()
     {
         xpos = 0;
@@ -268,6 +284,7 @@ public class GridControl : MonoBehaviour
     private void TileCheck()
     {
         int count = 0;
+        int count2 = 1;
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
@@ -282,11 +299,15 @@ public class GridControl : MonoBehaviour
             else
             {
                 GameObject placed = Instantiate(tileprefabs[block]);
+                TextMeshPro txt;
+                txt = placed.GetComponentInChildren<TextMeshPro>();
+                txt.text = count2.ToString();
                 Vector3 Posit;
                 Posit = new Vector3(.5f, .5f, 0);
                 placed.GetComponent<Transform>().position = NumbersMason[count] + Posit;
                 //name change
                 placed.name = (NumbersMason[count].ToString());
+                count2++;
             }
             count++;
         }

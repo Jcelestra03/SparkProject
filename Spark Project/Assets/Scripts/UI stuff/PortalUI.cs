@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PortalUI : MonoBehaviour
 {
@@ -48,9 +49,13 @@ public class PortalUI : MonoBehaviour
     }
     //
 
-    public void ItemStats(int PosX, int PosY)
+    public void ItemStats(int PosX, int PosY , int index)
     {
         InventoryItem inventoryitem = Instantiate(inventoryItemPrefab).GetComponent<InventoryItem>();
+        TextMeshProUGUI txt;
+        index++;
+        txt = inventoryitem.GetComponentInChildren<TextMeshProUGUI>();
+        txt.text = index.ToString();
         PlaceItem(inventoryitem, PosX, PosY);
     }
 
@@ -75,10 +80,9 @@ public class PortalUI : MonoBehaviour
         }
         Partner1.Add(first);
         Partner2.Add(second);
+        int index = Partner1.IndexOf(first);
         GameObject RenLine = Instantiate(line, transform);
         RenLine.GetComponent<LineRen>().PlacePoints(first, second);
-
-        
     }
     public void ButtonRestart()
     {
