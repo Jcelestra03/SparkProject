@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool lose;
     public int stars = 0;
     List<GameObject> uIs = new List<GameObject>();
+    public bool pause;
 
     private void Awake()
     {
@@ -21,6 +22,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
                    
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause = !pause;
+
+            if (pause)
+                Time.timeScale = 0;
+            else
+                Time.timeScale = 1;
+
+            Debug.Log("pause");
+        }
     }
 
     // Update is called once per frame

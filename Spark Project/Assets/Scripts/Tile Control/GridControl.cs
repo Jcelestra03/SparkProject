@@ -73,7 +73,7 @@ public class GridControl : MonoBehaviour
             if (editing == true)
             {
                 blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButton(0))
                 {
                     Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);

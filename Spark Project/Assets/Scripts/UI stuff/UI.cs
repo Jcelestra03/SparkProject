@@ -20,6 +20,7 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         OGpos = rectTransform.position;
         gamemanager.UIlist(this.gameObject);
     }
+
     public void UIOFF()
     {
         if (this.gameObject.name.Contains("Edit")) { return; }

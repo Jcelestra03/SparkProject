@@ -420,11 +420,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Grid(square
+    - m_Text: Eraser
       m_Image: {fileID: 21300000, guid: c5d8ff8cd1ef9784a9fe9d0981517c48, type: 3}
     - m_Text: Conveyor
       m_Image: {fileID: 21300000, guid: 14a97d109e683f44a8e436b7548d5f92, type: 3}
-    - m_Text: Normal enemy
+    - m_Text: Enemy
       m_Image: {fileID: 1337072517, guid: f90556e5cc97cee49b0b85eae06f5cb0, type: 3}
     - m_Text: Player
       m_Image: {fileID: -1839285672, guid: fa712521a6176bd4eb26e2f07a9d72cb, type: 3}
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZoomChange: 20
-  SmoothChange: 1.5
+  SmoothChange: 5
   MinSize: 4
   MaxSize: 11
   CM: {fileID: 1255148224}
@@ -1814,7 +1814,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Grid(square
+  m_Text: Eraser
 --- !u!222 &1148293046
 CanvasRenderer:
   m_ObjectHideFlags: 0
