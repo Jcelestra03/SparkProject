@@ -11,10 +11,12 @@ public class PortalUI : MonoBehaviour
     InventoryItem[,] inventoryItemSlot;
 
     RectTransform rectTransform;
+    List<Vector3> Partner1 = new List<Vector3>(); //reset
+    List<Vector3> Partner2 = new List<Vector3>(); //reset
 
     public int gridSizeWidth = 3;
     public int gridSizeHeight = 2;
-
+    [SerializeField] GameObject line;
     [SerializeField] GameObject inventoryItemPrefab;
     private GameObject button;
     //
@@ -65,8 +67,24 @@ public class PortalUI : MonoBehaviour
 
         rectTransform.localPosition = position;
     }
+    public void linefinal(Vector3 first, Vector3 second)
+    {
+        if(Partner1 != null)
+        {
+            if (Partner1.Contains(first)) { return; }
+        }
+        Partner1.Add(first);
+        Partner2.Add(second);
+        GameObject RenLine = Instantiate(line, transform);
+        RenLine.GetComponent<LineRen>().PlacePoints(first, second);
+
+        
+    }
     public void ButtonRestart()
     {
+        Partner1.Clear();
+        Partner2.Clear();
+
         button = GameObject.Find("Pfront");
         button.GetComponent<Button>().interactable = false;
         button.GetComponent<Button>().interactable = true;

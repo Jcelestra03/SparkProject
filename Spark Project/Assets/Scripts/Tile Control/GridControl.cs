@@ -9,7 +9,7 @@ public class GridControl : MonoBehaviour
     [SerializeField] Tilemap TargetTilemap;
     [SerializeField] tilesmanager tiles;
     public PortalUI portalui;
-    private int blockchange;
+    public int blockchange = 0;
     private int count; 
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
@@ -30,6 +30,8 @@ public class GridControl : MonoBehaviour
 //       //  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \\
     gridManager grid;
     private bool partnering;
+    
+
     private bool p1;
     private bool p2;
     private bool outof;
@@ -45,7 +47,7 @@ public class GridControl : MonoBehaviour
     {
         xpos = 0;
         ypos = 0;
-        blockchange = 2;
+
         entail = new Dictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
         pushP = new Dictionary<int, Vector3>();
@@ -70,15 +72,7 @@ public class GridControl : MonoBehaviour
             //
             if (editing == true)
             {
-                if (Input.GetKeyDown(KeyCode.R))
-                {
-                    blockchange = blockchange + 1;
-                    if (blockchange >= tileprefabs.Length)
-                    {
-                        blockchange = 0;
-                    }
-                    Debug.Log(tileprefabs[blockchange]);
-                }
+                blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
                 if (Input.GetMouseButtonDown(0))
                 {
                     Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -219,7 +213,7 @@ public class GridControl : MonoBehaviour
             }
             if (p1 == true && p2 == true)
             {
-                
+                PartnerLines();
                 Debug.Log("Partner has been made");
                 partnering = false;
                 p1 = false;
@@ -244,6 +238,16 @@ public class GridControl : MonoBehaviour
                 count++;
             }
         }
+    }
+    public void PartnerLines()
+    {
+        int count = 0;
+        while (count <= Partner1.Count - 1)
+        {
+            portalui.linefinal(Partner1[count], Partner2[count]);
+            count++;
+        }
+        
     }
     private void Portalreset()
     {
