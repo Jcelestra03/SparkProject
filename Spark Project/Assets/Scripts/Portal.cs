@@ -8,7 +8,7 @@ public class Portal : MonoBehaviour
     public int color;
     public List<object> storage;
     public List<object> localStorage;
-    public AudioClip teleportation;
+    public AudioClip Teleportation;
     public Vector3 partnerName;
     public bool partnerbool;
 
@@ -93,7 +93,9 @@ public class Portal : MonoBehaviour
 
             if (collision != collision.isTrigger)
             {
-                //here
+                this.gameObject.AddComponent<AudioSource>();
+                this.GetComponent<AudioSource>().clip = Teleportation;
+                this.GetComponent<AudioSource>().Play();
                 collision.gameObject.transform.position = partner.transform.position;
             }
         }

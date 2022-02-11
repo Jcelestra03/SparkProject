@@ -10,6 +10,8 @@ public class GridControl : MonoBehaviour
     [SerializeField] Tilemap TargetTilemap;
     [SerializeField] tilesmanager tiles;
     public PortalUI portalui;
+    public AudioClip ItemPicked;
+    private AudioSource speaker;
     private int blockchange = 0;
     private int count;
     //public TextMeshPro txt;
@@ -32,6 +34,7 @@ public class GridControl : MonoBehaviour
 //         //         V         \\
 //        //    ^ ^ ^ ^ ^ ^ ^    \\
 //       //  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \\
+//                   cat
     gridManager grid;
     private bool partnering;
     
@@ -77,11 +80,14 @@ public class GridControl : MonoBehaviour
             if (editing == true)
             {
                 if (gamestart == false)
-                {
+                {   
                     blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
                     if (Input.GetMouseButton(0))
                     {
-                        //here
+                        this.gameObject.AddComponent<AudioSource>();
+                        this.GetComponent<AudioSource>().clip = ItemPicked;
+                        this.GetComponent<AudioSource>().Play();
+
                         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
                         Vector3 here = TargetTilemap.CellToWorld(clickPosition);
