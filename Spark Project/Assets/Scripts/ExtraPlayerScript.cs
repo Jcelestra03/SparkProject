@@ -35,7 +35,7 @@ public class ExtraPlayerScript : MonoBehaviour
 
     private Animator myAnimator;
     private SpriteRenderer myRenderer;
-    private float deadTime = 2.24f;
+    public float deadTime = 2.24f;
     public float damageTicker;
 
     void Start()
@@ -65,12 +65,10 @@ public class ExtraPlayerScript : MonoBehaviour
         else
             myRenderer.color = Color.white;
 
-        deadTime -= 1 * Time.deltaTime;
-
         // Respawn int: Every time the player dies the respawns int decreases if it reaches 0 and the player dies again the game gos in to the lose stat but if the respawns int is set to -1 the player has infit respawns.
         if (health <= 0 && respawns > 0 || health <= 0 && respawns == -1)
             Respawn();
-        else if (health == 0 && respawns == 0)
+        else if (health <= 0 && respawns == 0)
             Dead();
 
         // Raycast checks if a enemy is below the player and destroys it.
@@ -200,8 +198,8 @@ public class ExtraPlayerScript : MonoBehaviour
 
     private void Dead()
     {
+        deadTime -= 1 * Time.deltaTime;
         Debug.Log("dead");
-        //here
 
         canMove = false;
         anim.SetBool("Player_is_Dying", true);
@@ -209,6 +207,7 @@ public class ExtraPlayerScript : MonoBehaviour
         if (deadTime <= 0)
         {
             GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
+            Debug.Log("onfirmed dead");
         }
     }
 }

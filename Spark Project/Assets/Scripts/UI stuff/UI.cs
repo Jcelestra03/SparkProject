@@ -10,7 +10,8 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Vector2 OGpos;
     private Vector3 Newpos;
     private RectTransform rectTransform;
-    GameManager gamemanager;
+    private GameManager gamemanager;
+    
 
     private void Start()
     {
