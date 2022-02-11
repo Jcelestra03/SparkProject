@@ -8,7 +8,14 @@ public class gridManager : MonoBehaviour
     public int width;
 
     int[,] grid;
-
+    private void Awake()
+    {
+        Init(width, height);
+    }
+    private void Start()
+    {
+        //Init(width, height);
+    }
     public void Init(int width, int height)
     {
         grid = new int[width, height];

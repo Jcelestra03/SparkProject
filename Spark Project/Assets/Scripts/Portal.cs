@@ -92,7 +92,10 @@ public class Portal : MonoBehaviour
             localStorage.Add(collision.gameObject);
 
             if (collision != collision.isTrigger)
+            {
+                //here
                 collision.gameObject.transform.position = partner.transform.position;
+            }
         }
     }
 

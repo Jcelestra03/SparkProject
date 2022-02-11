@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: -1361432024865910098}
   - component: {fileID: -3276360786320848844}
   - component: {fileID: 3181897660892042401}
+  - component: {fileID: 1521119581180239934}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -270,3 +271,15 @@ MonoBehaviour:
   shootPos: {fileID: 8544204028271355199}
   TurretFiring: {fileID: 8300000, guid: c671c9f67162085468ef0359a10ba605, type: 3}
   Death: {fileID: 0}
+--- !u!114 &1521119581180239934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8646957966826044590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044d9e10d9d70744bab45634953e0caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

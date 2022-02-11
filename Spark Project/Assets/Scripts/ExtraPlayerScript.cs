@@ -75,14 +75,17 @@ public class ExtraPlayerScript : MonoBehaviour
 
         // Raycast checks if a enemy is below the player and destroys it.
         if (Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f))
-            if(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
+            if (Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
+            {
+                //here
                 Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.gameObject);
-
+            }
         // Jump check.
         velocity = myRB.velocity;
 
         if (Input.GetKeyDown(KeyCode.Space) && !inAir && canMove)
         {
+            //here
             velocity.y = jumpheight;
             inAir = true;
         }
@@ -198,6 +201,7 @@ public class ExtraPlayerScript : MonoBehaviour
     private void Dead()
     {
         Debug.Log("dead");
+        //here
 
         canMove = false;
         anim.SetBool("Player_is_Dying", true);

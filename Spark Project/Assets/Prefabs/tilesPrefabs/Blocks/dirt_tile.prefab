@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3238587210959035220}
   - component: {fileID: 1008780291824751349}
   - component: {fileID: -5283479303670546809}
+  - component: {fileID: -2855358755383883540}
   m_Layer: 0
   m_Name: dirt_tile
   m_TagString: Untagged
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2855358755383883540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316552026627129200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044d9e10d9d70744bab45634953e0caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

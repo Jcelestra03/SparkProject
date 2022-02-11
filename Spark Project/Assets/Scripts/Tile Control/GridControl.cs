@@ -11,7 +11,9 @@ public class GridControl : MonoBehaviour
     [SerializeField] tilesmanager tiles;
     public PortalUI portalui;
     private int blockchange = 0;
-    private int count; 
+    private int count;
+    //public TextMeshPro txt;
+    public GameObject mytxt;
     public Dictionary<Vector3,int> entail;
     List<Vector3> NumbersMason = new List<Vector3>();
     public GameObject[] tileprefabs;
@@ -79,6 +81,7 @@ public class GridControl : MonoBehaviour
                     blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
                     if (Input.GetMouseButton(0))
                     {
+                        //here
                         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
                         Vector3 here = TargetTilemap.CellToWorld(clickPosition);
@@ -100,6 +103,7 @@ public class GridControl : MonoBehaviour
                                 {
                                     //spawn prefab on here / force name and text value; 
                                     //or put in function reference discord
+                                    //NumbersPortal(here);
                                 }
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                                 NumbersMason.Add(here);
@@ -109,6 +113,7 @@ public class GridControl : MonoBehaviour
                                 entail.TryGetValue(here, out int block);
                                 if(block == 7)
                                 {
+                                    //NumbersPortal(here);
                                     //delete prefab by name
                                 }
                                 entail[here] = blockchange;
@@ -259,11 +264,46 @@ public class GridControl : MonoBehaviour
             portalui.linefinal(Partner1[count], Partner2[count]);
             count++;
         }
-        
+
     }
     public void NumbersPortal(Vector3 here)
     {
-
+        if (PortalNumber.Contains(here))
+        {
+            count--;
+            int index = PortalNumber.IndexOf(here);
+            //delete PortalNumber.Index;
+            PortalNumber.RemoveAt(index);
+            Destroy(GameObject.Find(here.ToString()));
+            //Delete GameObject 
+        }
+        else
+        {
+            count++;
+            TextMeshPro number;
+            PortalNumber.Add(here);
+            GameObject txt = Instantiate(mytxt);
+            //instanciate
+            txt.name = here.ToString();
+            //rename to here
+            txt.transform.position = here;
+            //transform to here
+            number = txt.GetComponent<TextMeshPro>();
+            number.text = count.ToString();
+        }
+    }
+    public void killnumbers()
+    {
+        int count = 0;
+        while(count <= PortalNumber.Count-1)
+        {
+            GameObject.Destroy(GameObject.Find(PortalNumber[count].ToString()));
+            count++;
+        }
+        //foreach(Vector3 child in PortalNumber)
+        //{
+        //    GameObject.Destroy(GameObject.Find(child.ToString()));
+        //}
     }
     private void Portalreset()
     {
@@ -321,6 +361,7 @@ public class GridControl : MonoBehaviour
     }
     public void startb()
     {
+        //killnumbers();
         gamestart = true;
         editing = false;
         //if Portalready == true

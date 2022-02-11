@@ -8,6 +8,7 @@ public class Star : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
+
             GameObject.Find("gameManager").GetComponent<GameManager>().stars++;
             Destroy(gameObject);
         }
