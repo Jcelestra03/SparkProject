@@ -71,9 +71,10 @@ public class GridControl : MonoBehaviour
                 {
                     editing = true;
                 }
+                else { editing = false; }
             }
         }
-        else if(gamestart == false && GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false) { editing = true; }
+        //else if(gamestart == false && GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false) { editing = true; }
         if (Portalready == false)
         {
             //

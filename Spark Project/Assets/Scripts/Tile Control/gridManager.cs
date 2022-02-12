@@ -10,7 +10,7 @@ public class gridManager : MonoBehaviour
     int[,] grid;
     private void Awake()
     {
-        Init(width, height);
+        //Init(width, height);
     }
     private void Start()
     {

@@ -16,11 +16,13 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject winScreen;
     public GameObject loseScreen;
+    GridControl grid;
 
     private GameObject cam;
 
     private void Awake()
     {
+        grid = GameObject.Find("Main Camera").GetComponent<GridControl>();
         instance = this;
     }
 
@@ -55,11 +57,13 @@ public class GameManager : MonoBehaviour
 
             if (pause)
             {
+                grid.editing = false;
                 Time.timeScale = 0;
                 pauseScreen.SetActive(true);
             }
             else
             {
+                grid.editing = true;
                 Time.timeScale = 1;
                 pauseScreen.SetActive(false);
             }   
