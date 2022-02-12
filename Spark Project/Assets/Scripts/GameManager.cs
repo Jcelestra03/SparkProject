@@ -47,9 +47,10 @@ public class GameManager : MonoBehaviour
             loseScreen.SetActive(true);
 
         if (cam.GetComponent<GridControl>().gamestart == false)
-            winScreen.SetActive(false);
-        else if (cam.GetComponent<GridControl>().gamestart == false)
+        {
             loseScreen.SetActive(false);
+            winScreen.SetActive(false);
+        }    
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
                 grid.editing = true;
                 Time.timeScale = 1;
                 pauseScreen.SetActive(false);
-            }   
+            } 
         }
     }
 
