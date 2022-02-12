@@ -394,6 +394,7 @@ public class GridControl : MonoBehaviour
     }
     public void startb()
     {
+        PortalCheck();
         //killnumbers();
         gamestart = true;
         editing = false;
