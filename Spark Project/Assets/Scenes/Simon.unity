@@ -806,7 +806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partner: {fileID: 0}
   color: 1
-  teleportation: {fileID: 0}
+  Teleportation: {fileID: 0}
   partnerName: {x: 0, y: 0, z: 0}
   partnerbool: 0
 --- !u!212 &747043591
@@ -1254,6 +1254,9 @@ MonoBehaviour:
   lose: 0
   stars: 0
   pause: 0
+  pauseScreen: {fileID: 0}
+  winScreen: {fileID: 0}
+  loseScreen: {fileID: 0}
 --- !u!4 &1043051389
 Transform:
   m_ObjectHideFlags: 0
@@ -2301,6 +2304,7 @@ MonoBehaviour:
   TargetTilemap: {fileID: 0}
   tiles: {fileID: 0}
   portalui: {fileID: 0}
+  ItemPicked: {fileID: 0}
   mytxt: {fileID: 0}
   tileprefabs: []
   editing: 0
@@ -2490,7 +2494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3567779904444892156, guid: 1f1f845c0f4391c4990684394150b1e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.11
+      value: 18.11
       objectReference: {fileID: 0}
     - target: {fileID: 3567779904444892156, guid: 1f1f845c0f4391c4990684394150b1e0, type: 3}
       propertyPath: m_LocalPosition.z
