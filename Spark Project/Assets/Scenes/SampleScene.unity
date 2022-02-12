@@ -567,7 +567,7 @@ MonoBehaviour:
       m_Image: {fileID: 21300000, guid: 96f0c73183557b14b98bd6320254a724, type: 3}
     - m_Text: Platform
       m_Image: {fileID: 21300000, guid: c481fd29cf1916d44b4c3ad38490ef4d, type: 3}
-    - m_Text: placeholder
+    - m_Text: Finish Tile
       m_Image: {fileID: 21300000, guid: 4f9448ba41a07e943abcadbf2186309a, type: 3}
     - m_Text: Portal
       m_Image: {fileID: -1142105252, guid: 95d431904f320004ab9d9944d6ffb051, type: 3}
@@ -1430,6 +1430,7 @@ MonoBehaviour:
   TargetTilemap: {fileID: 2093333880}
   tiles: {fileID: 1840677037}
   portalui: {fileID: 908808725}
+  ItemPicked: {fileID: 0}
   mytxt: {fileID: 84075620016515909, guid: b592bfb23337149459732ee7a75506d5, type: 3}
   tileprefabs:
   - {fileID: 585115398270043598, guid: 29129f88eeb89d842be4414ac76e423a, type: 3}
@@ -1438,7 +1439,7 @@ MonoBehaviour:
   - {fileID: 557192058283309414, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
   - {fileID: 6713205996864296210, guid: 91bc0e8ef23105e4788f329ce94e1f04, type: 3}
   - {fileID: 6265448574642313764, guid: 62e03d770f21c10479826e7bce8ac146, type: 3}
-  - {fileID: 2124455934462649159, guid: e5452065a9a61794b873cca3770e9285, type: 3}
+  - {fileID: 9207730282144807559, guid: 2e705ef937ad5a94e839d54477069bfa, type: 3}
   - {fileID: 4487164738524488680, guid: dd4f728202ace4f4f8f99fb65798b7ef, type: 3}
   - {fileID: 8681861019926797556, guid: a196dad09232a1e4eb96012dc5162c5c, type: 3}
   - {fileID: 8646957966826044590, guid: 77812c71dfcff4a4b9ccd5d7de628d8a, type: 3}
@@ -3881,8 +3882,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1689521095}
   m_HandleRect: {fileID: 1689521094}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.81333333
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4765,7 +4766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000011444092}
+  m_AnchoredPosition: {x: 0, y: -0.000017166138}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1882545240

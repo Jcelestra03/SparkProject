@@ -263,6 +263,32 @@ public class GridControl : MonoBehaviour
             }
         }
     }
+    public void PP3()
+    {
+        int count = 0;
+        int count2 = 1;
+        while(count <= pushP.Count-1)
+        {
+            //find 
+            pushP.TryGetValue(count, out Vector3 hey);
+            pushP.TryGetValue(count2, out Vector3 listen);
+            //if pushP last index is and odd number;
+            //if(pushP.count%2 != 0)
+            //if ( count2 >= pushP.count
+            if(pushP.Count%2 != 0)
+            {
+                if(count2 >= pushP.Count) { return; }
+            }
+            GameObject.Find(hey.ToString()).GetComponent<Portal>().partnerName = listen;
+            GameObject.Find(listen.ToString()).GetComponent<Portal>().partnerName = hey;
+            GameObject.Find(hey.ToString()).GetComponent<Portal>().color = 1;
+            GameObject.Find(listen.ToString()).GetComponent<Portal>().color = 2;
+            count++;
+            count++;
+            count2++;
+            count2++;
+        }
+    }
     public void PartnerLines()
     {
         int count = 0;
@@ -374,6 +400,7 @@ public class GridControl : MonoBehaviour
         //if Portalready == true
         TileCheck();
         //portal partner function 
-        PP2();
+        //PP2();
+        PP3();
     }
 }
