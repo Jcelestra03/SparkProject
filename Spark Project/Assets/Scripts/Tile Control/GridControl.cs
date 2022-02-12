@@ -194,7 +194,7 @@ public class GridControl : MonoBehaviour
                     IndexSave.Add(count);
                     //UI
 
-                    portalui.ItemStats(xpos, ypos, indexfinder);
+                    //portalui.ItemStats(xpos, ypos, indexfinder);
                     positionOnGrid.x = xpos;
                     positionOnGrid.y = ypos;
                     tileGet.x = xpos;
