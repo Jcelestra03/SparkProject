@@ -349,10 +349,10 @@ public class GridControl : MonoBehaviour
         Partner2.Clear();
         p1 = false;
         p2 = false;
-        foreach (Transform child in GameObject.Find("PortalGrid").transform)
-        {
-            GameObject.Destroy(child.gameObject);
-        }
+        //foreach (Transform child in GameObject.Find("PortalGrid").transform)
+        //{
+          //  GameObject.Destroy(child.gameObject);
+        //}
     } // on portal check button hard reset everything
     private void TileCheck()
     {
