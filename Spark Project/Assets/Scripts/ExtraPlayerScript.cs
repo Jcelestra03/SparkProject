@@ -35,8 +35,9 @@ public class ExtraPlayerScript : MonoBehaviour
 
     private Animator myAnimator;
     private SpriteRenderer myRenderer;
-    public float deadTime = 2.24f;
-    public float damageTicker;
+    private float deadTime = 2.24f;
+    private float damageTicker;
+    private bool played;
 
     void Start()
     {
@@ -208,13 +209,13 @@ public class ExtraPlayerScript : MonoBehaviour
         canMove = false;
         anim.SetBool("Player_is_Dying", true);
 
-        if (deadTime <= 0)
+        if (deadTime <= 0 && !played)
         {
             this.gameObject.AddComponent<AudioSource>();
             this.GetComponent<AudioSource>().clip = PlayerDeath;
             this.GetComponent<AudioSource>().Play();
             GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
-            Debug.Log("onfirmed dead");
+            played = true;
         }
     }
 }

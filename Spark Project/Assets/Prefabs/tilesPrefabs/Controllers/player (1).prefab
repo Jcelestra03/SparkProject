@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557192058283309414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.61, y: -6.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -184,5 +184,6 @@ MonoBehaviour:
   jumpheight: 6.5
   PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
   PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
-  StarCollected: {fileID: 8300000, guid: 1c6eebe37d68bbb4c803e2b467ce83bb, type: 3}
+  EnemyDeath: {fileID: 0}
+  deadTime: 2.24
   damageTicker: 0
