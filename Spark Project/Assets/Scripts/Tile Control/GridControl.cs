@@ -31,8 +31,8 @@ public class GridControl : MonoBehaviour
     private int xpos;   // (PORTAL ADD) TAKES THE PORTAL UI GRID VECTOR2 INTO SEPERATE INT
     private int ypos;   // (PORTAL ADD) TAKES THE PORTAL UI GRID VECTOR2 INTO SEPERATE INT
     private int indexfinder; // ANOTHER FORM OF COUNT 
-    List<Vector3> Partner1 = new List<Vector3>(); //(PP2) reset
-    List<Vector3> Partner2 = new List<Vector3>(); //(PP2) reset
+    public List<Vector3> Partner1 = new List<Vector3>(); //(PP2) reset
+    public List<Vector3> Partner2 = new List<Vector3>(); //(PP2) reset
     List<Vector3> PortalNumber = new List<Vector3>(); // (NUMBERS PORTAL) RESET?!?!?
     
     public Dictionary<Vector2Int, int> gridUI; //(PORTAL ADD) 
@@ -93,7 +93,7 @@ public class GridControl : MonoBehaviour
                 if (gamestart == false) 
                 {   
                     blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
-                    if (Input.GetMouseButton(0))
+                    if (Input.GetMouseButtonDown(0))
                     {
                         this.gameObject.AddComponent<AudioSource>();
                         this.GetComponent<AudioSource>().clip = ItemPicked;
@@ -117,7 +117,7 @@ public class GridControl : MonoBehaviour
                                 {
                                     //spawn prefab on here / force name and text value; 
                                     //or put in function reference discord
-                                    //NumbersPortal(here);
+                                    NumbersPortal(here);
                                 }
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                                 NumbersMason.Add(here);
@@ -128,7 +128,7 @@ public class GridControl : MonoBehaviour
                                 if(block == 7)
                                 {
                                     //delete prefab by name
-                                    //NumbersPortal(here);
+                                    NumbersPortal(here);
                                 }
                                 entail[here] = blockchange;
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
@@ -191,7 +191,7 @@ public class GridControl : MonoBehaviour
                     IndexSave.Add(count);
                     //UI
 
-                    //portalui.ItemStats(xpos, ypos, indexfinder);
+                    portalui.ItemStats(xpos, ypos, indexfinder);
                     positionOnGrid.x = xpos;
                     positionOnGrid.y = ypos;
                     tileGet.x = xpos;
@@ -229,6 +229,7 @@ public class GridControl : MonoBehaviour
             }
             else if (p1 == true && p2 == false)
             {
+                Debug.Log(portal);
                 Partner2.Add(highlight);
                 p2 = true;
             }
@@ -248,12 +249,18 @@ public class GridControl : MonoBehaviour
 
     public void PP2() //portal partnering part 2
     {
+        
         int count = 0;
+        Debug.Log("ayo");
         if(Partner1 == null) { return; }
-        if(Partner1.Count == Partner2.Count)
+        Debug.Log("ayo");
+        if (Partner1.Count == Partner2.Count)
         {
-            while(count <= Partner1.Count-1)
+            Debug.Log(Partner1.Count);
+            Debug.Log(count);
+            while (count <= Partner1.Count-1)
             {
+                Debug.Log("ayo");
                 GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
                 GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
                 GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
@@ -334,10 +341,10 @@ public class GridControl : MonoBehaviour
             GameObject.Destroy(GameObject.Find(PortalNumber[count].ToString()));
             count++;
         }
-        //foreach(Vector3 child in PortalNumber)
-        //{
-        //    GameObject.Destroy(GameObject.Find(child.ToString()));
-        //}
+        foreach(Vector3 child in PortalNumber)
+        {
+            GameObject.Destroy(GameObject.Find(child.ToString()));
+        }
     }
     private void Portalreset()
     {
@@ -350,10 +357,10 @@ public class GridControl : MonoBehaviour
         Partner2.Clear();
         p1 = false;
         p2 = false;
-        //foreach (Transform child in GameObject.Find("PortalGrid").transform)
-        //{
-          //  GameObject.Destroy(child.gameObject);
-        //}
+        foreach (Transform child in GameObject.Find("PortalGrid").transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     } // on portal check button hard reset everything
     private void TileCheck()
     {
@@ -396,13 +403,13 @@ public class GridControl : MonoBehaviour
     public void startb()
     {
         PortalCheck();
-        //killnumbers();
+        killnumbers();
         gamestart = true;
         editing = false;
         //if Portalready == true
         TileCheck();
         //portal partner function 
-        //PP2();
-        PP3();
+        PP2();
+        //PP3();
     }
 }
