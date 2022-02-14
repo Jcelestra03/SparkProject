@@ -7,26 +7,37 @@ using TMPro;
 
 public class GridControl : MonoBehaviour
 {
+
+    //Calling Fields 
+
     [SerializeField] Tilemap TargetTilemap;
     [SerializeField] tilesmanager tiles;
+    gridManager grid;
     public PortalUI portalui;
-    public AudioClip ItemPicked;
-    private AudioSource speaker;
-    private int blockchange = 0;
-    private int count;
-    //public TextMeshPro txt;
     public GameObject mytxt;
-    public Dictionary<Vector3,int> entail;
-    List<Vector3> NumbersMason = new List<Vector3>();
-    public GameObject[] tileprefabs;
-    // Partners // Vectors // Placement
-    //public Dictionary<Vector3, Vector3> partners;// TURNED INTO 2 LISTS
-    public Dictionary<int,Vector3> pushP; //reset
-    public Dictionary<Vector2Int, int> gridUI;
+    
+    
+    
+    //         RESET == 
+    //       PORTAL VARIABLES 
+    public Dictionary<int,Vector3> pushP; // (PORTAL ADD) reset
+    //       PORTAL PARTNERING
+    private bool Portalready;    // PREVENTS FROM PASSING PORTAL PARTNERING ONCE STARTED
+    private bool partnering;    // (PP)
+    private bool p1;    // (PP) WHEN PARTNER 1 IS ASSIGNED
+    private bool p2;    // (PP) WHEN PARTNER 2 IS ASSIGNED
+    private bool xfine; // (PORTAL ADD) WHEN PORTAL UI GRID COLUMN IS READY
+    private bool yfine; // (PORTAL ADD) WHEN PORTAL UI GRID ROW IS READY
+    private int xpos;   // (PORTAL ADD) TAKES THE PORTAL UI GRID VECTOR2 INTO SEPERATE INT
+    private int ypos;   // (PORTAL ADD) TAKES THE PORTAL UI GRID VECTOR2 INTO SEPERATE INT
+    private int indexfinder; // ANOTHER FORM OF COUNT 
+    List<Vector3> Partner1 = new List<Vector3>(); //(PP2) reset
+    List<Vector3> Partner2 = new List<Vector3>(); //(PP2) reset
+    List<Vector3> PortalNumber = new List<Vector3>(); // (NUMBERS PORTAL) RESET?!?!?
+    
+    public Dictionary<Vector2Int, int> gridUI; //(PORTAL ADD) 
     List<int> IndexSave = new List<int>(); //reset
-    List<Vector3> Partner1 = new List<Vector3>(); //reset
-    List<Vector3> Partner2 = new List<Vector3>(); //reset
-    List<Vector3> PortalNumber = new List<Vector3>();
+
 ////          ,^,           ,^,
 /////         / \___________/ \
 /////        ||               ||
@@ -35,21 +46,23 @@ public class GridControl : MonoBehaviour
 //        //    ^ ^ ^ ^ ^ ^ ^    \\
 //       //  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \\
 //                   cat
-    gridManager grid;
-    private bool partnering;
-    
+//     >:( NO ITS A TOTORO
+    //         GRID CONTROL COMPONENTS 
+    public GameObject[] tileprefabs; // LIBRARY OF TILES 
+    public Dictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
+    List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
 
-    private bool p1;
-    private bool p2;
-    private bool outof;
-    public bool editing;
-    public bool gamestart;
-    private bool xfine;
-    private bool yfine;
-    private int xpos;
-    private int ypos;
-    private int indexfinder;
-    private bool Portalready;
+    private int blockchange = 0; // THE PAINT TOOL TILE CHANGE
+    private int count;      //FOR IF && WHILE LOOPS (NON LOCAL)
+    private bool outof;     //PREVENTS BUILDING OUTSIDE OF GRID
+    public bool editing;    //PREVENTS BUILDING WHILE IN BUILD
+    public bool gamestart;  //PREVENTS BUILDING WHILE IN GAME
+
+    
+    //AUDIO
+    public AudioClip ItemPicked;
+    private AudioSource speaker;
+    
     private void Start()
     {
         xpos = 0;
@@ -67,10 +80,7 @@ public class GridControl : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false)
-                {
-                    editing = true;
-                }
+                if (GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false){ editing = true; }
                 else { editing = false; }
             }
         }
@@ -78,9 +88,9 @@ public class GridControl : MonoBehaviour
         if (Portalready == false)
         {
             //
-            if (editing == true)
+            if (editing == true) 
             {
-                if (gamestart == false)
+                if (gamestart == false) 
                 {   
                     blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
                     if (Input.GetMouseButton(0))
@@ -98,10 +108,7 @@ public class GridControl : MonoBehaviour
                         {
                             outof = true;
                         }
-                        else
-                        {
-                            outof = false;
-                        }
+                        else{ outof = false;}
                         if (!outof)
                         {
                             if (entail.TryAdd(here, blockchange) == true)
@@ -120,8 +127,8 @@ public class GridControl : MonoBehaviour
                                 entail.TryGetValue(here, out int block);
                                 if(block == 7)
                                 {
-                                    //NumbersPortal(here);
                                     //delete prefab by name
+                                    //NumbersPortal(here);
                                 }
                                 entail[here] = blockchange;
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
@@ -134,17 +141,7 @@ public class GridControl : MonoBehaviour
             }
             //
         }
-        //dropper(copy)
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
-            Vector3 here = TargetTilemap.CellToWorld(clickPosition);
-            entail.TryGetValue(here, out int block);
-            blockchange = block;
-            Debug.Log(tileprefabs[blockchange]);
-        }
-    } // checks for when tiles are placed and updates lists and dictionaries 
+    }
 
 
     public void PortalCheck()
@@ -247,6 +244,8 @@ public class GridControl : MonoBehaviour
         }
         
     }
+
+
     public void PP2() //portal partnering part 2
     {
         int count = 0;
@@ -263,6 +262,8 @@ public class GridControl : MonoBehaviour
             }
         }
     }
+
+    // Simpler Portal System
     public void PP3()
     {
         int count = 0;
@@ -390,7 +391,7 @@ public class GridControl : MonoBehaviour
     {
         gamestart = false;
         editing = true;
-        //self Destruction
+        //Self Destruction of prefabs
     }
     public void startb()
     {
