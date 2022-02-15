@@ -353,8 +353,8 @@ public class GridControl : MonoBehaviour
         indexfinder = 0;
         pushP.Clear();
         IndexSave.Clear();
-        Partner1.Clear();
-        Partner2.Clear();
+        //Partner1.Clear();
+        //Partner2.Clear();
         p1 = false;
         p2 = false;
         foreach (Transform child in GameObject.Find("PortalGrid").transform)

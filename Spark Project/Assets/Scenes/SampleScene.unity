@@ -187,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &109697605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 289, y: -107}
+  m_AnchoredPosition: {x: 327, y: -126}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109697607
@@ -1430,8 +1430,9 @@ MonoBehaviour:
   TargetTilemap: {fileID: 2093333880}
   tiles: {fileID: 1840677037}
   portalui: {fileID: 908808725}
-  ItemPicked: {fileID: 0}
   mytxt: {fileID: 84075620016515909, guid: b592bfb23337149459732ee7a75506d5, type: 3}
+  Partner1: []
+  Partner2: []
   tileprefabs:
   - {fileID: 585115398270043598, guid: 29129f88eeb89d842be4414ac76e423a, type: 3}
   - {fileID: 8228940505540078558, guid: 2e54fb07abce06a409e3b6c33ed8fc0c, type: 3}
@@ -1452,6 +1453,7 @@ MonoBehaviour:
   - {fileID: 2885167873228682297, guid: 9f31fdff5bc85b044ae9f4885dbcf71f, type: 3}
   editing: 1
   gamestart: 0
+  ItemPicked: {fileID: 0}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1809,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &908808724
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2323,7 +2325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1195419409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3129,18 +3131,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420034}
-        m_TargetAssemblyTypeName: GridControl, Assembly-CSharp
-        m_MethodName: PortalCheck
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 519420034}
         m_TargetAssemblyTypeName: GridControl, Assembly-CSharp
         m_MethodName: startb
