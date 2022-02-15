@@ -27,7 +27,7 @@ public class ZoomControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.name.Contains("Camera"))
+        if(gameObject.name.Contains("Camera"))
         {
             if (!followPlayer && GetComponent<GridControl>().editing)
             {
@@ -50,7 +50,7 @@ public class ZoomControl : MonoBehaviour
 
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, MinSize, MaxSize);
         }
-        else if (this.gameObject.name.Contains("dropper"))
+        else if (gameObject.name.Contains("dropper"))
         {
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(cursorPos.x, cursorPos.y);
@@ -68,7 +68,7 @@ public class ZoomControl : MonoBehaviour
 
         //if (player == null) { return; }
         followPlayer = true;
-        GetComponent<PositionConstraint>().AddSource(player);
+        //GetComponent<PositionConstraint>().AddSource(player);
         //CM.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
         //CM.GetComponent<CinemachineVirtualCamera>().LookAt = player.transform;
     }
