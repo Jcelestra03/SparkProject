@@ -10,6 +10,10 @@ public class ExtraPlayerScript : MonoBehaviour
     public LayerMask groundLayer;
     public bool damageDone;
 
+    public AudioClip PlayerDeath;
+    public AudioClip PlayerJump;
+    public AudioClip EnemyDeath;
+
     // Amount of times you can respawn if set to -1 you can respawn infit times.
     [SerializeField] private int respawns = 0;
     // Health you respawn with after you died.
@@ -28,11 +32,6 @@ public class ExtraPlayerScript : MonoBehaviour
     private Vector2 velocity;
     private Vector2 groundDetection;
     private AudioSource speaker;
-
-    public AudioClip PlayerDeath;
-    public AudioClip PlayerJump;
-    public AudioClip EnemyDeath;
-
     private Animator myAnimator;
     private SpriteRenderer myRenderer;
     private float deadTime = 2.24f;
