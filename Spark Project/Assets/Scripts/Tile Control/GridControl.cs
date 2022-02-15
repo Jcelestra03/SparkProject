@@ -90,7 +90,7 @@ public class GridControl : MonoBehaviour
                 if (gamestart == false) 
                 {   
                     blockchange = GameObject.Find("Dropdown").GetComponent<dropblock>().Block;
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButton(0))
                     {
                         gameObject.AddComponent<AudioSource>();
                         GetComponent<AudioSource>().clip = ItemPicked;

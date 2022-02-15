@@ -7,7 +7,7 @@ using TMPro;
 public class dropblock : MonoBehaviour
 {
     public int Block;
-    public Dropdown myD;
+    public TMP_Dropdown myD;
 
     public void blockchange()
     {
