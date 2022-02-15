@@ -223,20 +223,17 @@ public class GridControl : MonoBehaviour
             partnering = true;
             if (p1 == false && p2 == false)
             {
-                Debug.Log(portal);
                 Partner1.Add(highlight);
                 p1 = true;
             }
             else if (p1 == true && p2 == false)
             {
-                Debug.Log(portal);
                 Partner2.Add(highlight);
                 p2 = true;
             }
             if (p1 == true && p2 == true)
             {
                 PartnerLines();
-                Debug.Log("Partner has been made");
                 partnering = false;
                 p1 = false;
                 p2 = false;
@@ -251,16 +248,13 @@ public class GridControl : MonoBehaviour
     {
         
         int count = 0;
-        Debug.Log("ayo");
+        
         if(Partner1 == null) { return; }
-        Debug.Log("ayo");
+        
         if (Partner1.Count == Partner2.Count)
         {
-            Debug.Log(Partner1.Count);
-            Debug.Log(count);
             while (count <= Partner1.Count-1)
             {
-                Debug.Log("ayo");
                 GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
                 GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
                 GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
@@ -353,8 +347,8 @@ public class GridControl : MonoBehaviour
         indexfinder = 0;
         pushP.Clear();
         IndexSave.Clear();
-        //Partner1.Clear();
-        //Partner2.Clear();
+        Partner1.Clear();
+        Partner2.Clear();
         p1 = false;
         p2 = false;
         foreach (Transform child in GameObject.Find("PortalGrid").transform)
@@ -402,7 +396,6 @@ public class GridControl : MonoBehaviour
     }
     public void startb()
     {
-        PortalCheck();
         killnumbers();
         gamestart = true;
         editing = false;
