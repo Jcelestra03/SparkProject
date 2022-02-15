@@ -4086,14 +4086,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 183
   damageDone: 0
+  PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
+  PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
+  EnemyDeath: {fileID: 0}
   respawns: 0
   respawnHealth: 1
   acceleration: 10
   maxSpeed: 6
   jumpheight: 6.5
-  PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
-  PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
-  EnemyDeath: {fileID: 0}
 --- !u!111 &7861940010969364452
 Animation:
   m_ObjectHideFlags: 0
