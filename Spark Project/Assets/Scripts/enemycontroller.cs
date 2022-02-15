@@ -34,7 +34,6 @@ public class enemycontroller : MonoBehaviour
     void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
-        
         detector = GetComponent<CircleCollider2D>();
     }
 

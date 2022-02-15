@@ -11,7 +11,7 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Vector3 Newpos;
     private RectTransform rectTransform;
     private GameManager gamemanager;
-    
+
 
     private void Start()
     {
@@ -24,13 +24,13 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void UIOFF()
     {
-        if (this.gameObject.name.Contains("Edit")) { return; }
+        if (gameObject.name.Contains("Edit")) { return; }
         rectTransform.position = Newpos;
     }
 
     public void UION()
     {
-        if (this.gameObject.name.Contains("Edit")) { return; }
+        if (gameObject.name.Contains("Edit")) { return; }
         rectTransform.position = OGpos;
     }
     public void OnPointerEnter(PointerEventData evenData)
@@ -42,13 +42,5 @@ public class UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         GameObject.Find("Main Camera").GetComponent<GridControl>().editing = true;
         GameObject.Find("Main Camera").GetComponent<InvenController>().nope = false;
-    }
-    public void SetOff()
-    {
-        this.gameObject.SetActive(true);
-    }
-    public void SetON()
-    {
-        this.gameObject.SetActive(false);
     }
 }

@@ -18,7 +18,6 @@ public class destroythis : MonoBehaviour
     {
         if (GameObject.Find("Main Camera").GetComponent<GridControl>().gamestart == false)
         {
-            Debug.Log("Long Live ");
             Death();
         }
     }
