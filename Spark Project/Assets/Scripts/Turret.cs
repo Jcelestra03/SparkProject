@@ -48,6 +48,10 @@ public class Turret : MonoBehaviour
     {
         if (miniCoolDown <= 0)
         {
+            gameObject.AddComponent<AudioSource>();
+            GetComponent<AudioSource>().clip = TurretFiring;
+            GetComponent<AudioSource>().Play();
+
             Instantiate(bullet, shootPos);
             mag--;
             miniCoolDown = 0.1f;

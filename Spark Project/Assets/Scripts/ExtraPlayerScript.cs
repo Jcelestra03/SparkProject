@@ -75,9 +75,9 @@ public class ExtraPlayerScript : MonoBehaviour
         if (Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f))
             if (Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
             {
-                this.gameObject.AddComponent<AudioSource>();
-                this.GetComponent<AudioSource>().clip = EnemyDeath;
-                this.GetComponent<AudioSource>().Play();
+                gameObject.AddComponent<AudioSource>();
+                GetComponent<AudioSource>().clip = EnemyDeath;
+                GetComponent<AudioSource>().Play();
                 Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.gameObject);
             }
         // Jump check.
@@ -85,9 +85,9 @@ public class ExtraPlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !inAir && canMove)
         {
-            this.gameObject.AddComponent<AudioSource>();
-            this.GetComponent<AudioSource>().clip = PlayerJump;
-            this.GetComponent<AudioSource>().Play();
+            gameObject.AddComponent<AudioSource>();
+            GetComponent<AudioSource>().clip = PlayerJump;
+            GetComponent<AudioSource>().Play();
             velocity.y = jumpheight;
             inAir = true;
         }
@@ -209,9 +209,10 @@ public class ExtraPlayerScript : MonoBehaviour
 
         if (deadTime <= 0 && !played)
         {
-            this.gameObject.AddComponent<AudioSource>();
-            this.GetComponent<AudioSource>().clip = PlayerDeath;
-            this.GetComponent<AudioSource>().Play();
+            gameObject.AddComponent<AudioSource>();
+            GetComponent<AudioSource>().clip = PlayerDeath;
+            GetComponent<AudioSource>().Play();
+
             GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
             played = true;
         }

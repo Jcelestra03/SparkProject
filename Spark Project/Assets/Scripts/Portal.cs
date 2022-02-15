@@ -93,9 +93,10 @@ public class Portal : MonoBehaviour
 
             if (collision != collision.isTrigger)
             {
-                this.gameObject.AddComponent<AudioSource>();
-                this.GetComponent<AudioSource>().clip = Teleportation;
-                this.GetComponent<AudioSource>().Play();
+                gameObject.AddComponent<AudioSource>();
+                GetComponent<AudioSource>().clip = Teleportation;
+                GetComponent<AudioSource>().Play();
+
                 collision.gameObject.transform.position = partner.transform.position;
             }
         }

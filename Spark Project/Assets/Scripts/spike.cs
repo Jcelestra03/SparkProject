@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class spike : MonoBehaviour
 {
+    private AudioSource speaker;
+    public AudioClip Spike_activated;
+
     // Object's velocity set to on impact.
     public float nockBack = 5;
     // Damage on impact.

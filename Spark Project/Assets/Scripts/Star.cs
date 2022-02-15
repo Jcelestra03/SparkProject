@@ -11,9 +11,10 @@ public class Star : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            this.gameObject.AddComponent<AudioSource>();
-            this.GetComponent<AudioSource>().clip = StarCollected;
-            this.GetComponent<AudioSource>().Play();
+            gameObject.AddComponent<AudioSource>();
+            GetComponent<AudioSource>().clip = StarCollected;
+            GetComponent<AudioSource>().Play();
+
             GameObject.Find("gameManager").GetComponent<GameManager>().stars++;
             Destroy(gameObject);
         }

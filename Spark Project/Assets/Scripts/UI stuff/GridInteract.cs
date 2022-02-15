@@ -7,11 +7,18 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(PortalUI))]
 public class GridInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public AudioClip Block_placed;
+    private AudioSource speaker;
+
     InvenController inventoryController;
     PortalUI itemGrid;
 
     public void OnPointerEnter(PointerEventData evenData)
     {
+        gameObject.AddComponent<AudioSource>();
+        GetComponent<AudioSource>().clip = Block_placed;
+        GetComponent<AudioSource>().Play();
+
         inventoryController.selectedItemGrid = itemGrid;
     }
 
