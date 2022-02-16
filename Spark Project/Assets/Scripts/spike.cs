@@ -36,6 +36,10 @@ public class spike : MonoBehaviour
             collision.transform.GetComponent<ExtraPlayerScript>().health -= damage;
             collision.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 0.1f;
+
+            gameObject.AddComponent<AudioSource>();
+            GetComponent<AudioSource>().clip = Spike_activated;
+            GetComponent<AudioSource>().Play();
         }
     }
 
