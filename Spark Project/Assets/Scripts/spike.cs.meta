@@ -3,7 +3,8 @@ guid: bb30eb79e1237414d9c99b5bbfb10b26
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Spike_activated: {fileID: 8300000, guid: 7f657aea4ef47c543a42365318b14eda, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

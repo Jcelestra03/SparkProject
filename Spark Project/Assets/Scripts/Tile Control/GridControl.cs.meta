@@ -3,7 +3,12 @@ guid: 6aee21ff61740624591694c6e8d3277d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - TargetTilemap: {instanceID: 0}
+  - tiles: {instanceID: 0}
+  - portalui: {instanceID: 0}
+  - mytxt: {instanceID: 0}
+  - ItemPicked: {fileID: 8300000, guid: 90bb4bc80c0230f458b9fee6239bf957, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

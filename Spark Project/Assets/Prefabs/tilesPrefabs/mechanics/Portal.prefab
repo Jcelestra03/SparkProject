@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partner: {fileID: 0}
   color: 0
-  teleportation: {fileID: 8300000, guid: c2484c8ed606ed449a65e0ae049d6f87, type: 3}
+  Teleportation: {fileID: 8300000, guid: c2484c8ed606ed449a65e0ae049d6f87, type: 3}
   partnerName: {x: 0, y: 0, z: 0}
   partnerbool: 0
 --- !u!61 &4487164738524488660
@@ -154,7 +154,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c2484c8ed606ed449a65e0ae049d6f87, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

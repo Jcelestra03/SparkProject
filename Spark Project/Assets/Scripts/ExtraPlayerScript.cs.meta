@@ -3,7 +3,11 @@ guid: 4d2eb398fe82aa14281dc559769d6110
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - checkpoint: {instanceID: 0}
+  - PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
+  - PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
+  - EnemyDeath: {fileID: 8300000, guid: c8037b9bde8b36a4587ee1cc09756a60, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
