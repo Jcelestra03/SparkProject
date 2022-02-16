@@ -85,11 +85,11 @@ public class GridControl : MonoBehaviour
         //else if(gamestart == false && GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false) { editing = true; }
         if (Portalready == false)
         {
-            //
             if (editing == true) 
             {
                 if (gamestart == false) 
                 {
+                    Debug.Log(gamestart);
                     blockchange = GameObject.Find("DropBlock").GetComponent<dropblock>().Block;
                     if (Input.GetMouseButton(0))
                     {

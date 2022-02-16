@@ -1755,7 +1755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000024795532}
+  m_AnchoredPosition: {x: 0, y: -0.00005340576}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &740852627
@@ -1773,7 +1773,7 @@ GameObject:
   - component: {fileID: 740852630}
   - component: {fileID: 740852629}
   m_Layer: 5
-  m_Name: Dropdown
+  m_Name: DropBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2261,6 +2261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04ba21e1b8e98b446b4c1ed306479a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Block_placed: {fileID: 0}
 --- !u!114 &908808729
 MonoBehaviour:
   m_ObjectHideFlags: 0
