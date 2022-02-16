@@ -52,7 +52,7 @@ public class GridControl : MonoBehaviour
     public Dictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
     List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
 
-    private int blockchange = 0; // THE PAINT TOOL TILE CHANGE
+    public int blockchange = 0; // THE PAINT TOOL TILE CHANGE
     private int count;      //FOR IF && WHILE LOOPS (NON LOCAL)
     private bool outof;     //PREVENTS BUILDING OUTSIDE OF GRID
     public bool editing;    //PREVENTS BUILDING WHILE IN BUILD
@@ -89,7 +89,7 @@ public class GridControl : MonoBehaviour
             {
                 if (gamestart == false) 
                 {
-                    blockchange = GameObject.Find("DropBlock").GetComponent<dropblock>().Block;
+                    //blockchange = GameObject.Find("DropBlock").GetComponent<dropblock>().Block;
 
                     if (Input.GetMouseButton(0))
                     {
