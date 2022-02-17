@@ -139,7 +139,11 @@ public class GridControl : MonoBehaviour
             //
         }
     }
-
+    //eraser 
+    public void hardreset()
+    {
+        blockchange = 0;
+    }
 
     public void PortalCheck()
     {
@@ -342,7 +346,7 @@ public class GridControl : MonoBehaviour
         foreach (Transform child in GameObject.Find("PortalGrid").transform)
             GameObject.Destroy(child.gameObject);
     }
-    private void TileCheck()
+    public void TileCheck()
     {
         int count = 0;
         int count2 = 1;
@@ -384,9 +388,7 @@ public class GridControl : MonoBehaviour
         killnumbers();
         gamestart = true;
         editing = false;
-        //if Portalready == true
-        TileCheck();
-        //portal partner function 
+        TileCheck(); 
         PP2();
         //PP3();
     }

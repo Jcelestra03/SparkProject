@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Slow
   - Bullet
+  - UI
   layers:
   - Default
   - TransparentFX

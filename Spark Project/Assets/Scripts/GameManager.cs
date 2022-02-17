@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public bool lose;
     public int stars = 0;
     List<GameObject> uIs = new List<GameObject>();
+    public GameObject[] UIs;
     public bool pause;
     public GameObject pauseScreen;
     public GameObject winScreen;
@@ -30,6 +31,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         cam = GameObject.Find("Main Camera");
+
+            UIs = GameObject.FindGameObjectsWithTag("UI");
+
     }
 
     private void Update()
@@ -102,6 +106,22 @@ public class GameManager : MonoBehaviour
         }
         //during Go/Start move everything but Edit 
         //then move health and star counter into canvas
+    }
+
+    
+    public void userIntON()
+    {
+        foreach (GameObject ui in UIs)
+        {
+            ui.SetActive(false);
+        }
+    }
+    public void userIntOFF()
+    {
+        foreach(GameObject ui in UIs)
+        {
+            ui.SetActive(true);
+        }
     }
 
     public void MainMenu()
