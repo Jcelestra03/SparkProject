@@ -111,7 +111,7 @@ public class GridControl : MonoBehaviour
                         {
                             if (entail.TryAdd(here, blockchange) == true)
                             {
-                                if (blockchange == 7)
+                                if (blockchange == 16)
                                 {
                                     //spawn prefab on here / force name and text value; 
                                     //or put in function reference discord
@@ -123,7 +123,7 @@ public class GridControl : MonoBehaviour
                             else
                             {
                                 entail.TryGetValue(here, out int block);
-                                if(block == 7)
+                                if(block == 16)
                                 {
                                     //delete prefab by name
                                     NumbersPortal(here);
@@ -149,7 +149,7 @@ public class GridControl : MonoBehaviour
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
-            if(block == 7)
+            if(block == 16)
             {
                 //placement on UI
                 portalAdd();
@@ -349,7 +349,7 @@ public class GridControl : MonoBehaviour
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
-            if(block != 7)
+            if(block != 16)
             {
                 GameObject placed = Instantiate(tileprefabs[block]);
                 Vector3 Posit;
