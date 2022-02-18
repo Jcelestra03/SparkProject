@@ -45,10 +45,18 @@ public class GameManager : MonoBehaviour
         }
 
         if (win && cam.GetComponent<GridControl>().gamestart == true)
+        {
             winScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+            
 
         if (lose && cam.GetComponent<GridControl>().gamestart == true)
+        {
             loseScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+            
 
         if (cam.GetComponent<GridControl>().gamestart == false)
         {

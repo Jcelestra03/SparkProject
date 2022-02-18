@@ -37,6 +37,7 @@ public class ExtraPlayerScript : MonoBehaviour
     private float deadTime = 2.24f;
     private float damageTicker;
     private bool played;
+    private Vector3 spawnPos;
 
     void Start()
     {
@@ -47,6 +48,8 @@ public class ExtraPlayerScript : MonoBehaviour
 
         myAnimator = GetComponent<Animator>();
         myRenderer = GetComponent<SpriteRenderer>();
+
+        spawnPos = gameObject.transform.position;
     }
 
     void Update()
@@ -137,13 +140,14 @@ public class ExtraPlayerScript : MonoBehaviour
 
             myRB.velocity = velocity;
 
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (velocity.x > 0)
             {
                 // Moveing right.
                 if (inAir == false)
                 {
                     anim.SetBool("Player_Is_Idle", false);
                     anim.SetBool("Player_Is_Walking", true);
+                    anim.speed = Mathf.Clamp(Mathf.Abs(velocity.x), 0.3f, 1);
                 }
 
                 if (faceDir == true)
@@ -152,13 +156,14 @@ public class ExtraPlayerScript : MonoBehaviour
                     faceDir = false;
                 }
             }
-            else if (Input.GetAxisRaw("Horizontal") < 0)
+            else if (velocity.x < 0)
             {
                 // Moveing left.
                 if (inAir == false)
                 {
                     anim.SetBool("Player_Is_Idle", false);
                     anim.SetBool("Player_Is_Walking", true);
+                    anim.speed = Mathf.Clamp(Mathf.Abs(velocity.x), 0.3f, 1);
                 }
 
                 if (faceDir == false)
@@ -191,7 +196,7 @@ public class ExtraPlayerScript : MonoBehaviour
     {
         health = respawnHealth;
         if (checkpoint == null)
-            transform.position = Vector2.zero;
+            transform.position = spawnPos;
         else
             transform.position = checkpoint.position;
 
