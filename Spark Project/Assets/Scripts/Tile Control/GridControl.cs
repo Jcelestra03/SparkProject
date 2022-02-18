@@ -389,7 +389,7 @@ public class GridControl : MonoBehaviour
         gamestart = true;
         editing = false;
         TileCheck(); 
-        PP2();
-        //PP3();
+        //PP2();
+        PP3();
     }
 }
