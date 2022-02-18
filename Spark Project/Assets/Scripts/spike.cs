@@ -46,11 +46,12 @@ public class spike : MonoBehaviour
     // If and object stays in the spikes collider it is pushed in the direction it came from and damage it applied.
     private void OnCollisionStay2D(Collision2D collision)
     {
+
         if (collision.gameObject.tag == "Player" && coolDown <= 0)
         {
             Vector2 temp = collision.transform.GetComponent<Rigidbody2D>().velocity;
-            
-            temp = (-collision.relativeVelocity * nockBack * 10);
+
+            temp = Vector2.up * nockBack;
 
             collision.transform.GetComponent<Rigidbody2D>().velocity = temp;
 
