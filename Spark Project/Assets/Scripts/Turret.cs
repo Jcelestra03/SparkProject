@@ -20,6 +20,7 @@ public class Turret : MonoBehaviour
     private void Start()
     {
         mag = burstDensity;
+        gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -48,7 +49,7 @@ public class Turret : MonoBehaviour
     {
         if (miniCoolDown <= 0)
         {
-            gameObject.AddComponent<AudioSource>();
+            
             GetComponent<AudioSource>().clip = TurretFiring;
             GetComponent<AudioSource>().Play();
 

@@ -15,7 +15,6 @@ public class GridInteract : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData evenData)
     {
-        gameObject.AddComponent<AudioSource>();
         GetComponent<AudioSource>().clip = Block_placed;
         GetComponent<AudioSource>().Play();
 
