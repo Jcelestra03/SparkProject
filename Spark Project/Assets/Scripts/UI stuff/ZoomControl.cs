@@ -11,16 +11,21 @@ public class ZoomControl : MonoBehaviour
     public float MinSize, MaxSize;
 
     private Camera cam;
-    public GameObject CM;
+    private GameObject CM;
     private float scale;
-    public GameObject player;
-    public bool followPlayer;
-    
+    private bool followPlayer;
+    private GameObject player;
+    private ConstraintSource playerTarget;
+    private PositionConstraint camFollow;
+    private Vector3 oldPos;
+
+
     // Start is called before the first frame update
     void Start()
     {
         cam = GetComponent<Camera>();
-        
+        camFollow = GetComponent<PositionConstraint>();
+
         scale = 0.2f;
     }
 
@@ -29,7 +34,7 @@ public class ZoomControl : MonoBehaviour
     {
         if(gameObject.name.Contains("Camera"))
         {
-            if (!followPlayer && GetComponent<GridControl>().editing)
+            if (!followPlayer && (GetComponent<GridControl>().gamestart || GetComponent<GridControl>().editing))
             {
                 if (Input.GetMouseButton(1))
                 {
@@ -56,28 +61,33 @@ public class ZoomControl : MonoBehaviour
             transform.position = new Vector2(cursorPos.x, cursorPos.y);
         }
 
-        if (GetComponent<GridControl>().gamestart)
+        if (GetComponent<GridControl>().gamestart && followPlayer == false)
             CamShift();
-        else
+        else if (!GetComponent<GridControl>().gamestart && followPlayer == true)
             CamBack();
     }
+
     public void CamShift()
     {
         if (GameObject.Find("player (1)(Clone)") == null) { return; }
         else { player = (GameObject.Find("player (1)(Clone)")); }
+        oldPos = cam.transform.position;
 
-        //if (player == null) { return; }
+        playerTarget.sourceTransform = player.transform;
+        playerTarget.weight = 1;
+
         followPlayer = true;
-        //GetComponent<PositionConstraint>().AddSource(player);
-        //CM.GetComponent<CinemachineVirtualCamera>().Follow = player.transform;
-        //CM.GetComponent<CinemachineVirtualCamera>().LookAt = player.transform;
+        camFollow.SetSource(0, playerTarget);
+        camFollow.constraintActive = true;
+        cam.orthographicSize = 7;
     }
+
     public void CamBack()
     {
-        //if(player == null) { return; }
+        if(player == null) { return; }
+        cam.transform.position = oldPos;
 
         followPlayer = false;
-        CM.GetComponent<CinemachineVirtualCamera>().Follow = null;
-        CM.GetComponent<CinemachineVirtualCamera>().LookAt = null;
+        camFollow.constraintActive = false;
     }
 }
