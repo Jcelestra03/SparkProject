@@ -93,7 +93,6 @@ public class Portal : MonoBehaviour
 
             if (collision != collision.isTrigger)
             {
-                gameObject.AddComponent<AudioSource>();
                 GetComponent<AudioSource>().clip = Teleportation;
                 GetComponent<AudioSource>().Play();
 

@@ -11,7 +11,6 @@ public class Star : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            gameObject.AddComponent<AudioSource>();
             GetComponent<AudioSource>().clip = StarCollected;
             GetComponent<AudioSource>().Play();
 

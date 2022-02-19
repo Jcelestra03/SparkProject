@@ -27,17 +27,12 @@ public class spike : MonoBehaviour
         if (collision.gameObject.tag == "Player" && coolDown <= 0)
         {
             Vector2 temp = collision.transform.GetComponent<Rigidbody2D>().velocity;
-
             temp = (-collision.relativeVelocity * nockBack * 1);
-
             collision.transform.GetComponent<Rigidbody2D>().velocity = temp;
-
-
             collision.transform.GetComponent<ExtraPlayerScript>().health -= damage;
             collision.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 0.1f;
 
-            gameObject.AddComponent<AudioSource>();
             GetComponent<AudioSource>().clip = Spike_activated;
             GetComponent<AudioSource>().Play();
         }
@@ -50,11 +45,8 @@ public class spike : MonoBehaviour
         if (collision.gameObject.tag == "Player" && coolDown <= 0)
         {
             Vector2 temp = collision.transform.GetComponent<Rigidbody2D>().velocity;
-
             temp = Vector2.up * nockBack;
-
             collision.transform.GetComponent<Rigidbody2D>().velocity = temp;
-
             collision.transform.GetComponent<ExtraPlayerScript>().health -= damage;
             collision.transform.GetComponent<ExtraPlayerScript>().damageDone = true;
             coolDown = 0.1f;

@@ -50,7 +50,7 @@ public class GridControl : MonoBehaviour
     //         GRID CONTROL COMPONENTS 
     public GameObject[] tileprefabs; // LIBRARY OF TILES 
     public Dictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
-    List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
+    public List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
 
     public int blockchange = 0; // THE PAINT TOOL TILE CHANGE
     private int count;      //FOR IF && WHILE LOOPS (NON LOCAL)
@@ -93,7 +93,6 @@ public class GridControl : MonoBehaviour
 
                     if (Input.GetMouseButton(0))
                     {
-                        gameObject.AddComponent<AudioSource>();
                         GetComponent<AudioSource>().clip = ItemPicked;
                         GetComponent<AudioSource>().Play();
 
@@ -275,7 +274,7 @@ public class GridControl : MonoBehaviour
             //if(pushP.count%2 != 0)
             //if ( count2 >= pushP.count
             if(pushP.Count%2 != 0)
-                if(count2 >= pushP.Count) { return; }
+                if(count2 >= pushP.Count) { Debug.Log("ayo"); return; }
             GameObject.Find(hey.ToString()).GetComponent<Portal>().partnerName = listen;
             GameObject.Find(listen.ToString()).GetComponent<Portal>().partnerName = hey;
             GameObject.Find(hey.ToString()).GetComponent<Portal>().color = 1;
