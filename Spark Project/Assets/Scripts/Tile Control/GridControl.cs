@@ -22,7 +22,6 @@ public class GridControl : MonoBehaviour
     public Dictionary<int,Vector3> pushP; // (PORTAL ADD) reset
     //       PORTAL PARTNERING
     private bool Portalready;    // PREVENTS FROM PASSING PORTAL PARTNERING ONCE STARTED
-    private bool partnering;    // (PP)
     private bool p1;    // (PP) WHEN PARTNER 1 IS ASSIGNED
     private bool p2;    // (PP) WHEN PARTNER 2 IS ASSIGNED
     private bool xfine; // (PORTAL ADD) WHEN PORTAL UI GRID COLUMN IS READY
@@ -35,7 +34,6 @@ public class GridControl : MonoBehaviour
     List<Vector3> PortalNumber = new List<Vector3>(); // (NUMBERS PORTAL) RESET?!?!?
     
     public Dictionary<Vector2Int, int> gridUI; //(PORTAL ADD) 
-    List<int> IndexSave = new List<int>(); //reset
 
 ////          ,^,           ,^,
 /////         / \___________/ \
@@ -114,7 +112,7 @@ public class GridControl : MonoBehaviour
                                 {
                                     //spawn prefab on here / force name and text value; 
                                     //or put in function reference discord
-                                    NumbersPortal(here);
+                                    //NumbersPortal(here);
                                 }
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                                 NumbersMason.Add(here);
@@ -125,7 +123,7 @@ public class GridControl : MonoBehaviour
                                 if(block == 16)
                                 {
                                     //delete prefab by name
-                                    NumbersPortal(here);
+                                    //NumbersPortal(here);
                                 }
                                 entail[here] = blockchange;
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
@@ -142,12 +140,13 @@ public class GridControl : MonoBehaviour
     public void hardreset()
     {
         blockchange = 0;
+
     }
 
     public void PortalCheck()
     {
         Portalreset();
-        count = 0;
+        int count = 0;
         indexfinder = 0;
         while (count <= NumbersMason.Count-1)
         {
@@ -155,7 +154,9 @@ public class GridControl : MonoBehaviour
             if(block == 16)
             {
                 //placement on UI
-                portalAdd();
+                pushP.TryAdd(indexfinder, NumbersMason[count]);
+                indexfinder++;
+                //portalAdd();
             }
             count++;
         }
@@ -163,8 +164,8 @@ public class GridControl : MonoBehaviour
     }//checks for amount of portals, >>>portalAdd
     public void portalAdd()
     {
-        Vector2 positionOnGrid = new Vector2();
-        Vector2Int tileGet = new Vector2Int();
+        //Vector2 positionOnGrid = new Vector2();
+        //Vector2Int tileGet = new Vector2Int();
         if (xpos <= portalui.gridSizeWidth - 1 && ypos <= portalui.gridSizeHeight - 1)
         {
             xfine = true;
@@ -188,14 +189,13 @@ public class GridControl : MonoBehaviour
                 if (ypos <= portalui.gridSizeHeight - 1)
                 {
                     pushP.TryAdd(indexfinder, NumbersMason[count]);
-                    IndexSave.Add(count);
                     //UI
-                    portalui.ItemStats(xpos, ypos, indexfinder);
-                    positionOnGrid.x = xpos;
-                    positionOnGrid.y = ypos;
-                    tileGet.x = xpos;
-                    tileGet.y = ypos;
-                    gridUI.TryAdd(tileGet, indexfinder);
+                    //portalui.ItemStats(xpos, ypos, indexfinder);
+                    //positionOnGrid.x = xpos;
+                    //positionOnGrid.y = ypos;
+                    //tileGet.x = xpos;
+                    //tileGet.y = ypos;
+                    //gridUI.TryAdd(tileGet, indexfinder);
                     ypos++;
                 }
             }
@@ -205,23 +205,41 @@ public class GridControl : MonoBehaviour
         {
             ypos = 0;
             xpos++;
-            Debug.Log("ayoo");
             portalAdd();
             
         }
         indexfinder++;
     }//Adds portals to UIgrid and Lists and Dictionaries
-    public void PP(Vector2Int position) // portal partner part 1
+
+    public void PP2() //portal partnering part 2
     {
         int count = 0;
-        if(partnering == true) { count = 1; }
-        else { count = 0; }
+        if(Partner1 == null) { return; }
+
+            while (count <= Partner1.Count-1)
+            {
+            Debug.Log(count);
+            if (count != 0 || count != 1)
+            {
+                if (count % 2 != 0 && Partner2.Count % 2 != 0) { return; }
+            }
+            GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
+                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
+            
+                
+                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
+                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().color = 2;
+                count++;
+            }
+    }
+    //Verison 2 of Simple portal
+    public void PP4()
+    {
+        int count = 0;
         //partners are determined by index in lists
-        if(gridUI.ContainsKey(position))
+        while (count <= pushP.Count-1)
         {
-            gridUI.TryGetValue(position, out int portal);
-            pushP.TryGetValue(portal, out Vector3 highlight);
-            partnering = true;
+            pushP.TryGetValue(count, out Vector3 highlight);
             if (p1 == false && p2 == false)
             {
                 Partner1.Add(highlight);
@@ -235,56 +253,13 @@ public class GridControl : MonoBehaviour
             if (p1 == true && p2 == true)
             {
                 PartnerLines();
-                partnering = false;
+                
                 p1 = false;
                 p2 = false;
             }
             count++;
         }
-        
-    }
-    public void PP2() //portal partnering part 2
-    {
-        int count = 0;
-        if(Partner1 == null) { return; }
-        if (Partner1.Count == Partner2.Count)
-        {
-            while (count <= Partner1.Count-1)
-            {
-                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
-                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
-                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
-                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().color = 2;
-                count++;
-            }
-        }
-    }
-
-    // Simpler Portal System
-    public void PP3()
-    {
-        int count = 0;
-        int count2 = 1;
-        while(count <= pushP.Count-1)
-        {
-            //find 
-            pushP.TryGetValue(count, out Vector3 hey);
-            pushP.TryGetValue(count2, out Vector3 listen);
-            //if pushP last index is and odd number;
-            //if(pushP.count%2 != 0)
-            //if ( count2 >= pushP.count
-            if(pushP.Count%2 != 0)
-                if(count2 >= pushP.Count) { Debug.Log("ayo"); return; }
-            GameObject.Find(hey.ToString()).GetComponent<Portal>().partnerName = listen;
-            GameObject.Find(listen.ToString()).GetComponent<Portal>().partnerName = hey;
-            GameObject.Find(hey.ToString()).GetComponent<Portal>().color = 1;
-            GameObject.Find(listen.ToString()).GetComponent<Portal>().color = 2;
-            count++;
-            count++;
-            count2++;
-            count2++;
-        }
-    }
+    }    
     public void PartnerLines()
     {
         int count = 0;
@@ -337,7 +312,6 @@ public class GridControl : MonoBehaviour
         ypos = 0;
         indexfinder = 0;
         pushP.Clear();
-        IndexSave.Clear();
         Partner1.Clear();
         Partner2.Clear();
         p1 = false;
@@ -384,11 +358,13 @@ public class GridControl : MonoBehaviour
     }
     public void startb()
     {
+        PortalCheck();
         killnumbers();
         gamestart = true;
         editing = false;
         TileCheck(); 
-        //PP2();
-        PP3();
+        PP4();
+        PP2();
+        //PP3();
     }
 }

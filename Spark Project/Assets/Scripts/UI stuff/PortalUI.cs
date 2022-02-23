@@ -23,8 +23,8 @@ public class PortalUI : MonoBehaviour
     //
     public void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-        Init(gridSizeWidth, gridSizeHeight);
+        //rectTransform = GetComponent<RectTransform>();
+        //Init(gridSizeWidth, gridSizeHeight);
 
         
         //PlaceItem(inventoryitem, 1, 1);
@@ -89,8 +89,8 @@ public class PortalUI : MonoBehaviour
         Pa1.Clear();
         Pa2.Clear();
 
-        button = GameObject.Find("Pfront");
-        button.GetComponent<Button>().interactable = false;
-        button.GetComponent<Button>().interactable = true;
+        //button = GameObject.Find("Pfront");
+        //button.GetComponent<Button>().interactable = false;
+        //button.GetComponent<Button>().interactable = true;
     }
 }
