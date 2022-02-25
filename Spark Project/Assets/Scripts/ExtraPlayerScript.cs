@@ -12,7 +12,6 @@ public class ExtraPlayerScript : MonoBehaviour
 
     public AudioClip PlayerDeath;
     public AudioClip PlayerJump;
-    public AudioClip EnemyDeath;
 
     // Amount of times you can respawn if set to -1 you can respawn infit times.
     [SerializeField] private int respawns = 0;
@@ -78,9 +77,6 @@ public class ExtraPlayerScript : MonoBehaviour
         if (Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f))
             if (Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.tag == "Enemy")
             {
-                gameObject.AddComponent<AudioSource>();
-                GetComponent<AudioSource>().clip = EnemyDeath;
-                GetComponent<AudioSource>().Play();
                 Destroy(Physics2D.Raycast(transform.position + new Vector3(0, -1.05f, 1), Vector2.down, 0.01f).transform.gameObject);
             }
         // Jump check.
