@@ -81,6 +81,18 @@ public class GameManager : MonoBehaviour
                 pauseScreen.SetActive(false);
             } 
         }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            GetComponent<DataHandler>().Load();
+            Debug.Log("loaded");
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            GetComponent<DataHandler>().Save();
+            Debug.Log("saved");
+        }
     }
 
     // Update is called once per frame
