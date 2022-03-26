@@ -23,7 +23,7 @@ public class DataHandler : MonoBehaviour
         //Save();
         temp.NumbersMason = cam.GetComponent<GridControl>().NumbersMason;
         string json = JsonUtility.ToJson(temp);
-        Debug.Log(json);
+        //Debug.Log(json);
     }
 
     public void Save()
