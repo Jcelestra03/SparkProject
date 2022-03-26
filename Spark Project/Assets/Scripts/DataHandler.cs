@@ -31,7 +31,7 @@ public class DataHandler : MonoBehaviour
         TileChash = new List<int>();
         List<Vector3> num = cam.GetComponent<GridControl>().NumbersMason;
 
-        for (int i = 0; i < num.Count; i++)
+        for (int i = 0; i <= num.Count-1; i++)
         {
             //if (save.TileList.Contains(i) != null)
               //  save.TileList.Remove(i);

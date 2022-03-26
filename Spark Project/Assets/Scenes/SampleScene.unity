@@ -4049,6 +4049,7 @@ MonoBehaviour:
   - {fileID: 557192058283309414, guid: 2e2c4deb7a9105144a223016120fb3f1, type: 3}
   - {fileID: 4487164738524488680, guid: dd4f728202ace4f4f8f99fb65798b7ef, type: 3}
   NumbersMason: []
+  TheNumbers: []
   blockchange: 0
   editing: 1
   gamestart: 0
@@ -4099,13 +4100,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.325
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 138
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

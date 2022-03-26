@@ -35,7 +35,7 @@ public class GridControl : MonoBehaviour
     public GameObject[] tileprefabs; // LIBRARY OF TILES 
     public Dictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
     public List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
-
+    public List<Vector3> TheNumbers = new List<Vector3>();
     public int blockchange = 0; // THE PAINT TOOL TILE CHANGE
     private int count;      //FOR IF && WHILE LOOPS (NON LOCAL)
     private bool outof;     //PREVENTS BUILDING OUTSIDE OF GRID
@@ -81,29 +81,31 @@ public class GridControl : MonoBehaviour
                         Vector3 outbounds;
                         outbounds = new Vector3(0, 0, 0);
                         if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
-                        {
                             outof = true;
-                        }
                         else{ outof = false;}
+
                         if (!outof)
                         {
                             if (entail.TryAdd(here, blockchange) == true)
                             {
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                                
+                                NumbersMason.Add(here);
+
                                 GetComponent<AudioSource>().clip = ItemPicked;
                                 GetComponent<AudioSource>().Play();
-                                NumbersMason.Add(here);
                             }
                             else
                             {
                                 entail.TryGetValue(here, out int block);
                                 entail[here] = blockchange;
-                                GetComponent<AudioSource>().clip = ItemPicked;
-                                GetComponent<AudioSource>().Play();
+                                //find index of NumbersMason(here/Vector3)
+                                //get index push into NumberMason and TheNumbers
+                                //delete NumbersMasonIndex 
+                                //TheNumbers change index's int
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                             }
                         }
-
                     }
                 }
             }
@@ -178,18 +180,20 @@ public class GridControl : MonoBehaviour
     {
         int count = 0;
         if(Partner1 == null) { return; }
-            while (count <= Partner1.Count-1)
-            {
+        while (count <= Partner1.Count-1)
+        {
             if (count != 0 || count != 1)
-            {
-                if (count % 2 != 0 && Partner2.Count % 2 != 0) { return; }
+            {   
+                if (count % 2 != 0 && (Partner1.Count%2) != 0) { return; }
             }
-                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
-                GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
-                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
-                GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().color = 2;
-                count++;
-            }
+
+            //Debug.Log(count);
+            GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
+            GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
+            GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
+            GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().color = 2;
+            count++;
+        }
     }
     //Verison 2 of Simple portal
     public void PP4()
@@ -211,8 +215,6 @@ public class GridControl : MonoBehaviour
             }
             if (p1 == true && p2 == true)
             {
-                PartnerLines();
-                
                 p1 = false;
                 p2 = false;
             }
@@ -287,6 +289,7 @@ public class GridControl : MonoBehaviour
     {
         int count = 0;
         int count2 = 1;
+        RemoveNumber();
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
@@ -313,6 +316,32 @@ public class GridControl : MonoBehaviour
         }
     }
 
+    private void RemoveNumber()
+    {
+        int count = 0;
+        while(count <= NumbersMason.Count-1)
+        {
+            entail.TryGetValue(NumbersMason[count], out int block);
+            if(block == 0)
+                TheNumbers.Add(NumbersMason[count]);
+            count++;
+        }
+        count = 0;
+        while(count <= TheNumbers.Count-1)
+        {
+            int index = NumbersMason.IndexOf(TheNumbers[count]);
+            NumbersMason.RemoveAt(index);
+            count++;
+        }
+        TheNumbers.Clear();
+        //start loop 
+        //check entail containing of vector3
+        //check entail of vector3 of block 
+        //if block == 0 , find index of vector3 NumbersMason
+        //delete of index 
+        //Count loop
+    }
+
     //Self Destruction of prefabs
     public void editMode()
     {
@@ -327,6 +356,7 @@ public class GridControl : MonoBehaviour
         editing = false;
         TileCheck(); 
         PP4();
+        //here
         PP2();
     }
 }
