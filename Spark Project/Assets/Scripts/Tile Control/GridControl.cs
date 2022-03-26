@@ -16,8 +16,6 @@ public class GridControl : MonoBehaviour
     public PortalUI portalui;
     public GameObject mytxt;
     
-    
-    
     //       PORTAL VARIABLES 
     public Dictionary<int,Vector3> pushP; // (PORTAL ADD) reset
     //       PORTAL PARTNERING
@@ -34,17 +32,6 @@ public class GridControl : MonoBehaviour
     List<Vector3> PortalNumber = new List<Vector3>(); // (NUMBERS PORTAL) RESET?!?!?
     public Dictionary<Vector2Int, int> gridUI; //(PORTAL ADD) 
 
-////          ,^,           ,^,
-/////         / \___________/ \
-/////        ||               ||
-//          //   *         *   \\
-//         //         V         \\
-//        //    ^ ^ ^ ^ ^ ^ ^    \\
-//       //  ^ ^ ^ ^ ^ ^ ^ ^ ^ ^  \\
-//                   cat
-//     >:( NO ITS A TOTORO
-//         yeah totally :/)
-    //         GRID CONTROL COMPONENTS 
     public GameObject[] tileprefabs; // LIBRARY OF TILES 
     public Dictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
     public List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
@@ -79,19 +66,14 @@ public class GridControl : MonoBehaviour
                 else { editing = false; }
             }
         }
-        //else if(gamestart == false && GameObject.Find("Main Camera").GetComponent<InvenController>().nope == false) { editing = true; }
         if (Portalready == false)
         {
             if (editing == true) 
             {
                 if (gamestart == false) 
                 {
-                    //blockchange = GameObject.Find("DropBlock").GetComponent<dropblock>().Block;
-
                     if (Input.GetMouseButton(0))
                     {
-                        GetComponent<AudioSource>().clip = ItemPicked;
-                        GetComponent<AudioSource>().Play();
 
                         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                         Vector3Int clickPosition = TargetTilemap.WorldToCell(worldPoint);
@@ -107,24 +89,17 @@ public class GridControl : MonoBehaviour
                         {
                             if (entail.TryAdd(here, blockchange) == true)
                             {
-                                if (blockchange == 16) //Portal Tile
-                                {
-                                    //spawn prefab on here / force name and text value; 
-                                    //or put in function reference discord
-                                    //NumbersPortal(here);
-                                }
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
+                                GetComponent<AudioSource>().clip = ItemPicked;
+                                GetComponent<AudioSource>().Play();
                                 NumbersMason.Add(here);
                             }
                             else
                             {
                                 entail.TryGetValue(here, out int block);
-                                if(block == 16) //Portal Tile
-                                {
-                                    //delete prefab by name
-                                    //NumbersPortal(here);
-                                }
                                 entail[here] = blockchange;
+                                GetComponent<AudioSource>().clip = ItemPicked;
+                                GetComponent<AudioSource>().Play();
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                             }
                         }
@@ -139,7 +114,6 @@ public class GridControl : MonoBehaviour
     public void hardreset()
     {
         blockchange = 0;
-
     }
 
     public void PortalCheck()
@@ -152,10 +126,8 @@ public class GridControl : MonoBehaviour
             entail.TryGetValue(NumbersMason[count], out int block);
             if(block == 16) //Portal Tile
             {
-                //placement on UI
                 pushP.TryAdd(indexfinder, NumbersMason[count]);
                 indexfinder++;
-                //portalAdd();
             }
             count++;
         }
@@ -188,13 +160,6 @@ public class GridControl : MonoBehaviour
                 if (ypos <= portalui.gridSizeHeight - 1)
                 {
                     pushP.TryAdd(indexfinder, NumbersMason[count]);
-                    //UI
-                    //portalui.ItemStats(xpos, ypos, indexfinder);
-                    //positionOnGrid.x = xpos;
-                    //positionOnGrid.y = ypos;
-                    //tileGet.x = xpos;
-                    //tileGet.y = ypos;
-                    //gridUI.TryAdd(tileGet, indexfinder);
                     ypos++;
                 }
             }
@@ -274,10 +239,8 @@ public class GridControl : MonoBehaviour
         {
             count--;
             int index = PortalNumber.IndexOf(here);
-            //delete PortalNumber.Index;
             PortalNumber.RemoveAt(index);
             Destroy(GameObject.Find(here.ToString()));
-            //Delete GameObject 
         }
         else
         {
@@ -318,6 +281,8 @@ public class GridControl : MonoBehaviour
         foreach (Transform child in GameObject.Find("PortalGrid").transform)
             Destroy(child.gameObject);
     }
+
+    // spawns all known tiles
     public void TileCheck()
     {
         int count = 0;
@@ -341,19 +306,18 @@ public class GridControl : MonoBehaviour
                 Vector3 Posit;
                 Posit = new Vector3(.5f, .5f, 0);
                 placed.GetComponent<Transform>().position = NumbersMason[count] + Posit;
-                //name change
                 placed.name = (NumbersMason[count].ToString());
                 count2++;
             }
             count++;
         }
-    } // spawns all known tiles
-    
+    }
+
+    //Self Destruction of prefabs
     public void editMode()
     {
         gamestart = false;
         editing = true;
-        //Self Destruction of prefabs
     }
     public void startb()
     {
@@ -364,6 +328,5 @@ public class GridControl : MonoBehaviour
         TileCheck(); 
         PP4();
         PP2();
-        //PP3();
     }
 }

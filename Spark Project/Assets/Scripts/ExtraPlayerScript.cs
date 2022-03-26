@@ -61,9 +61,7 @@ public class ExtraPlayerScript : MonoBehaviour
         }
 
         if (damageTicker > 0)
-        {
             damageTicker -= 1f * Time.deltaTime;
-        }
         else
             myRenderer.color = Color.white;
 

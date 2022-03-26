@@ -8,18 +8,14 @@ public class destroythis : MonoBehaviour
     void Start()
     {
         if (this.gameObject.name.Contains("grid_square"))
-        {
             Death();
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (GameObject.Find("Main Camera").GetComponent<GridControl>().gamestart == false)
-        {
             Death();
-        }
     }
 
     public void Death()

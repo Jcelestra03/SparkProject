@@ -21,16 +21,8 @@ public class dropblock : MonoBehaviour
         Block = myD.value;
     }
     
-    //public TMP_Dropdown.DropdownEvent OnValueChanged()
-    //{
-    //    Block = myD.value;
-    //    return null;
-    //}
     public void tilechange()
     {
-        //name of gameobject = int?
-        //name of gameobject into list 
-        //if ( list contains gameobject.this , find index of gameobject , blockchange = index )
         if (buttons.Contains(here))
         {
             int index;
