@@ -23,7 +23,7 @@ public class DataHandler : MonoBehaviour
         //Save();
         temp.NumbersMason = cam.GetComponent<GridControl>().NumbersMason;
         string json = JsonUtility.ToJson(temp);
-        //Debug.Log(json);
+        Debug.Log(json);
     }
 
     public void Save()
@@ -50,7 +50,7 @@ public class DataHandler : MonoBehaviour
     {
         cam.GetComponent<GridControl>().entail = new Dictionary<Vector3, int>();
 
-        for (int i = 0; i < save.TileList.Count; i++)
+        for (int i = 0; i < save.TileList.Count-1; i++)
         {
             cam.GetComponent<GridControl>().entail.Add(save.NumbersMason[i], save.TileList[i]);
         }

@@ -105,6 +105,7 @@ public class GridControl : MonoBehaviour
                                 //TheNumbers change index's int
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                             }
+                            RemoveNumber();
                         }
                     }
                 }
@@ -182,17 +183,11 @@ public class GridControl : MonoBehaviour
         if(Partner1 == null) { return; }
         while (count <= Partner2.Count-1)
         {
-            Debug.Log(count);
             if (count != 0)
             {
                 if (count != 1)
-                {
                     if (count % 2 != 0 && (Partner2.Count % 2) != 0) { return; }
-                    Debug.Log(count + ": did not return");
-                }
             }
-
-            //Debug.Log(count);
             GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().partnerName = Partner2[count];
             GameObject.Find(Partner1[count].ToString()).GetComponent<Portal>().color = 1;
             GameObject.Find(Partner2[count].ToString()).GetComponent<Portal>().partnerName = Partner1[count];
