@@ -180,11 +180,16 @@ public class GridControl : MonoBehaviour
     {
         int count = 0;
         if(Partner1 == null) { return; }
-        while (count <= Partner1.Count-1)
+        while (count <= Partner2.Count-1)
         {
-            if (count != 0 || count != 1)
-            {   
-                if (count % 2 != 0 && (Partner1.Count%2) != 0) { return; }
+            Debug.Log(count);
+            if (count != 0)
+            {
+                if (count != 1)
+                {
+                    if (count % 2 != 0 && (Partner2.Count % 2) != 0) { return; }
+                    Debug.Log(count + ": did not return");
+                }
             }
 
             //Debug.Log(count);
@@ -322,8 +327,11 @@ public class GridControl : MonoBehaviour
         while(count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
-            if(block == 0)
+            if (block == 0)
+            {
+                entail.Remove(NumbersMason[count]);
                 TheNumbers.Add(NumbersMason[count]);
+            }
             count++;
         }
         count = 0;
