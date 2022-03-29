@@ -9,6 +9,8 @@ public class ExtraPlayerScript : MonoBehaviour
     public bool canMove = true;
     public LayerMask groundLayer;
     public bool damageDone;
+    public SpriteRenderer healthBar;
+    public TextMesh lives;
 
     public AudioClip PlayerDeath;
     public AudioClip PlayerJump;
@@ -53,6 +55,8 @@ public class ExtraPlayerScript : MonoBehaviour
 
     void Update()
     {
+        healthBar.transform.localScale = new Vector2(Mathf.Clamp(health, 0, 0.95f), 0.9f);
+
         if (damageDone && canMove)
         {
             damageTicker = 0.1f;

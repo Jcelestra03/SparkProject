@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator myAnimator;
     private SpriteRenderer myRenderer;
+    private SpriteRenderer healthBar;
+    public TextMesh lives;
 
     void Start()
     {
