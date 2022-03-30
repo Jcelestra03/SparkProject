@@ -11,6 +11,7 @@ public class ExtraPlayerScript : MonoBehaviour
     public bool damageDone;
     public SpriteRenderer healthBar;
     public TextMesh lives;
+    public GameObject healthBarBody;
 
     public AudioClip PlayerDeath;
     public AudioClip PlayerJump;
@@ -231,13 +232,15 @@ public class ExtraPlayerScript : MonoBehaviour
     private void Dead()
     {
         deadTime -= 1 * Time.deltaTime;
-        Debug.Log("dead");
+        healthBarBody.SetActive(false);
 
         canMove = false;
         anim.SetBool("Player_is_Dying", true);
 
         if (deadTime <= 0 && !played)
         {
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            myRB.bodyType = RigidbodyType2D.Static;
             GetComponent<AudioSource>().clip = PlayerDeath;
             GetComponent<AudioSource>().Play();
 
