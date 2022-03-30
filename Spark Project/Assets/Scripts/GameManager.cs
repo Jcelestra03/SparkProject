@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Text starText;
     public bool win;
     public bool lose;
+    public int players;
     public int stars = 0;
     List<GameObject> uIs = new List<GameObject>();
     public GameObject[] UIs;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     GridControl grid;
 
     private GameObject cam;
+    public float playCheckTimer;
 
     private void Awake()
     {
@@ -38,6 +40,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameObject.Find("Main Camera").GetComponent<GridControl>().gamestart == true)
+        {
+            playCheckTimer -= 1 * Time.deltaTime;
+
+            if (players <= 0 && playCheckTimer <= 0)
+                lose = true;
+        }
+        else
+        {
+            playCheckTimer = 0.1f;
+            players = 0;
+        }
+            
+
+
+
         if (cam.GetComponent<GridControl>().gamestart == false)
         {
             win = false;

@@ -53,16 +53,17 @@ public class ExtraPlayerScript : MonoBehaviour
 
         spawnPos = gameObject.transform.position;
         maxHealth = health;
+
+        GameObject.Find("gameManager").GetComponent<GameManager>().players++;
     }
 
     void Update()
     {
         if (damageDone)
         {
-            Vector2 temp = healthBar.transform.localScale;
-            temp.x = maxHealth / health;
-            Debug.Log(temp.x);
-            //healthBar.transform.localScale = temp;
+            Vector2 healthBarTemp = healthBar.transform.localScale;
+            healthBarTemp.x = Mathf.Clamp(health / maxHealth, 0, 0.95f);
+            healthBar.transform.localScale = healthBarTemp;
         }
             
 
@@ -123,6 +124,16 @@ public class ExtraPlayerScript : MonoBehaviour
         else if (inAir == false && canMove == true)
         {
             anim.SetBool("Player_Is_Jumping", false);
+        }
+
+        if (gameObject.transform.position.y < 0)
+        {
+            if (checkpoint == null)
+                transform.position = spawnPos;
+            else
+                transform.position = checkpoint.position;
+
+            myRB.velocity = Vector2.zero;
         }
     }
 
@@ -212,7 +223,9 @@ public class ExtraPlayerScript : MonoBehaviour
             transform.position = checkpoint.position;
 
         if (respawns != -1)
-        respawns--;
+            respawns--;
+
+        damageDone = true;
     }
 
     private void Dead()
@@ -228,7 +241,7 @@ public class ExtraPlayerScript : MonoBehaviour
             GetComponent<AudioSource>().clip = PlayerDeath;
             GetComponent<AudioSource>().Play();
 
-            GameObject.Find("gameManager").GetComponent<GameManager>().lose = true;
+            GameObject.Find("gameManager").GetComponent<GameManager>().players--;
             played = true;
         }
     }
