@@ -1298,8 +1298,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -754, y: -278}
-  m_SizeDelta: {x: 690.397, y: -294.742}
+  m_AnchoredPosition: {x: -771.4287, y: -426.76666}
+  m_SizeDelta: {x: 620.6821, y: 300.3246}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &687798187
 MonoBehaviour:
@@ -4086,9 +4086,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 183
   damageDone: 0
+  healthBar: {fileID: 0}
+  lives: {fileID: 0}
   PlayerDeath: {fileID: 8300000, guid: aee4032167b0f184c83551cd9ba7ad25, type: 3}
   PlayerJump: {fileID: 8300000, guid: 5215de5cb4bf0514c8deb5d20a3f6f7d, type: 3}
-  EnemyDeath: {fileID: 0}
   respawns: 0
   respawnHealth: 1
   acceleration: 10
