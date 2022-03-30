@@ -86,7 +86,6 @@ public class ExtraPlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !inAir && canMove)
         {
-            gameObject.AddComponent<AudioSource>();
             GetComponent<AudioSource>().clip = PlayerJump;
             GetComponent<AudioSource>().Play();
             velocity.y = jumpheight;
@@ -212,7 +211,6 @@ public class ExtraPlayerScript : MonoBehaviour
 
         if (deadTime <= 0 && !played)
         {
-            gameObject.AddComponent<AudioSource>();
             GetComponent<AudioSource>().clip = PlayerDeath;
             GetComponent<AudioSource>().Play();
 
