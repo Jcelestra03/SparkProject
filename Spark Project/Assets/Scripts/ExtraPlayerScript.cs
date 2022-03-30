@@ -39,6 +39,7 @@ public class ExtraPlayerScript : MonoBehaviour
     private float damageTicker;
     private bool played;
     private Vector3 spawnPos;
+    private float maxHealth;
 
     void Start()
     {
@@ -51,11 +52,24 @@ public class ExtraPlayerScript : MonoBehaviour
         myRenderer = GetComponent<SpriteRenderer>();
 
         spawnPos = gameObject.transform.position;
+        maxHealth = health;
     }
 
     void Update()
     {
-        healthBar.transform.localScale = new Vector2(Mathf.Clamp(health, 0, 0.95f), 0.9f);
+        if (damageDone)
+        {
+            Vector2 temp = healthBar.transform.localScale;
+            temp.x = maxHealth / health;
+            Debug.Log(temp.x);
+            //healthBar.transform.localScale = temp;
+        }
+            
+
+        if (respawns <= 0)
+            lives.text = "";
+        else
+            lives.text = respawns.ToString();
 
         if (damageDone && canMove)
         {
