@@ -49,10 +49,10 @@ public class DataHandler : MonoBehaviour
     public void Load()
     {
         cam.GetComponent<GridControl>().entail = new Dictionary<Vector3, int>();
-
+        cam.GetComponent<GridControl>().entail.Clear();
         for (int i = 0; i < save.TileList.Count-1; i++)
         {
-            cam.GetComponent<GridControl>().entail.Add(save.NumbersMason[i], save.TileList[i]);
+            cam.GetComponent<GridControl>().entail.TryAdd(save.NumbersMason[i], save.TileList[i]);
         }
         
         cam.GetComponent<GridControl>().NumbersMason = new List<Vector3>();
