@@ -6,7 +6,8 @@ MonoImporter:
   defaultReferences:
   - bullet: {instanceID: 0}
   - shootPos: {instanceID: 0}
-  - TurretFiring: {fileID: 8300000, guid: c671c9f67162085468ef0359a10ba605, type: 3}
+  - TurretFiring: {fileID: 8300000, guid: 7afb4f4ff40c53748b455306dc6159fe, type: 3}
+  - Death: {fileID: 8300000, guid: c8037b9bde8b36a4587ee1cc09756a60, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
