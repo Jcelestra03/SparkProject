@@ -60,13 +60,9 @@ public class ExtraPlayerScript : MonoBehaviour
 
     void Update()
     {
-        if (damageDone)
-        {
-            Vector2 healthBarTemp = healthBar.transform.localScale;
-            healthBarTemp.x = Mathf.Clamp(health / maxHealth, 0, 0.95f);
-            healthBar.transform.localScale = healthBarTemp;
-        }
-            
+        Vector2 healthBarTemp = healthBar.transform.localScale;
+        healthBarTemp.x = Mathf.Clamp(health / maxHealth, 0, 0.95f);
+        healthBar.transform.localScale = healthBarTemp;
 
         if (respawns <= 0)
             lives.text = "";
@@ -225,8 +221,6 @@ public class ExtraPlayerScript : MonoBehaviour
 
         if (respawns != -1)
             respawns--;
-
-        damageDone = true;
     }
 
     private void Dead()
