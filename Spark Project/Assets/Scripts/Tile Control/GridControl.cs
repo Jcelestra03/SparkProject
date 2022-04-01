@@ -82,14 +82,13 @@ public class GridControl : MonoBehaviour
                         outbounds = new Vector3(0, 0, 0);
                         if (clickPosition.x < 0 || clickPosition.x >= 100 || (clickPosition.y < 0 || clickPosition.y >= 100))
                             outof = true;
-                        else{ outof = false;}
+                        else outof = false;
 
                         if (!outof)
                         {
                             if (entail.TryAdd(here, blockchange) == true)
                             {
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
-                                
                                 NumbersMason.Add(here);
 
                                 GetComponent<AudioSource>().clip = ItemPicked;
@@ -97,7 +96,6 @@ public class GridControl : MonoBehaviour
                             }
                             else
                             {
-                                entail.TryGetValue(here, out int block);
                                 entail[here] = blockchange;
                                 //find index of NumbersMason(here/Vector3)
                                 //get index push into NumberMason and TheNumbers
@@ -118,7 +116,30 @@ public class GridControl : MonoBehaviour
     {
         blockchange = 0;
     }
-
+    public void hardClear()
+    {
+        int count = 0;
+        while (count <= NumbersMason.Count-1)
+        {
+            Vector3Int clickPosition = TargetTilemap.WorldToCell(NumbersMason[count]);
+            tiles.Set(clickPosition.x, clickPosition.y, 0);
+        }
+    }
+    public void hardLoad(Vector3 here, int block)
+    {
+        Vector3Int clickPosition = TargetTilemap.WorldToCell(here);
+        if (entail.TryAdd(here, block) == true)
+        {
+            Debug.Log("true");
+            tiles.Set(clickPosition.x, clickPosition.y, block);
+        }
+        else
+        {
+            Debug.Log("tryadd false");
+            entail[here] = block;
+            tiles.Set(clickPosition.x, clickPosition.y, block);
+        }
+    }
     public void PortalCheck()
     {
         Portalreset();
