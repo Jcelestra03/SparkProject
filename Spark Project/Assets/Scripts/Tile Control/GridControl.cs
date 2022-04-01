@@ -131,6 +131,7 @@ public class GridControl : MonoBehaviour
         if (entail.TryAdd(here, block) == true)
         {
             Debug.Log("true");
+
             tiles.Set(clickPosition.x, clickPosition.y, block);
         }
         else

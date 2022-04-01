@@ -73,7 +73,12 @@ public class DataHandler : MonoBehaviour
         
         cam.GetComponent<GridControl>().NumbersMason = new List<Vector3>();
         cam.GetComponent<GridControl>().NumbersMason.Clear();
-        cam.GetComponent<GridControl>().NumbersMason = save.NumbersMason;
+        count = 0;
+        while (count <= save.NumbersMasonX.Count-1)
+        {
+            cam.GetComponent<GridControl>().NumbersMason.Add(new Vector3(save.NumbersMasonX[count], save.NumbersMasonY[count], 0));
+            count++;
+        }
     }
 
     public class SaveData
