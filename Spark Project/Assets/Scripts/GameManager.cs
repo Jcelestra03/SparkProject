@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Text starText;
+    public GameObject starBody;
+    public TextMeshProUGUI starText;
     public bool win;
     public bool lose;
     public int players;
     public int stars = 0;
+    public int startStars;
     List<GameObject> uIs = new List<GameObject>();
     public GameObject[] UIs;
     public bool pause;
@@ -21,7 +24,7 @@ public class GameManager : MonoBehaviour
     GridControl grid;
 
     private GameObject cam;
-    public float playCheckTimer;
+    private float initialCheckTimer;
 
     private void Awake()
     {
@@ -42,14 +45,24 @@ public class GameManager : MonoBehaviour
     {
         if (GameObject.Find("Main Camera").GetComponent<GridControl>().gamestart == true)
         {
-            playCheckTimer -= 1 * Time.deltaTime;
+            if (initialCheckTimer > 0)
+                initialCheckTimer -= 1 * Time.deltaTime;
 
-            if (players <= 0 && playCheckTimer <= 0)
+            if (players <= 0 && initialCheckTimer <= 0)
                 lose = true;
+
+            if (startStars > 0 && initialCheckTimer <= 0)
+                starBody.SetActive(true);
+
+            starText.SetText(stars + "/" + startStars);
         }
         else
         {
-            playCheckTimer = 0.1f;
+            startStars = 0;
+            stars = 0;
+            starBody.SetActive(false);
+
+            initialCheckTimer = 0.1f;
             players = 0;
         }
             

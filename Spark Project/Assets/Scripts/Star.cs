@@ -7,6 +7,11 @@ public class Star : MonoBehaviour
     private AudioSource speaker;
     public AudioClip StarCollected;
 
+    private void Start()
+    {
+        GameObject.Find("gameManager").GetComponent<GameManager>().startStars++;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Player")
