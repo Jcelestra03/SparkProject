@@ -35,7 +35,6 @@ public class GridControl : MonoBehaviour
     public GameObject[] tileprefabs; // LIBRARY OF TILES 
     public Dictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
     public List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
-    public List<Vector3> TheNumbers = new List<Vector3>();
     public int blockchange = 0; // THE PAINT TOOL TILE CHANGE
     private int count;      //FOR IF && WHILE LOOPS (NON LOCAL)
     private bool outof;     //PREVENTS BUILDING OUTSIDE OF GRID
@@ -103,7 +102,6 @@ public class GridControl : MonoBehaviour
                                 //TheNumbers change index's int
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                             }
-                            RemoveNumber();
                         }
                     }
                 }
@@ -118,10 +116,10 @@ public class GridControl : MonoBehaviour
     }
     public void hardClear()
     {
-        int count = 0;
-        while (count <= NumbersMason.Count-1)
+        //for(int i = 0; i < NumbersMason.Count-1)
+        for (int i = 0; i <= NumbersMason.Count - 1; i++)
         {
-            Vector3Int clickPosition = TargetTilemap.WorldToCell(NumbersMason[count]);
+            Vector3Int clickPosition = TargetTilemap.WorldToCell(NumbersMason[i]);
             tiles.Set(clickPosition.x, clickPosition.y, 0);
         }
     }
@@ -130,9 +128,10 @@ public class GridControl : MonoBehaviour
         Vector3Int clickPosition = TargetTilemap.WorldToCell(here);
         if (entail.TryAdd(here, block) == true)
         {
-            Debug.Log("true");
-
+            //Debug.Log("true");
+            NumbersMason.Add(here);
             tiles.Set(clickPosition.x, clickPosition.y, block);
+            //Debug.Log(here);
         }
         else
         {
@@ -311,7 +310,7 @@ public class GridControl : MonoBehaviour
     {
         int count = 0;
         int count2 = 1;
-        RemoveNumber();
+
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
@@ -338,34 +337,7 @@ public class GridControl : MonoBehaviour
         }
     }
 
-    private void RemoveNumber()
-    {
-        int count = 0;
-        while(count <= NumbersMason.Count-1)
-        {
-            entail.TryGetValue(NumbersMason[count], out int block);
-            if (block == 0)
-            {
-                entail.Remove(NumbersMason[count]);
-                TheNumbers.Add(NumbersMason[count]);
-            }
-            count++;
-        }
-        count = 0;
-        while(count <= TheNumbers.Count-1)
-        {
-            int index = NumbersMason.IndexOf(TheNumbers[count]);
-            NumbersMason.RemoveAt(index);
-            count++;
-        }
-        TheNumbers.Clear();
-        //start loop 
-        //check entail containing of vector3
-        //check entail of vector3 of block 
-        //if block == 0 , find index of vector3 NumbersMason
-        //delete of index 
-        //Count loop
-    }
+
 
     //Self Destruction of prefabs
     public void editMode()

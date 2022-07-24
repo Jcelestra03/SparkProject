@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataHandler : MonoBehaviour
+
+public class DataHandler : MonoBehaviour, DataPersistence
 {
     public GameObject cam;
     public SaveData save;
@@ -16,6 +17,21 @@ public class DataHandler : MonoBehaviour
         cam = GameObject.Find("Main Camera");
         save = new SaveData();
         temp = new SaveData();
+    }
+
+    public void LoadData(GameData data)
+    {
+        //save.TileList = data.TList;
+        //save.NumbersMason = data.Mason;
+        //save.NumbersMasonX = data.MasonX;
+        //save.NumbersMasonY = data.MasonY;
+    }
+    public void Saved(ref GameData data)
+    {
+        //data.TList = save.TileList;
+        //data.Mason = save.NumbersMason;
+        //data.MasonX = save.NumbersMasonX;
+        //data.MasonY = save.NumbersMasonY;
     }
 
     private void Update()
@@ -48,6 +64,7 @@ public class DataHandler : MonoBehaviour
             save.NumbersMasonX.Add(Mathf.FloorToInt(num[i].x));
             save.NumbersMasonY.Add(Mathf.FloorToInt(num[i].y));
         }
+        
         string json = JsonUtility.ToJson(save);
         Debug.Log(json);
     }
@@ -55,29 +72,17 @@ public class DataHandler : MonoBehaviour
     public void Load()
     {
         newMason.Clear();
-        cam.GetComponent<GridControl>().entail = new Dictionary<Vector3, int>();
-        cam.GetComponent<GridControl>().entail.Clear();
-        int count = 0;
-        //cam.GetComponent<GridControl>().hardClear();
-        while (count <= save.NumbersMasonX.Count-1)
-        {
-            newMason.Add(new Vector3(save.NumbersMasonX[count], save.NumbersMasonY[count], 0));
-            if(save.NumbersMason == null) { return; }
-            cam.GetComponent<GridControl>().hardLoad(newMason[count], save.TileList[count]);
-            count++;
-        }
-        //for (int i = 0; i < save.TileList.Count-1; i++)
-        //{
-        //    cam.GetComponent<GridControl>().entail.TryAdd(save.NumbersMason[i], save.TileList[i]);
-        //}
-        
+        cam.GetComponent<GridControl>().hardClear();
         cam.GetComponent<GridControl>().NumbersMason = new List<Vector3>();
         cam.GetComponent<GridControl>().NumbersMason.Clear();
-        count = 0;
-        while (count <= save.NumbersMasonX.Count-1)
+        cam.GetComponent<GridControl>().entail = new Dictionary<Vector3, int>();
+        cam.GetComponent<GridControl>().entail.Clear();
+        for (int i = 0; i <= save.NumbersMasonX.Count-1; i++)
         {
-            cam.GetComponent<GridControl>().NumbersMason.Add(new Vector3(save.NumbersMasonX[count], save.NumbersMasonY[count], 0));
-            count++;
+            newMason.Add(new Vector3(save.NumbersMasonX[i], save.NumbersMasonY[i], 0));
+            if (save.NumbersMason == null) { return; }
+            cam.GetComponent<GridControl>().hardLoad(newMason[i], save.TileList[i]);
+            //Debug.Log(i);
         }
     }
 

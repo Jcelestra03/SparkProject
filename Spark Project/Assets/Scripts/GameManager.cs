@@ -116,12 +116,14 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             GetComponent<DataHandler>().Load();
+            DataManager.instance.LoadGame();
             Debug.Log("loaded");
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             GetComponent<DataHandler>().Save();
+            DataManager.instance.SaveGame();
             Debug.Log("saved");
         }
     }
