@@ -4,9 +4,13 @@ using UnityEngine;
 using System.Linq;
 public class DataManager : MonoBehaviour
 {
+    [Header("File Storage Config")]
+    [SerializeField] private string fileName;
+
     private GameData gameData;
 
     private List<DataPersistence> dataObjects;
+    private FileDataHandler dataHandler;
     public static DataManager instance { get; private set; }
 
     private void Awake()
@@ -16,6 +20,7 @@ public class DataManager : MonoBehaviour
 
     private void Start()
     {
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         this.dataObjects = FindAllDataObjects();
         LoadGame();
     }
@@ -27,6 +32,8 @@ public class DataManager : MonoBehaviour
 
     public void LoadGame()
     {
+        this.gameData = dataHandler.Load();
+
         if(this.gameData == null)
         {
             NewGame();
@@ -44,11 +51,12 @@ public class DataManager : MonoBehaviour
         {
             dataPersistenceObj.Saved(ref gameData);
         }
+        dataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        //SaveGame();
     }
 
     private List<DataPersistence> FindAllDataObjects()

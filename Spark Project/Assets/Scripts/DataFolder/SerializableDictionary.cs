@@ -22,11 +22,11 @@ public class SerializableDictionary<Tkey, TValue> : Dictionary<Tkey, TValue>, IS
 
     public void OnAfterDeserialize()
     {
-        //this.Clear();
+        Clear();
 
-        //for (int i = 0; i < keys.Count; i++)
-        //{
-        //    this.Add(key[i], values[i]);
-        //}
+        for (int i = 0; i < keys.Count; i++)
+        {
+            Add(keys[i], values[i]);
+        }
     }
 }

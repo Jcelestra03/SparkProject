@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using TMPro;
 
-public class GridControl : MonoBehaviour
+public class GridControl : MonoBehaviour, DataPersistence
 {
 
     //Calling Fields 
@@ -33,7 +33,7 @@ public class GridControl : MonoBehaviour
     public Dictionary<Vector2Int, int> gridUI; //(PORTAL ADD) 
 
     public GameObject[] tileprefabs; // LIBRARY OF TILES 
-    public Dictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
+    public SerializableDictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
     public List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
     public int blockchange = 0; // THE PAINT TOOL TILE CHANGE
     private int count;      //FOR IF && WHILE LOOPS (NON LOCAL)
@@ -49,7 +49,7 @@ public class GridControl : MonoBehaviour
     {
         xpos = 0;
         ypos = 0;
-        entail = new Dictionary<Vector3, int>();
+        entail = new SerializableDictionary<Vector3, int>();
         NumbersMason = new List<Vector3>();
         pushP = new Dictionary<int, Vector3>();
         gridUI = new Dictionary<Vector2Int,int >();
@@ -57,7 +57,14 @@ public class GridControl : MonoBehaviour
     }
     public void Update()
     {
-        if (gamestart == true)
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            for (int i = 0; i <= entail.Count - 1; i++)
+            {
+
+            }
+        }
+            if (gamestart == true)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -96,10 +103,6 @@ public class GridControl : MonoBehaviour
                             else
                             {
                                 entail[here] = blockchange;
-                                //find index of NumbersMason(here/Vector3)
-                                //get index push into NumberMason and TheNumbers
-                                //delete NumbersMasonIndex 
-                                //TheNumbers change index's int
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
                             }
                         }
@@ -113,6 +116,11 @@ public class GridControl : MonoBehaviour
     public void hardreset()
     {
         blockchange = 0;
+    }
+    public void resetLists()
+    {
+        NumbersMason.Clear();
+        entail.Clear();
     }
     public void hardClear()
     {
@@ -139,6 +147,7 @@ public class GridControl : MonoBehaviour
             entail[here] = block;
             tiles.Set(clickPosition.x, clickPosition.y, block);
         }
+        
     }
     public void PortalCheck()
     {
@@ -355,5 +364,18 @@ public class GridControl : MonoBehaviour
         PP4();
         //here
         PP2();
+    }
+
+    
+        
+
+
+    public void LoadData(GameData data)
+    {
+        entail = data.newEntail;
+    }
+    public void Saved(ref GameData data)
+    {
+        data.newEntail = entail;
     }
 }
