@@ -19,7 +19,6 @@ public class DataHandler : MonoBehaviour
         temp = new SaveData();
     }
 
-    
 
     private void Update()
     {
@@ -38,14 +37,12 @@ public class DataHandler : MonoBehaviour
             cam.GetComponent<GridControl>().entail.TryGetValue(num[i], out int result);
             TileChash.Add(result);
         }
-
         save.TileList = TileChash;
         for(int i = 0; i <= num.Count-1; i++)
         {
             save.NumbersMasonX.Add(Mathf.FloorToInt(num[i].x));
             save.NumbersMasonY.Add(Mathf.FloorToInt(num[i].y));
         }
-        
         string json = JsonUtility.ToJson(save);
         Debug.Log(json);
     }
@@ -71,4 +68,6 @@ public class DataHandler : MonoBehaviour
         public List<int> NumbersMasonX = new List<int>();
         public List<int> NumbersMasonY = new List<int>();
     }
+
+    
 }

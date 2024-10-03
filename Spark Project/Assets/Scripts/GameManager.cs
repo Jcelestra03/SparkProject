@@ -115,6 +115,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
+            grid.TileCheck();
             GetComponent<DataHandler>().Load();
             DataManager.instance.LoadGame();
             Debug.Log("loaded");
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
+            grid.TileCheck();
             GetComponent<DataHandler>().Save();
             DataManager.instance.SaveGame();
             Debug.Log("saved");

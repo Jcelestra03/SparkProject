@@ -35,7 +35,7 @@ public class GridControl : MonoBehaviour, DataPersistence
     public GameObject[] tileprefabs; // LIBRARY OF TILES 
     public SerializableDictionary<Vector3,int> entail;  // KEEPS TRACK OF TILE AND BLOCK TYPE 
     public List<Vector3> NumbersMason = new List<Vector3>(); // KEEPS TRACK OF DICTIONARY VECTOR3
-    public int blockchange = 0; // THE PAINT TOOL TILE CHANGE
+    public int blockchange = 0; // THE BLOCK TILE VALUE
     private int count;      //FOR IF && WHILE LOOPS (NON LOCAL)
     private bool outof;     //PREVENTS BUILDING OUTSIDE OF GRID
     public bool editing;    //PREVENTS BUILDING WHILE IN BUILD
@@ -57,13 +57,6 @@ public class GridControl : MonoBehaviour, DataPersistence
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            for (int i = 0; i <= entail.Count - 1; i++)
-            {
-
-            }
-        }
             if (gamestart == true)
         {
             if (Input.GetMouseButtonDown(0))
@@ -92,6 +85,7 @@ public class GridControl : MonoBehaviour, DataPersistence
 
                         if (!outof)
                         {
+                            // If Unique tile and position does not exist / add 
                             if (entail.TryAdd(here, blockchange) == true)
                             {
                                 tiles.Set(clickPosition.x, clickPosition.y, blockchange);
@@ -147,7 +141,6 @@ public class GridControl : MonoBehaviour, DataPersistence
             entail[here] = block;
             tiles.Set(clickPosition.x, clickPosition.y, block);
         }
-        
     }
     public void PortalCheck()
     {
@@ -319,11 +312,15 @@ public class GridControl : MonoBehaviour, DataPersistence
     {
         int count = 0;
         int count2 = 1;
-
+        List<Vector3> blockZ = new List<Vector3>();
         while (count <= NumbersMason.Count-1)
         {
             entail.TryGetValue(NumbersMason[count], out int block);
-            if(block != 16) //not Portal Tile
+            if(block == 0)
+            {
+                blockZ.Add(NumbersMason[count]);
+            }
+            else if(block != 16) //not Portal Tile
             {
                 GameObject placed = Instantiate(tileprefabs[block]);
                 Vector3 Posit;
@@ -344,6 +341,12 @@ public class GridControl : MonoBehaviour, DataPersistence
             }
             count++;
         }
+        for (int i = 0; i <= blockZ.Count - 1; i++)
+        {
+            entail.Remove(blockZ[i]);
+            NumbersMason.Remove(blockZ[i]);
+        }
+        blockZ.Clear();
     }
 
 
@@ -362,20 +365,19 @@ public class GridControl : MonoBehaviour, DataPersistence
         editing = false;
         TileCheck(); 
         PP4();
-        //here
         PP2();
     }
 
     
-        
-
 
     public void LoadData(GameData data)
     {
         entail = data.newEntail;
+        NumbersMason = data.Mason;
     }
     public void Saved(ref GameData data)
     {
         data.newEntail = entail;
+        data.Mason = NumbersMason;
     }
 }

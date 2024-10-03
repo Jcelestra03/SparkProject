@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
-
+// Reads data and convert Json to game data
 public class FileDataHandler 
 {
     private string dataDirPath = "";
 
     private string dataFileName = "";
 
-
     public FileDataHandler(string dataDirPath, string dataFileName)
     {
         this.dataDirPath = dataDirPath;
         this.dataFileName = dataFileName;
     }
-
 
     public GameData Load()
     {
@@ -34,7 +32,6 @@ public class FileDataHandler
                         dataToLoad = reader.ReadToEnd();
                     }
                 }
-
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
             catch (Exception e)

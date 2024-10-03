@@ -21,22 +21,23 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.dataObjects = FindAllDataObjects();
+        dataObjects = FindAllDataObjects();
         LoadGame();
     }
 
     public void NewGame()
     {
-        this.gameData = new GameData();
+        gameData = new GameData();
     }
 
     public void LoadGame()
     {
-        this.gameData = dataHandler.Load();
+        gameData = dataHandler.Load();
 
-        if(this.gameData == null)
+        if(gameData == null)
         {
             NewGame();
+            // get entail keys add to NumbersMason 
         }
 
         foreach(DataPersistence dataPersistenceObj in dataObjects)
@@ -56,7 +57,7 @@ public class DataManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        //SaveGame();
+        
     }
 
     private List<DataPersistence> FindAllDataObjects()
